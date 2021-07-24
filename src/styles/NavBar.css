@@ -23,18 +23,18 @@ li {
 }
 
 .cool-meals-title {
-  background: #ca4246;
-  background-color: #ca4246;
+  background: #dc3e43;
+  background-color: #dc3e43;
   background: conic-gradient(
-    #ca4246 20%,
-    #e16541 20%,
-    #e16541 40%,
-    #f18f43 40%,
-    #f18f43 60%,
-    #8b9862 60%,
-    #8b9862 80%,
-    #476098 80%,
-    #476098 100%
+    #dc3e43 20%,
+    #e9740e 20%,
+    #e9740e 40%,
+    #d2e367 40%,
+    #d2e367 60%,
+    #4cbf5d 60%,
+    #4cbf5d 80%,
+    #5383e9 80%,
+    #5383e9 100%
   );
   background-size: 100%;
   background-repeat: repeat;

@@ -32,11 +32,62 @@
 }
 
 .login-form {
-  background-color: #3f3d3d;
+  animation: loginRev 1s forwards;
+  background: conic-gradient(
+    #dc3e43 20%,
+    #e9740e 20%,
+    #e9740e 40%,
+    #d2e367 40%,
+    #d2e367 60%,
+    #4cbf5d 60%,
+    #4cbf5d 80%,
+    #5383e9 80%,
+    #5383e9 100%
+  );
+  background-size: 300%;
+  background-position: -500px;
   border-radius: 25px;
   line-height: 3rem;
   margin: auto;
   padding: 1rem;
   text-align: center;
   width: max-content;
+}
+
+.login-input {
+  display: inline-block;
+}
+
+.login-form:focus-within {
+  animation: login 1s forwards;
+}
+
+.login-form-button {
+  background-color: #4cbf5d;
+  border: 0;
+  border-radius: 12px;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.5rem;
+}
+
+@keyframes login {
+  from {
+    background-position: -500px;
+    background-size: 300%;
+  }
+  to {
+    background-position: -200px;
+    background-size: 200%;
+  }
+}
+
+@keyframes loginRev {
+  from {
+    background-position: -200px;
+    background-size: 200%;
+  }
+  to {
+    background-position: -500px;
+    background-size: 300%;
+  }
 }
