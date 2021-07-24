@@ -1,0 +1,112 @@
+.Navbar {
+  background: #3f3d3d;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+}
+
+a {
+  color: #fff;
+  font-family: "Otomanopee One", sans-serif;
+  text-decoration: none;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  display: inline-block;
+  list-style-type: none;
+  margin-right: 2rem;
+  text-decoration: none;
+}
+
+.cool-meals-title {
+  background: #ca4246;
+  background-color: #ca4246;
+  background: conic-gradient(
+    #ca4246 20%,
+    #e16541 20%,
+    #e16541 40%,
+    #f18f43 40%,
+    #f18f43 60%,
+    #8b9862 60%,
+    #8b9862 80%,
+    #476098 80%,
+    #476098 100%
+  );
+  background-size: 80%;
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: coolMealsHoverRev 0.5s ease forwards;
+  font-family: "Bebas Neue", sans-serif;
+  margin-left: 2rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.cool-meals-title:hover {
+  animation: coolMealsHover 1s forwards;
+  -webkit-animation: coolMealsHover 1s forwards;
+  -moz-animation: coolMealsHover 1s forwards;
+  -o-animation: coolMealsHover 1s forwards;
+}
+
+@keyframes coolMealsHover {
+  0% {
+    background-size: 80%;
+    background-position: 0 0;
+  }
+  20% {
+    background-size: 80%;
+    background-position: 0 1em;
+  }
+  100% {
+    background-size: 300%;
+    background-position: -4em 1em;
+  }
+}
+
+@keyframes coolMealsHoverRev {
+  0% {
+    background-size: 300%;
+    background-position: -4em 1em;
+  }
+  20% {
+    background-size: 80%;
+    background-position: 0 1em;
+  }
+  100% {
+    background-size: 80%;
+    background-position: 0 0;
+  }
+}
+
+.non-home {
+  font-size: 1.5rem;
+  animation: nonHomeRev 1s forwards;
+}
+
+.non-home:hover {
+  animation: nonHome 1s forwards;
+}
+
+@keyframes nonHome {
+  from {
+    background: #3f3d3d;
+  }
+  to {
+    background: #476098;
+  }
+}
+
+@keyframes nonHomeRev {
+  from {
+    background: #476098;
+  }
+  to {
+    background: #3f3d3d;
+  }
+}
