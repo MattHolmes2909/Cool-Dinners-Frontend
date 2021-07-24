@@ -3,5 +3,7 @@
 html,
 body {
   background: #222121;
-  color: rgb(193, 186, 186);
+  color: #fff;
+  font-family: "Otomanopee One", sans-serif;
+  height: 100%;
 }

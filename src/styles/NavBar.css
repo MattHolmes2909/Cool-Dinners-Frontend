@@ -1,13 +1,13 @@
 .Navbar {
   background: #3f3d3d;
-  position: absolute;
-  top: 0;
+  padding: 1rem 0 0.05rem;
+  position: relative;
+  top: -1rem;
   width: 100vw;
 }
 
 a {
   color: #fff;
-  font-family: "Otomanopee One", sans-serif;
   text-decoration: none;
 }
 
@@ -36,7 +36,7 @@ li {
     #476098 80%,
     #476098 100%
   );
-  background-size: 80%;
+  background-size: 100%;
   background-repeat: repeat;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -56,11 +56,11 @@ li {
 
 @keyframes coolMealsHover {
   0% {
-    background-size: 80%;
+    background-size: 100%;
     background-position: 0 0;
   }
   20% {
-    background-size: 80%;
+    background-size: 100%;
     background-position: 0 1em;
   }
   100% {
@@ -75,11 +75,11 @@ li {
     background-position: -4em 1em;
   }
   20% {
-    background-size: 80%;
+    background-size: 100%;
     background-position: 0 1em;
   }
   100% {
-    background-size: 80%;
+    background-size: 100%;
     background-position: 0 0;
   }
 }

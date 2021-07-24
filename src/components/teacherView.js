@@ -1,8 +1,8 @@
 import React from "react";
-import "../styles/teacherView.css";
+import "../styles/TeacherView.css";
 
-const teacherView = () => {
+const TeacherView = () => {
   return <div>1DS</div>;
 };
 
-export default teacherView;
+export default TeacherView;
