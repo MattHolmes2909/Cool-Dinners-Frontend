@@ -78,6 +78,8 @@ const TeacherView = () => {
                   for="noDinner"
                   title="noDinner"
                   name="child1"
+                  required
+                  checked
                 />
               </td>
             </tr>
@@ -105,6 +107,8 @@ const TeacherView = () => {
                   for="noDinner"
                   title="noDinner"
                   name="child2"
+                  required
+                  checked
                 />
               </td>
             </tr>
@@ -132,6 +136,8 @@ const TeacherView = () => {
                   for="noDinner"
                   title="noDinner"
                   name="child3"
+                  required
+                  checked
                 />
               </td>
             </tr>
@@ -159,6 +165,8 @@ const TeacherView = () => {
                   for="noDinner"
                   title="noDinner"
                   name="child4"
+                  required
+                  checked
                 />
               </td>
             </tr>
