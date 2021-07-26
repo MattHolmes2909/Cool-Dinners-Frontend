@@ -86,27 +86,31 @@ li {
 
 .non-home {
   font-size: 1.5rem;
-  animation: nonHomeRev 1s forwards;
+  animation: nonHomeRev 0.5s forwards;
 }
 
 .non-home:hover {
-  animation: nonHome 1s forwards;
+  animation: nonHome 0.5s forwards;
 }
 
 @keyframes nonHome {
   from {
     background: #3f3d3d;
+    border-radius: 12px;
   }
   to {
     background: #476098;
+    border-radius: 12px;
   }
 }
 
 @keyframes nonHomeRev {
   from {
     background: #476098;
+    border-radius: 12px;
   }
   to {
     background: #3f3d3d;
+    border-radius: 12px;
   }
 }

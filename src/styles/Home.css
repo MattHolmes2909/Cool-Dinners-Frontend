@@ -56,10 +56,34 @@
 
 .login-input {
   display: inline-block;
+  width: 45%;
+}
+
+.input {
+  border: 0;
+  border-radius: 12px;
+  font-size: 1rem;
+  height: 1.5rem;
+  text-align: center;
+}
+
+.input:focus {
+  animation: inputGlow 0.5s forwards;
+}
+
+@keyframes inputGlow {
+  to {
+    background-color: #dce482;
+  }
 }
 
 .login-form:focus-within {
   animation: login 1s forwards;
+}
+
+.login-checkbox {
+  display: inline;
+  width: 5%;
 }
 
 .login-form-button {
@@ -68,6 +92,10 @@
   border-radius: 12px;
   font-family: "Bebas Neue", sans-serif;
   font-size: 1.5rem;
+}
+
+.login-form-button:hover {
+  animation: loginGlowHover 0.5s forwards;
 }
 
 @keyframes login {
@@ -89,5 +117,11 @@
   to {
     background-position: -500px;
     background-size: 300%;
+  }
+}
+
+@keyframes loginGlowHover {
+  to {
+    background-color: #15e673;
   }
 }

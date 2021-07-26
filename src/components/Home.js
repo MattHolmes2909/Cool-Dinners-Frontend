@@ -12,7 +12,7 @@ const Home = () => {
             Username:{" "}
           </label>
           <input
-            className="login-input"
+            className="login-input input"
             type="text"
             placeholder="Your Username"
             name="username"
@@ -23,7 +23,7 @@ const Home = () => {
             Password:{" "}
           </label>
           <input
-            className="login-input"
+            className="login-input input"
             type="password"
             placeholder="Your Password"
             name="password"
@@ -35,8 +35,13 @@ const Home = () => {
           </button>
           <br />
           <label>
-            <input type="checkbox" checked="checked" name="remember" /> Remember
-            me
+            <input
+              type="checkbox"
+              checked="checked"
+              name="remember"
+              className="login-checkbox"
+            />{" "}
+            Remember me
           </label>
         </form>
       </div>
