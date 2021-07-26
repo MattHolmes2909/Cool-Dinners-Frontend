@@ -60,6 +60,16 @@ td {
   padding: 0.5rem 0;
 }
 
+.childRow > td:hover {
+  animation: glowHover 0.5s forwards;
+}
+
+@keyframes glowHover {
+  to {
+    background-color: #cd3a3a;
+  }
+}
+
 input {
   width: 100%;
 }
@@ -71,4 +81,14 @@ input {
   font-family: "Bebas Neue", sans-serif;
   font-size: 1.5rem;
   width: 90%;
+}
+
+.order-form-button:hover {
+  animation: orderGlowHover 0.5s forwards;
+}
+
+@keyframes orderGlowHover {
+  to {
+    background-color: #15e673;
+  }
 }
