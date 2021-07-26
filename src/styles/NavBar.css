@@ -1,0 +1,116 @@
+.Navbar {
+  background: #3f3d3d;
+  padding: 1rem 0 0.05rem;
+  position: relative;
+  top: -1rem;
+  width: 100vw;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  display: inline-block;
+  list-style-type: none;
+  margin-right: 2rem;
+  text-decoration: none;
+}
+
+.cool-meals-title {
+  background: #dc3e43;
+  background-color: #dc3e43;
+  background: conic-gradient(
+    #dc3e43 20%,
+    #e9740e 20%,
+    #e9740e 40%,
+    #d2e367 40%,
+    #d2e367 60%,
+    #4cbf5d 60%,
+    #4cbf5d 80%,
+    #5383e9 80%,
+    #5383e9 100%
+  );
+  background-size: 100%;
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: coolMealsHoverRev 0.5s ease forwards;
+  font-family: "Bebas Neue", sans-serif;
+  margin-left: 2rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.cool-meals-title:hover {
+  animation: coolMealsHover 1s forwards;
+  -webkit-animation: coolMealsHover 1s forwards;
+  -moz-animation: coolMealsHover 1s forwards;
+  -o-animation: coolMealsHover 1s forwards;
+}
+
+@keyframes coolMealsHover {
+  0% {
+    background-size: 100%;
+    background-position: 0 0;
+  }
+  20% {
+    background-size: 100%;
+    background-position: 0 1em;
+  }
+  100% {
+    background-size: 300%;
+    background-position: -4em 1em;
+  }
+}
+
+@keyframes coolMealsHoverRev {
+  0% {
+    background-size: 300%;
+    background-position: -4em 1em;
+  }
+  20% {
+    background-size: 100%;
+    background-position: 0 1em;
+  }
+  100% {
+    background-size: 100%;
+    background-position: 0 0;
+  }
+}
+
+.non-home {
+  font-size: 1.5rem;
+  animation: nonHomeRev 0.5s forwards;
+}
+
+.non-home:hover {
+  animation: nonHome 0.5s forwards;
+}
+
+@keyframes nonHome {
+  from {
+    background: #3f3d3d;
+    border-radius: 12px;
+  }
+  to {
+    background: #476098;
+    border-radius: 12px;
+  }
+}
+
+@keyframes nonHomeRev {
+  from {
+    background: #476098;
+    border-radius: 12px;
+  }
+  to {
+    background: #3f3d3d;
+    border-radius: 12px;
+  }
+}

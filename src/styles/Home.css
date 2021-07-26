@@ -1,0 +1,127 @@
+.Home {
+  animation: foodMove 100s linear infinite;
+  background-image: url("../images/backgroundfood.png");
+  background-position: bottom;
+  background-repeat: repeat-x;
+  background-size: 10%;
+  height: 85vh;
+}
+
+@keyframes foodMove {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: 100%;
+  }
+}
+
+.welcome,
+.login-message {
+  margin: 0;
+  text-align: center;
+}
+
+.welcome {
+  font-size: 2rem;
+}
+
+.login-message {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.login-form {
+  animation: loginRev 1s forwards;
+  background: conic-gradient(
+    #dc3e43 20%,
+    #e9740e 20%,
+    #e9740e 40%,
+    #d2e367 40%,
+    #d2e367 60%,
+    #4cbf5d 60%,
+    #4cbf5d 80%,
+    #5383e9 80%,
+    #5383e9 100%
+  );
+  background-size: 300%;
+  background-position: -500px;
+  border-radius: 25px;
+  line-height: 3rem;
+  margin: auto;
+  padding: 1rem;
+  text-align: center;
+  width: max-content;
+}
+
+.login-input {
+  display: inline-block;
+  width: 45%;
+}
+
+.input {
+  border: 0;
+  border-radius: 12px;
+  font-size: 1rem;
+  height: 1.5rem;
+  text-align: center;
+}
+
+.input:focus {
+  animation: inputGlow 0.5s forwards;
+}
+
+@keyframes inputGlow {
+  to {
+    background-color: #dce482;
+  }
+}
+
+.login-form:focus-within {
+  animation: login 1s forwards;
+}
+
+.login-checkbox {
+  display: inline;
+  width: 5%;
+}
+
+.login-form-button {
+  background-color: #4cbf5d;
+  border: 0;
+  border-radius: 12px;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.5rem;
+}
+
+.login-form-button:hover {
+  animation: loginGlowHover 0.5s forwards;
+}
+
+@keyframes login {
+  from {
+    background-position: -500px;
+    background-size: 300%;
+  }
+  to {
+    background-position: -200px;
+    background-size: 200%;
+  }
+}
+
+@keyframes loginRev {
+  from {
+    background-position: -200px;
+    background-size: 200%;
+  }
+  to {
+    background-position: -500px;
+    background-size: 300%;
+  }
+}
+
+@keyframes loginGlowHover {
+  to {
+    background-color: #15e673;
+  }
+}
