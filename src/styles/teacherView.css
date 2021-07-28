@@ -21,8 +21,13 @@
 
 th {
   position: relative;
-  left: 1.5rem;
-  padding-right: 3em;
+  margin: auto;
+}
+
+.schoolClass {
+  background-color: green;
+  color: black;
+  font-size: 1.5rem;
 }
 
 .foodicon {

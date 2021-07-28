@@ -26,7 +26,9 @@ const TeacherView = () => {
         <table class="table table-responsive">
           <thead>
             <tr>
-              <th name="childName"></th>
+              <th name="childName" className="schoolClass">
+                1DS
+              </th>
               <th name="pizza">
                 <img src={pizza} className="foodicon pizza meat" alt="pizza" />
                 Pizza
@@ -56,7 +58,7 @@ const TeacherView = () => {
           <tbody>
             <tr className="childRow">
               <td>
-                <div class="radiotext">
+                <div className="radiotext">
                   <label for="childName">Dean Spooner</label>
                 </div>
               </td>
@@ -84,7 +86,7 @@ const TeacherView = () => {
             </tr>
             <tr className="childRow">
               <td>
-                <div class="radiotext">
+                <div className="radiotext">
                   <label for="childName">Matt Holmes</label>
                 </div>
               </td>
@@ -112,7 +114,7 @@ const TeacherView = () => {
             </tr>
             <tr className="childRow">
               <td>
-                <div class="radiotext">
+                <div className="radiotext">
                   <label for="childName">Alex White</label>
                 </div>
               </td>
@@ -140,7 +142,7 @@ const TeacherView = () => {
             </tr>
             <tr className="childRow">
               <td>
-                <div class="radiotext">
+                <div className="radiotext">
                   <label for="childName">Nathan Mayall</label>
                 </div>
               </td>
