@@ -27,8 +27,8 @@ const TeacherView = () => {
     <div className="TeacherView">
       <p className="order-message">You are ordering dinners for⠀</p>
       <p className="tomorrow">{tomorrow.format("dddd, MMMM Do YYYY")}!</p>
-      <form class="order-form">
-        <table class="table table-responsive">
+      <form className="order-form">
+        <table className="table table-responsive">
           <thead>
             <tr>
               <th className="schoolclass" name="childName">1DS</th>
@@ -61,26 +61,26 @@ const TeacherView = () => {
           <tbody>
             <tr className="childRow">
               <td>
-                <div class="radiotext">
-                  <label for="childName">Dean Spooner</label>
+                <div className="radiotext">
+                  <label htmlFor="childName">Dean Spooner</label>
                 </div>
               </td>
               <td>
-                <input type="radio" for="pizza" title="pizza" name="child1" />
+                <input type="radio" htmlFor="pizza" title="pizza" name="child1" />
               </td>
               <td>
-                <input type="radio" for="pasta" title="pasta" name="child1" />
+                <input type="radio" htmlFor="pasta" title="pasta" name="child1" />
               </td>
               <td>
-                <input type="radio" for="fish" title="fish" name="child1" />
+                <input type="radio" htmlFor="fish" title="fish" name="child1" />
               </td>
               <td>
-                <input type="radio" for="quorn" title="quorn" name="child1" />
+                <input type="radio" htmlFor="quorn" title="quorn" name="child1" />
               </td>
               <td>
                 <input
                   type="radio"
-                  for="noDinner"
+                  htmlFor="noDinner"
                   title="noDinner"
                   name="child1"
                   required
@@ -89,26 +89,26 @@ const TeacherView = () => {
             </tr>
             <tr className="childRow">
               <td>
-                <div class="radiotext">
-                  <label for="childName">Matt Holmes</label>
+                <div className="radiotext">
+                  <label htmlFor="childName">Matt Holmes</label>
                 </div>
               </td>
               <td>
-                <input type="radio" for="pizza" title="pizza" name="child2" />
+                <input type="radio" htmlFor="pizza" title="pizza" name="child2" />
               </td>
               <td>
-                <input type="radio" for="pasta" title="pasta" name="child2" />
+                <input type="radio" htmlFor="pasta" title="pasta" name="child2" />
               </td>
               <td>
-                <input type="radio" for="fish" title="fish" name="child2" />
+                <input type="radio" htmlFor="fish" title="fish" name="child2" />
               </td>
               <td>
-                <input type="radio" for="quorn" title="quorn" name="child2" />
+                <input type="radio" htmlFor="quorn" title="quorn" name="child2" />
               </td>
               <td>
                 <input
                   type="radio"
-                  for="noDinner"
+                  htmlFor="noDinner"
                   title="noDinner"
                   name="child2"
                   required
@@ -117,26 +117,26 @@ const TeacherView = () => {
             </tr>
             <tr className="childRow">
               <td>
-                <div class="radiotext">
-                  <label for="childName">Alex White</label>
+                <div className="radiotext">
+                  <label htmlFor="childName">Alex White</label>
                 </div>
               </td>
               <td>
-                <input type="radio" for="pizza" title="pizza" name="child3" />
+                <input type="radio" htmlFor="pizza" title="pizza" name="child3" />
               </td>
               <td>
-                <input type="radio" for="pasta" title="pasta" name="child3" />
+                <input type="radio" htmlFor="pasta" title="pasta" name="child3" />
               </td>
               <td>
-                <input type="radio" for="fish" title="fish" name="child3" />
+                <input type="radio" htmlFor="fish" title="fish" name="child3" />
               </td>
               <td>
-                <input type="radio" for="quorn" title="quorn" name="child3" />
+                <input type="radio" htmlFor="quorn" title="quorn" name="child3" />
               </td>
               <td>
                 <input
                   type="radio"
-                  for="noDinner"
+                  htmlFor="noDinner"
                   title="noDinner"
                   name="child3"
                   required
@@ -145,26 +145,26 @@ const TeacherView = () => {
             </tr>
             <tr className="childRow">
               <td>
-                <div class="radiotext">
-                  <label for="childName">Nathan Mayall</label>
+                <div className="radiotext">
+                  <label htmlFor="childName">Nathan Mayall</label>
                 </div>
               </td>
               <td>
-                <input type="radio" for="pizza" title="pizza" name="child4" />
+                <input type="radio" htmlFor="pizza" title="pizza" name="child4" />
               </td>
               <td>
-                <input type="radio" for="pasta" title="pasta" name="child4" />
+                <input type="radio" htmlFor="pasta" title="pasta" name="child4" />
               </td>
               <td>
-                <input type="radio" for="fish" title="fish" name="child4" />
+                <input type="radio" htmlFor="fish" title="fish" name="child4" />
               </td>
               <td>
-                <input type="radio" for="quorn" title="quorn" name="child4" />
+                <input type="radio" htmlFor="quorn" title="quorn" name="child4" />
               </td>
               <td>
                 <input
                   type="radio"
-                  for="noDinner"
+                  htmlFor="noDinner"
                   title="noDinner"
                   name="child4"
                   required

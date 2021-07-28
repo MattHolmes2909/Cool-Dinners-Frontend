@@ -22,8 +22,8 @@ const CanteenView = () => {
     <div className="CanteenView">
       <p className="order-message">You are ordering dinners for⠀</p>
       <p className="tomorrow">{tomorrow.format("dddd, MMMM Do YYYY")}!</p>
-      <form class="order-form">
-        <table class="table table-responsive">
+      <form className="order-form">
+        <table className="table table-responsive">
           <thead>
             <tr>
               <th name="className"></th>
@@ -56,8 +56,8 @@ const CanteenView = () => {
           <tbody>
           <tr className="totalRow">
               <td>
-                <div class="radiotext">
-                  <label for="schoolclass">Total</label>
+                <div className="radiotext">
+                  <label htmlFor="schoolclass">Total</label>
                 </div>
               </td>
               <td>
@@ -78,8 +78,8 @@ const CanteenView = () => {
             </tr>
             <tr className="classRow">
               <td>
-                <div class="radiotext">
-                  <label for="schoolclass">1DS</label>
+                <div className="radiotext">
+                  <label htmlFor="schoolclass">1DS</label>
                 </div>
               </td>
               <td>
@@ -100,8 +100,8 @@ const CanteenView = () => {
             </tr>
             <tr className="classRow">
               <td>
-                <div class="radiotext">
-                  <label for="schoolclass">1MH</label>
+                <div className="radiotext">
+                  <label htmlFor="schoolclass">1MH</label>
                 </div>
               </td>
               <td>
@@ -122,8 +122,8 @@ const CanteenView = () => {
             </tr>
             <tr className="classRow">
               <td>
-                <div class="radiotext">
-                  <label for="schoolclass">2AW</label>
+                <div className="radiotext">
+                  <label htmlFor="schoolclass">2AW</label>
                 </div>
               </td>
               <td>
@@ -144,8 +144,8 @@ const CanteenView = () => {
             </tr>
             <tr className="classRow">
               <td>
-                <div class="radiotext">
-                  <label for="schoolclass">2NM</label>
+                <div className="radiotext">
+                  <label htmlFor="schoolclass">2NM</label>
                 </div>
               </td>
               <td>
