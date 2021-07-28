@@ -1,0 +1,90 @@
+.CanteenView {
+    margin: auto;
+    text-align: center;
+  }
+  
+  .order-message,
+  .tomorrow {
+    display: inline-block;
+    font-size: 1.5rem;
+  }
+  
+  .tomorrow {
+    color: #e9740e;
+  }
+  
+  .table {
+    border-collapse: collapse;
+    margin: auto;
+    width: 90%;
+  }
+  
+  th {
+    position: relative;
+  }
+  
+  .foodicon {
+    display: block;
+    border: solid 6px;
+    border-radius: 50%;
+    margin: auto;
+    width: 50%;
+  }
+  
+  .meat {
+    border-color: #ca4246;
+  }
+  
+  .veg {
+    border-color: #4cbf5d;
+  }
+  
+  .fish {
+    border-color: #5383e9;
+  }
+  
+  .noDinner {
+    border-color: #d2e367;
+  }
+  
+  .schoolclass {
+    background-color: #42ba78;
+    font-size: 1.5rem;
+    color: black;
+  }
+  
+  
+  .classRow:nth-of-type(2n) {
+    background-color: #854345;
+  }
+  .classRow:nth-of-type(2n-1) {
+    background-color: #9a4e4e;
+  }
+
+  .totalRow {
+      background-color: #0cc25e;
+      color: black;
+      font-size: 1.2rem;
+      ;
+  }
+  
+  td {
+    padding: 0.5rem 0;
+  }
+  
+  .classRow > td:hover {
+    animation: glowHover 0.5s forwards;
+  }
+  
+  input {
+    width: 100%;
+  }
+  
+  .order-form-button {
+    background-color: #42ba78;
+    border: 0;
+    border-radius: 0 0 12px 12px;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 1.5rem;
+    width: 90%;
+  }

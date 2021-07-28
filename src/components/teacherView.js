@@ -26,7 +26,7 @@ const TeacherView = () => {
         <table class="table table-responsive">
           <thead>
             <tr>
-              <th name="childName"></th>
+              <th className="schoolclass" name="childName">1DS</th>
               <th name="pizza">
                 <img src={pizza} className="foodicon pizza meat" alt="pizza" />
                 Pizza
