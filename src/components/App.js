@@ -17,6 +17,7 @@ function App() {
         <Route path="/teachers" component={TeacherView} />
         <Route path="/Add-Child" component={AddChild} />
       </Switch>
+      
     </div>
   );
 }

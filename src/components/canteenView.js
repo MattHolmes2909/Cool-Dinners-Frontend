@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/CanteenView.css";
 import moment from "moment";
 import pizza from "../images/pizza.png";
@@ -6,7 +6,7 @@ import pasta from "../images/pasta.png";
 import fish from "../images/fish.png";
 import curry from "../images/curry.png";
 import noDinner from "../images/nodinner.png";
-import GetData from "../requests/getData";
+import axios from "axios";
 
 
 const CanteenView = () => {
@@ -20,9 +20,151 @@ const CanteenView = () => {
     tomorrow = moment().add(1, "day").endOf("day");
   }
 
-  
-  useEffect(() => {
-    GetData()
+  const [total, setTotal] = useState({
+    "pizza": {
+        "totalPizza": 0
+    },
+    "pasta": {
+        "totalPasta": 0
+    },
+    "fish": {
+        "totalFish": 0
+    },
+    "quorn": {
+        "totalQuorn": 0
+    },
+    "none": {
+        "totalNone": 0
+    }
+});
+
+const [pizzaTotal, setPizzaTotal] = useState({
+  "total1DS": {
+      "total1DS": 0
+  },
+  "total1MH": {
+      "total1MH": 0
+  },
+  "total2AW": {
+      "total2AW": 0
+  },
+  "total2NM": {
+      "total2NM": 0
+  }
+});
+
+const [pastaTotal, setPastaTotal] = useState({
+  "total1DS": {
+      "total1DS": 0
+  },
+  "total1MH": {
+      "total1MH": 0
+  },
+  "total2AW": {
+      "total2AW": 0
+  },
+  "total2NM": {
+      "total2NM": 0
+  }
+});
+
+const [fishTotal, setFishTotal] = useState({
+  "total1DS": {
+      "total1DS": 0
+  },
+  "total1MH": {
+      "total1MH": 0
+  },
+  "total2AW": {
+      "total2AW": 0
+  },
+  "total2NM": {
+      "total2NM": 0
+  }
+});
+
+const [quornTotal, setQuornTotal] = useState({
+  "total1DS": {
+      "total1DS": 0
+  },
+  "total1MH": {
+      "total1MH": 0
+  },
+  "total2AW": {
+      "total2AW": 0
+  },
+  "total2NM": {
+      "total2NM": 0
+  }
+});
+
+const [noneTotal, setNoneTotal] = useState({
+  "total1DS": {
+      "total1DS": 0
+  },
+  "total1MH": {
+      "total1MH": 0
+  },
+  "total2AW": {
+      "total2AW": 0
+  },
+  "total2NM": {
+      "total2NM": 0
+  }
+});
+
+  useEffect(async () => {
+    await axios
+    .get("https://cool-dinners.herokuapp.com/canteen/")
+    .then((response) => {
+      setTotal(response.data)
+    })
+    .catch((err) => console.error(err));
+  }, []);
+
+  useEffect(async () => {
+    await axios
+    .get("https://cool-dinners.herokuapp.com/canteen/pizza")
+    .then((response) => {
+      setPizzaTotal(response.data)
+    })
+    .catch((err) => console.error(err));
+  }, []);
+
+  useEffect(async () => {
+    await axios
+    .get("https://cool-dinners.herokuapp.com/canteen/pasta")
+    .then((response) => {
+      setPastaTotal(response.data)
+    })
+    .catch((err) => console.error(err));
+  }, []);
+
+  useEffect(async () => {
+    await axios
+    .get("https://cool-dinners.herokuapp.com/canteen/fish")
+    .then((response) => {
+      setFishTotal(response.data)
+    })
+    .catch((err) => console.error(err));
+  }, []);
+
+  useEffect(async () => {
+    await axios
+    .get("https://cool-dinners.herokuapp.com/canteen/quorn")
+    .then((response) => {
+      setQuornTotal(response.data)
+    })
+    .catch((err) => console.error(err));
+  }, []);
+
+  useEffect(async () => {
+    await axios
+    .get("https://cool-dinners.herokuapp.com/canteen/none")
+    .then((response) => {
+      setNoneTotal(response.data)
+    })
+    .catch((err) => console.error(err));
   }, []);
 
   return (
@@ -68,19 +210,19 @@ const CanteenView = () => {
                 </div>
               </td>
               <td>
-                <p>33</p>
+                <p>{ total.pizza.totalPizza }</p>
               </td>
               <td>
-                <p>27</p>
+                <p>{ total.pasta.totalPasta }</p>
+                </td>
+                <td>
+                <p>{ total.fish.totalFish }</p>
               </td>
               <td>
-                <p>41</p>
+                <p>{ total.quorn.totalQuorn }</p>
               </td>
               <td>
-                <p>25</p>
-              </td>
-              <td>
-                <p>29</p>
+                <p>{ total.none.totalNone }</p>
               </td>
             </tr>
             <tr className="classRow">
@@ -90,19 +232,19 @@ const CanteenView = () => {
                 </div>
               </td>
               <td>
-                <p>10</p>
+                <p>{ pizzaTotal.total1DS.total1DS }</p>
               </td>
               <td>
-                <p>6</p>
+                <p>{ pastaTotal.total1DS.total1DS }</p>
               </td>
               <td>
-                <p>7</p>
+                <p>{ fishTotal.total1DS.total1DS }</p>
               </td>
               <td>
-                <p>12</p>
+                <p>{ quornTotal.total1DS.total1DS }</p>
               </td>
               <td>
-                <p>8</p>
+                <p>{ noneTotal.total1DS.total1DS }</p>
               </td>
             </tr>
             <tr className="classRow">
@@ -112,19 +254,19 @@ const CanteenView = () => {
                 </div>
               </td>
               <td>
-                <p>7</p>
+                <p>{ pizzaTotal.total1MH.total1MH}</p>
               </td>
               <td>
-                <p>9</p>
+                <p>{ pastaTotal.total1MH.total1MH }</p>
               </td>
               <td>
-                <p>4</p>
+                <p>{fishTotal.total1MH.total1MH }</p>
               </td>
               <td>
-                <p>7</p>
+                <p>{ quornTotal.total1MH.total1MH }</p>
               </td>
               <td>
-                <p>15</p>
+                <p>{ noneTotal.total1MH.total1MH }</p>
               </td>
             </tr>
             <tr className="classRow">
@@ -134,19 +276,19 @@ const CanteenView = () => {
                 </div>
               </td>
               <td>
-                <p>9</p>
+                <p>{ pizzaTotal.total2AW.total2AW  }</p>
               </td>
               <td>
-                <p>9</p>
+                <p>{ pastaTotal.total2AW.total2AW  }</p>
               </td>
               <td>
-                <p>14</p>
+                <p>{ fishTotal.total2AW.total2AW  }</p>
               </td>
               <td>
-                <p>5</p>
+                <p>{ quornTotal.total2AW.total2AW  }</p>
               </td>
               <td>
-                <p>1</p>
+                <p>{ noneTotal.total2AW.total2AW  }</p>
               </td>
             </tr>
             <tr className="classRow">
@@ -156,19 +298,19 @@ const CanteenView = () => {
                 </div>
               </td>
               <td>
-                <p>7</p>
+                <p>{ pizzaTotal.total2NM.total2NM }</p>
               </td>
               <td>
-                <p>3</p>
+                <p>{ pastaTotal.total2NM.total2NM }</p>
               </td>
               <td>
-                <p>16</p>
+                <p>{ fishTotal.total2NM.total2NM }</p>
               </td>
               <td>
-                <p>1</p>
+                <p>{ quornTotal.total2NM.total2NM }</p>
               </td>
               <td>
-                <p>5</p>
+                <p>{ noneTotal.total2NM.total2NM }</p>
               </td>
             </tr>
           </tbody>
