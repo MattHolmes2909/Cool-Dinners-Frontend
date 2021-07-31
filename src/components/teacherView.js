@@ -171,6 +171,9 @@ const TeacherView = () => {
                 />
               </td>
             </tr>
+            <tr className="addChild">
+              <td></td>
+            </tr>
           </tbody>
         </table>
         <button type="submit" className="order-form-button">

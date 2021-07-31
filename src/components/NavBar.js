@@ -21,6 +21,11 @@ const NavBar = () => {
             Teachers
           </Link>
         </li>
+        <li className="navbar-links-item">
+          <Link className="item non-home" to="/add-child">
+            Add Child
+          </Link>
+        </li>
       </ul>
     </div>
   );

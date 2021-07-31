@@ -2,7 +2,7 @@ import axios from "axios";
 
 const getData = () => {
     
-    let endpoint = "https://cool-dinners.herokuapp.com/child";
+    let endpoint = "https://cool-dinners.herokuapp.com/canteen";
     
     return axios
     .get(endpoint)

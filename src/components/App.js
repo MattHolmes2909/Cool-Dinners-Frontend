@@ -5,6 +5,7 @@ import Home from "./Home";
 import TeacherView from "./TeacherView";
 import CanteenView from "./CanteenView";
 import "../styles/App.css";
+import AddChild from "./AddChild";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route path="/canteen" component={CanteenView} />
         <Route path="/teachers" component={TeacherView} />
+        <Route path="/Add-Child" component={AddChild} />
       </Switch>
     </div>
   );

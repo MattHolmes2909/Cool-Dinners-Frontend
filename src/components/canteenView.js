@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../styles/CanteenView.css";
 import moment from "moment";
 import pizza from "../images/pizza.png";
@@ -6,6 +6,8 @@ import pasta from "../images/pasta.png";
 import fish from "../images/fish.png";
 import curry from "../images/curry.png";
 import noDinner from "../images/nodinner.png";
+import GetData from "../requests/getData";
+
 
 const CanteenView = () => {
   let tomorrow;
@@ -17,6 +19,11 @@ const CanteenView = () => {
   } else {
     tomorrow = moment().add(1, "day").endOf("day");
   }
+
+  
+  useEffect(() => {
+    GetData()
+  }, []);
 
   return (
     <div className="CanteenView">
