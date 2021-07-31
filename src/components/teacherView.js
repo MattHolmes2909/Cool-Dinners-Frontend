@@ -6,6 +6,7 @@ import pasta from "../images/pasta.png";
 import fish from "../images/fish.png";
 import curry from "../images/curry.png";
 import noDinner from "../images/nodinner.png";
+
 const TeacherView = () => {
   let tomorrow;
   if (moment().add(1, "day").endOf("day").format("dddd") === "Saturday") {

@@ -1,13 +1,15 @@
 import React, { useState } from "react";
+import PostChild from "../requests/PostChild";
 import Alert from "./Alert";
 import "../styles/AddChild.css"
 
 const AddChild = () => {
     const initialState = {
         fields: {
-            name: "",
-            class: "",
-            allergies: "None",
+            childName: "",
+            schoolClass: "1DS",
+            foodOption: "none",
+            allergies: "none"
         },
         alert: {
             message: "",
@@ -21,6 +23,7 @@ const AddChild = () => {
     const handleAddChild = (event) => {
         event.preventDefault();
         setAlert({ message: "", isSuccess: false });
+        PostChild(fields, setAlert);
     };
     
     const handleFieldChange = (event) => {
@@ -35,7 +38,8 @@ const AddChild = () => {
                     <label htmlFor="title">
                         Child Name:
                         <input
-                        name="name"
+                        name="childName"
+                        value={fields.childName}
                         onChange={handleFieldChange}
                         />
                     </label>
@@ -44,15 +48,32 @@ const AddChild = () => {
                     Class
                     <label htmlFor="child-class">
                         <select
-                        id="class"
-                        name="class"
-                        value={fields.class}
+                        id="schoolClass"
+                        name="schoolClass"
+                        value={fields.schoolClass}
                         onChange={handleFieldChange}
                         >
-                            <option class="1DS">1DS</option>
-                            <option class="1MH">1MH</option>
-                            <option class="2AW">2AW</option>
-                            <option class="2NM">2NM</option>
+                            <option className="1DS" value="1DS">1DS</option>
+                            <option className="1MH" value="1MH">1MH</option>
+                            <option className="2AW" value="2AW">2AW</option>
+                            <option className="2NM" value="2NM">2NM</option>
+                        </select>
+                    </label>
+                </div>
+                <div className="form-child-order">
+                    Order
+                    <label htmlFor="child-order">
+                        <select
+                        id="foodOption"
+                        name="foodOption"
+                        value={fields.foodOption}
+                        onChange={handleFieldChange}
+                        >
+                            <option className="none" value="none">none</option>
+                            <option className="pizza" value="pizza">pizza</option>
+                            <option className="pasta" value="pasta">pasta</option>
+                            <option className="fish" value="fish">fish</option>
+                            <option className="quorn" value="quorn">quorn</option>
                         </select>
                     </label>
                 </div>
@@ -60,16 +81,16 @@ const AddChild = () => {
                     Allergies
                     <label htmlFor="allergies">
                         <select
-                        id="alleries"
+                        id="allergies"
                         name="allergies"
                         value={fields.allergies}
                         onChange={handleFieldChange}
                         >
-                            <option value="None">None</option>
-                            <option value="Dairy">Dairy</option>
-                            <option value="Wheat">Wheat</option>
-                            <option value="Nuts">Nuts</option>
-                            <option value="Fish">Fish</option>
+                            <option className="none" value="none">none</option>
+                            <option className="dairy" value="dairy">dairy</option>
+                            <option className="wheat" value="wheat">wheat</option>
+                            <option className="nuts" value="nuts">nuts</option>
+                            <option className="fish" value="fish">fish</option>
                         </select>
                     </label>
                 </div>
