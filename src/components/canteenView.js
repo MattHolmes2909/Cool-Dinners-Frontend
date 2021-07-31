@@ -113,58 +113,76 @@ const [noneTotal, setNoneTotal] = useState({
   }
 });
 
-  useEffect(async () => {
+  useEffect(() => {
+    async function fetchTotal() {
     await axios
     .get("https://cool-dinners.herokuapp.com/canteen/")
     .then((response) => {
       setTotal(response.data)
     })
     .catch((err) => console.error(err));
+  }
+  return fetchTotal();
   }, []);
 
-  useEffect(async () => {
+  useEffect(() => {
+    async function fetchPizza() {
     await axios
     .get("https://cool-dinners.herokuapp.com/canteen/pizza")
     .then((response) => {
       setPizzaTotal(response.data)
     })
     .catch((err) => console.error(err));
+  }
+  return fetchPizza();
   }, []);
 
-  useEffect(async () => {
+  useEffect(() => {
+    async function fetchPasta() {
     await axios
     .get("https://cool-dinners.herokuapp.com/canteen/pasta")
     .then((response) => {
       setPastaTotal(response.data)
     })
     .catch((err) => console.error(err));
+  }
+  return fetchPasta();
   }, []);
 
-  useEffect(async () => {
+  useEffect(() => {
+    async function fetchFish() {
     await axios
     .get("https://cool-dinners.herokuapp.com/canteen/fish")
     .then((response) => {
       setFishTotal(response.data)
     })
     .catch((err) => console.error(err));
+  }
+  return fetchFish();
   }, []);
 
-  useEffect(async () => {
+  useEffect(() => {
+    async function fetchQuorn() {
     await axios
     .get("https://cool-dinners.herokuapp.com/canteen/quorn")
     .then((response) => {
       setQuornTotal(response.data)
     })
     .catch((err) => console.error(err));
+  }
+  return fetchQuorn();
   }, []);
 
-  useEffect(async () => {
+  useEffect(() => {
+    async function fetchNone() {
     await axios
     .get("https://cool-dinners.herokuapp.com/canteen/none")
     .then((response) => {
       setNoneTotal(response.data)
     })
     .catch((err) => console.error(err));
+  }
+  return fetchNone();
   }, []);
 
   return (
