@@ -6,9 +6,9 @@ const Home = () => {
     <div className="Home">
       <p className="welcome">Welcome to Cool Dinners!</p>
       <p className="login-message">Please login below:</p>
-      <div class="login-form">
+      <div className="login-form">
         <form>
-          <label for="username" className="login-input">
+          <label htmlFor="username" className="login-input">
             Username:{" "}
           </label>
           <input
@@ -19,7 +19,7 @@ const Home = () => {
             required
           />
           <br />
-          <label for="password" className="login-input">
+          <label htmlFor="password" className="login-input">
             Password:{" "}
           </label>
           <input

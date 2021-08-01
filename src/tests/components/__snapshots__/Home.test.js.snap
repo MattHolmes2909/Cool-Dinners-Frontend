@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="Home"
+  >
+    <p
+      class="welcome"
+    >
+      Welcome to Cool Dinners!
+    </p>
+    <p
+      class="login-message"
+    >
+      Please login below:
+    </p>
+    <div
+      class="login-form"
+    >
+      <form>
+        <label
+          class="login-input"
+          for="username"
+        >
+          Username: 
+        </label>
+        <input
+          class="login-input input"
+          name="username"
+          placeholder="Your Username"
+          required=""
+          type="text"
+        />
+        <br />
+        <label
+          class="login-input"
+          for="password"
+        >
+          Password: 
+        </label>
+        <input
+          class="login-input input"
+          name="password"
+          placeholder="Your Password"
+          required=""
+          type="password"
+        />
+        <br />
+        <button
+          class="login-form-button"
+          type="submit"
+        >
+          Login
+        </button>
+        <br />
+        <label>
+          <input
+            checked=""
+            class="login-checkbox"
+            name="remember"
+            type="checkbox"
+          />
+           Remember me
+        </label>
+      </form>
+    </div>
+  </div>
+</DocumentFragment>
+`;
