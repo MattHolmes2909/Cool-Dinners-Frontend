@@ -21,19 +21,39 @@ const CanteenView = () => {
 
   const [total, setTotal] = useState({
     pizza: {
-      totalPizza: 0,
+      total: 0,
+      total1DS: 0,
+      total1MH: 0,
+      total2AW: 0,
+      total2NM: 0,
     },
     pasta: {
-      totalPasta: 0,
+      total: 0,
+      total1DS: 0,
+      total1MH: 0,
+      total2AW: 0,
+      total2NM: 0,
     },
     fish: {
-      totalFish: 0,
+      total: 0,
+      total1DS: 0,
+      total1MH: 0,
+      total2AW: 0,
+      total2NM: 0,
     },
     quorn: {
-      totalQuorn: 0,
+      total: 0,
+      total1DS: 0,
+      total1MH: 0,
+      total2AW: 0,
+      total2NM: 0,
     },
     none: {
-      totalNone: 0,
+      total: 0,
+      total1DS: 0,
+      total1MH: 0,
+      total2AW: 0,
+      total2NM: 0,
     },
   });
 
