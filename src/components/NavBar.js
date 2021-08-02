@@ -26,6 +26,11 @@ const NavBar = () => {
             Add Child
           </Link>
         </li>
+        <li className="navbar-links-item">
+          <Link className="item non-home" to="/add-user">
+            Add User
+          </Link>
+        </li>
       </ul>
     </div>
   );
