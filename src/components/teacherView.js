@@ -26,7 +26,9 @@ const TeacherView = () => {
         <table className="table table-responsive">
           <thead>
             <tr>
-              <th className="schoolclass" name="childName">1DS</th>
+              <th className="schoolclass" name="childName">
+                1DS
+              </th>
               <th name="pizza">
                 <img src={pizza} className="foodicon pizza meat" alt="pizza" />
                 Pizza
@@ -61,16 +63,31 @@ const TeacherView = () => {
                 </div>
               </td>
               <td>
-                <input type="radio" htmlFor="pizza" title="pizza" name="child1" />
+                <input
+                  type="radio"
+                  htmlFor="pizza"
+                  title="pizza"
+                  name="child1"
+                />
               </td>
               <td>
-                <input type="radio" htmlFor="pasta" title="pasta" name="child1" />
+                <input
+                  type="radio"
+                  htmlFor="pasta"
+                  title="pasta"
+                  name="child1"
+                />
               </td>
               <td>
                 <input type="radio" htmlFor="fish" title="fish" name="child1" />
               </td>
               <td>
-                <input type="radio" htmlFor="quorn" title="quorn" name="child1" />
+                <input
+                  type="radio"
+                  htmlFor="quorn"
+                  title="quorn"
+                  name="child1"
+                />
               </td>
               <td>
                 <input
@@ -89,16 +106,31 @@ const TeacherView = () => {
                 </div>
               </td>
               <td>
-                <input type="radio" htmlFor="pizza" title="pizza" name="child2" />
+                <input
+                  type="radio"
+                  htmlFor="pizza"
+                  title="pizza"
+                  name="child2"
+                />
               </td>
               <td>
-                <input type="radio" htmlFor="pasta" title="pasta" name="child2" />
+                <input
+                  type="radio"
+                  htmlFor="pasta"
+                  title="pasta"
+                  name="child2"
+                />
               </td>
               <td>
                 <input type="radio" htmlFor="fish" title="fish" name="child2" />
               </td>
               <td>
-                <input type="radio" htmlFor="quorn" title="quorn" name="child2" />
+                <input
+                  type="radio"
+                  htmlFor="quorn"
+                  title="quorn"
+                  name="child2"
+                />
               </td>
               <td>
                 <input
@@ -117,16 +149,31 @@ const TeacherView = () => {
                 </div>
               </td>
               <td>
-                <input type="radio" htmlFor="pizza" title="pizza" name="child3" />
+                <input
+                  type="radio"
+                  htmlFor="pizza"
+                  title="pizza"
+                  name="child3"
+                />
               </td>
               <td>
-                <input type="radio" htmlFor="pasta" title="pasta" name="child3" />
+                <input
+                  type="radio"
+                  htmlFor="pasta"
+                  title="pasta"
+                  name="child3"
+                />
               </td>
               <td>
                 <input type="radio" htmlFor="fish" title="fish" name="child3" />
               </td>
               <td>
-                <input type="radio" htmlFor="quorn" title="quorn" name="child3" />
+                <input
+                  type="radio"
+                  htmlFor="quorn"
+                  title="quorn"
+                  name="child3"
+                />
               </td>
               <td>
                 <input
@@ -145,16 +192,31 @@ const TeacherView = () => {
                 </div>
               </td>
               <td>
-                <input type="radio" htmlFor="pizza" title="pizza" name="child4" />
+                <input
+                  type="radio"
+                  htmlFor="pizza"
+                  title="pizza"
+                  name="child4"
+                />
               </td>
               <td>
-                <input type="radio" htmlFor="pasta" title="pasta" name="child4" />
+                <input
+                  type="radio"
+                  htmlFor="pasta"
+                  title="pasta"
+                  name="child4"
+                />
               </td>
               <td>
                 <input type="radio" htmlFor="fish" title="fish" name="child4" />
               </td>
               <td>
-                <input type="radio" htmlFor="quorn" title="quorn" name="child4" />
+                <input
+                  type="radio"
+                  htmlFor="quorn"
+                  title="quorn"
+                  name="child4"
+                />
               </td>
               <td>
                 <input

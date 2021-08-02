@@ -24,6 +24,12 @@ th {
   margin: auto;
 }
 
+.schoolClass {
+  background-color: green;
+  color: black;
+  font-size: 1.5rem;
+}
+
 .foodicon {
   display: block;
   border: solid 6px;
