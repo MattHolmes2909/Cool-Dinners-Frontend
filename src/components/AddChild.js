@@ -32,13 +32,15 @@ const AddChild = () => {
 
     return (
         <div className="AddChild">
-            <form onSubmit={handleAddChild} className="form">
-                <p>Add Child</p>
-                <div className="form-field">
-                    <label htmlFor="title">
+            <form onSubmit={handleAddChild} className="form-AddChild">
+                <p className="addChild">Add Child</p>
+                <div className="form-field-AddChild">
+                    <label htmlFor="title-AddChild">
                         Child Name:
                         <input
+                        type="text"
                         name="childName"
+                        placeholder="Your Name Here..."
                         value={fields.childName}
                         onChange={handleFieldChange}
                         />
@@ -94,7 +96,7 @@ const AddChild = () => {
                         </select>
                     </label>
                 </div>
-                <button type="submit" className="form-button">
+                <button type="submit" className="form-button-child">
                     Add
                 </button>
                 <Alert message={alert.message} success ={alert.isSuccess} />
