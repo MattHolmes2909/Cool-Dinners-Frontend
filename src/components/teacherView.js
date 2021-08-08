@@ -27,7 +27,6 @@ useEffect(() => {
       .get("https://cool-dinners.herokuapp.com/child/class/1DS")
       .then(response => {console.log(response.data)
       SetChildren(response.data)
-      console.log(Children);
       })
       .catch(err => console.error(err));
   }
