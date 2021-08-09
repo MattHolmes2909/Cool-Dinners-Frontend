@@ -15,7 +15,7 @@ const Home = () => {
         if (!res.data.auth) {
           setLoginStatus(false);
         } else {
-          console.log(res.data);
+          localStorage.setItem("token", "Bearer " + res.data.token);
           setLoginStatus(true);
         }
       });
@@ -29,10 +29,23 @@ const Home = () => {
     setPassword(event.target.value);
   };
 
+  const handleUserAuthenticated = event => {
+    event.preventDefault();
+    axios
+      .get("https://cool-dinners.herokuapp.com/login/isUserAuth", {
+        headers: {
+          "x-access-token": localStorage.getItem("token"),
+        },
+      })
+      .then(res => {
+        console.log(res);
+      });
+  };
+
   return (
     <div className="Home">
       <p className="welcome">Welcome to Cool Dinners!</p>
-      {!loginStatus && (
+      {!localStorage.getItem("token") && (
         <div>
           <p className="login-message">Please login below:</p>
           <div className="login-form">
@@ -70,10 +83,12 @@ const Home = () => {
           </div>
         </div>
       )}
-      {loginStatus && (
+      {localStorage.getItem("token") && (
         <div>
           <h3>You are logged in!</h3>
-          <button>Check if authenticated</button>
+          <button onClick={handleUserAuthenticated}>
+            Check if authenticated
+          </button>
         </div>
       )}
     </div>
