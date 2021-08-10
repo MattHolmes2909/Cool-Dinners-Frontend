@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 
 const AddUser = () => {
-  const currentUser = JSON.parse(localStorage.getItem("user"));
+  let currentUser = localStorage.getItem("user")
+    ? JSON.parse(localStorage.getItem("user"))
+    : "";
 
   const initialState = {
     fields: {

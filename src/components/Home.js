@@ -6,7 +6,9 @@ const Home = () => {
   const [loginStatus, setLoginStatus] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const currentUser = JSON.parse(localStorage.getItem("user"));
+  let currentUser = localStorage.getItem("user")
+    ? JSON.parse(localStorage.getItem("user"))
+    : "";
 
   const handleLogin = event => {
     event.preventDefault();

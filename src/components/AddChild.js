@@ -4,7 +4,9 @@ import Alert from "./Alert";
 import "../styles/AddChild.css";
 
 const AddChild = () => {
-  const currentUser = JSON.parse(localStorage.getItem("user"));
+  let currentUser = localStorage.getItem("user")
+    ? JSON.parse(localStorage.getItem("user"))
+    : "";
 
   const initialState = {
     fields: {

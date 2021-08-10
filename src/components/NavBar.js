@@ -3,11 +3,14 @@ import "../styles/NavBar.css";
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
-  const currentUser = JSON.parse(localStorage.getItem("user"));
+  let currentUser = localStorage.getItem("user")
+    ? JSON.parse(localStorage.getItem("user"))
+    : "";
 
   const handleLogout = event => {
     event.preventDefault();
     localStorage.removeItem("token");
+    localStorage.removeItem("user");
   };
 
   return (
@@ -48,7 +51,9 @@ const NavBar = () => {
             </Link>
           </li>
         )}
-        <button onClick={handleLogout}>Logout</button>
+        {localStorage.getItem("token") && (
+          <button onClick={handleLogout}>Logout</button>
+        )}
       </ul>
     </div>
   );

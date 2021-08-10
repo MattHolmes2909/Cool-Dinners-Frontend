@@ -9,7 +9,9 @@ import noDinner from "../images/nodinner.png";
 import axios from "axios";
 
 const CanteenView = () => {
-  const currentUser = JSON.parse(localStorage.getItem("user"));
+  let currentUser = localStorage.getItem("user")
+    ? JSON.parse(localStorage.getItem("user"))
+    : "";
 
   let tomorrow;
   if (moment().add(1, "day").endOf("day").format("dddd") === "Saturday") {
