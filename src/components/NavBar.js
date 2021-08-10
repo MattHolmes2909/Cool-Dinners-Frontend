@@ -3,6 +3,16 @@ import "../styles/NavBar.css";
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
+  let currentUser = localStorage.getItem("user")
+    ? JSON.parse(localStorage.getItem("user"))
+    : "";
+
+  const handleLogout = event => {
+    event.preventDefault();
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+  };
+
   return (
     <div className="Navbar">
       <ul className="navbar-links">
@@ -11,21 +21,39 @@ const NavBar = () => {
             <h1 className="cool-meals-title">Cool Dinners</h1>
           </Link>
         </li>
-        <li>
-          <Link className="item non-home" to="/canteen">
-            Canteen
-          </Link>
-        </li>
-        <li className="navbar-links-item">
-          <Link className="item non-home" to="/teachers">
-            Teachers
-          </Link>
-        </li>
-        <li className="navbar-links-item">
-          <Link className="item non-home" to="/add-child">
-            Add Child
-          </Link>
-        </li>
+        {(currentUser.userType === "canteen" ||
+          currentUser.userType === "admin") && (
+          <li>
+            <Link className="item non-home" to="/canteen">
+              Canteen
+            </Link>
+          </li>
+        )}
+        {(currentUser.userType === "admin" ||
+          currentUser.userType === "teacher") && (
+          <>
+            <li className="navbar-links-item">
+              <Link className="item non-home" to="/teachers">
+                Teachers
+              </Link>
+            </li>
+            <li className="navbar-links-item">
+              <Link className="item non-home" to="/add-child">
+                Add Child
+              </Link>
+            </li>
+          </>
+        )}
+        {currentUser.userType === "admin" && (
+          <li className="navbar-links-item">
+            <Link className="item non-home" to="/add-user">
+              Add User
+            </Link>
+          </li>
+        )}
+        {localStorage.getItem("token") && (
+          <button onClick={handleLogout}>Logout</button>
+        )}
       </ul>
     </div>
   );

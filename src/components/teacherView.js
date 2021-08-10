@@ -9,6 +9,10 @@ import curry from "../images/curry.png";
 import noDinner from "../images/nodinner.png";
 
 const TeacherView = () => {
+  let currentUser = localStorage.getItem("user")
+    ? JSON.parse(localStorage.getItem("user"))
+    : "";
+
   let tomorrow;
   if (moment().add(1, "day").endOf("day").format("dddd") === "Saturday") {
     tomorrow = moment().add(3, "day").endOf("day");
