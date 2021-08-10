@@ -1,7 +1,10 @@
 /* eslint-disable no-console */
+
 import axios from "axios";
+
 const PostOrder = ({ foodOption, schoolClass }, setAlert) => {
   const endpoint = "https://cool-dinners.herokuapp.com/canteen";
+
   return axios
     .post(endpoint, {
       foodOption,
@@ -22,4 +25,5 @@ const PostOrder = ({ foodOption, schoolClass }, setAlert) => {
       console.error("Server error", error);
     });
 };
+
 export default PostOrder;

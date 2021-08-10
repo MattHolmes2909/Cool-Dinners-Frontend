@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import "../styles/TeacherView.css";
 import moment from "moment";
+import axios from "axios";
 import pizza from "../images/pizza.png";
 import pasta from "../images/pasta.png";
 import fish from "../images/fish.png";
@@ -37,22 +37,6 @@ const TeacherView = () => {
     }
     return fetchChild();
   }, [Children]);
-
-  const handleOrders = event => {
-    event.preventDefault();
-    Children.map(Child =>
-      axios
-        .patch(
-          `https://cool-dinners.herokuapp.com/child/${Child.id}`,
-          Child.foodOption
-        )
-        .then(response => {
-          console.log(response.data);
-          SetChildren(response.data);
-        })
-        .catch(err => console.error(err))
-    );
-  };
 
   return (
     <div className="TeacherView">
@@ -93,7 +77,7 @@ const TeacherView = () => {
           </thead>
           <tbody>
             {Children.map(Child => (
-              <tr className="childRow" key={Child.id}>
+              <tr className="childRow">
                 <td>
                   <div className="radiotext">
                     <label htmlFor="childName">{Child.childName}</label>
@@ -104,7 +88,7 @@ const TeacherView = () => {
                     type="radio"
                     htmlFor="pizza"
                     title="pizza"
-                    name={Child.id}
+                    name="child1"
                   />
                 </td>
                 <td>
@@ -112,7 +96,7 @@ const TeacherView = () => {
                     type="radio"
                     htmlFor="pasta"
                     title="pasta"
-                    name={Child.id}
+                    name="child1"
                   />
                 </td>
                 <td>
@@ -120,7 +104,7 @@ const TeacherView = () => {
                     type="radio"
                     htmlFor="fish"
                     title="fish"
-                    name={Child.id}
+                    name="child1"
                   />
                 </td>
                 <td>
@@ -128,7 +112,7 @@ const TeacherView = () => {
                     type="radio"
                     htmlFor="quorn"
                     title="quorn"
-                    name={Child.id}
+                    name="child1"
                   />
                 </td>
                 <td>
@@ -136,7 +120,7 @@ const TeacherView = () => {
                     type="radio"
                     htmlFor="noDinner"
                     title="noDinner"
-                    name={Child.id}
+                    name="child1"
                     required
                   />
                 </td>

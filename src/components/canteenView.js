@@ -65,8 +65,8 @@ const CanteenView = () => {
     async function fetchTotal() {
       await axios
         .get("https://cool-dinners.herokuapp.com/canteen/")
-        .then(response => {
-          setTotal(response.data);
+        .then(response => {console.log(response.data) 
+          setTotal(response.data)
         })
         .catch(err => console.error(err));
     }
