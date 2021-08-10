@@ -1,4 +1,4 @@
-import React,{ useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/TeacherView.css";
 import moment from "moment";
 import axios from "axios";
@@ -23,25 +23,42 @@ const TeacherView = () => {
     tomorrow = moment().add(1, "day").endOf("day");
   }
 
-const [Children, SetChildren] = useState([]);
+  const [Children, SetChildren] = useState([]);
 
-useEffect(() => {
-  async function fetchChild() {
-    await axios
-      .get("https://cool-dinners.herokuapp.com/child/class/1DS")
-      .then(response => {console.log(response.data)
-      SetChildren(response.data)
-      })
-      .catch(err => console.error(err));
-  }
-  return fetchChild();
-}, [Children]);
+  useEffect(() => {
+    async function fetchChild() {
+      await axios
+        .get("https://cool-dinners.herokuapp.com/child/class/1DS")
+        .then(response => {
+          console.log(response.data);
+          SetChildren(response.data);
+        })
+        .catch(err => console.error(err));
+    }
+    return fetchChild();
+  }, [Children]);
+
+  const handleOrders = event => {
+    event.preventDefault();
+    Children.map(Child =>
+      axios
+        .patch(
+          `https://cool-dinners.herokuapp.com/child/${Child.id}`,
+          Child.foodOption
+        )
+        .then(response => {
+          console.log(response.data);
+          SetChildren(response.data);
+        })
+        .catch(err => console.error(err))
+    );
+  };
 
   return (
     <div className="TeacherView">
       <p className="order-message">You are ordering dinners for⠀</p>
       <p className="tomorrow">{tomorrow.format("dddd, MMMM Do YYYY")}!</p>
-      <form className="order-form">
+      <form className="order-form" onSubmit={handleOrders}>
         <table className="table table-responsive">
           <thead>
             <tr>
@@ -75,49 +92,56 @@ useEffect(() => {
             </tr>
           </thead>
           <tbody>
-            {Children.map((Child) => (<tr className="childRow">
-              <td>
-                <div className="radiotext">
-                  <label htmlFor="childName">{Child.childName}</label>
-                </div>
-              </td>
-              <td>
-                <input
-                  type="radio"
-                  htmlFor="pizza"
-                  title="pizza"
-                  name="child1"
-                />
-              </td>
-              <td>
-                <input
-                  type="radio"
-                  htmlFor="pasta"
-                  title="pasta"
-                  name="child1"
-                />
-              </td>
-              <td>
-                <input type="radio" htmlFor="fish" title="fish" name="child1" />
-              </td>
-              <td>
-                <input
-                  type="radio"
-                  htmlFor="quorn"
-                  title="quorn"
-                  name="child1"
-                />
-              </td>
-              <td>
-                <input
-                  type="radio"
-                  htmlFor="noDinner"
-                  title="noDinner"
-                  name="child1"
-                  required
-                />
-              </td>
-            </tr>))}
+            {Children.map(Child => (
+              <tr className="childRow" key={Child.id}>
+                <td>
+                  <div className="radiotext">
+                    <label htmlFor="childName">{Child.childName}</label>
+                  </div>
+                </td>
+                <td>
+                  <input
+                    type="radio"
+                    htmlFor="pizza"
+                    title="pizza"
+                    name={Child.id}
+                  />
+                </td>
+                <td>
+                  <input
+                    type="radio"
+                    htmlFor="pasta"
+                    title="pasta"
+                    name={Child.id}
+                  />
+                </td>
+                <td>
+                  <input
+                    type="radio"
+                    htmlFor="fish"
+                    title="fish"
+                    name={Child.id}
+                  />
+                </td>
+                <td>
+                  <input
+                    type="radio"
+                    htmlFor="quorn"
+                    title="quorn"
+                    name={Child.id}
+                  />
+                </td>
+                <td>
+                  <input
+                    type="radio"
+                    htmlFor="noDinner"
+                    title="noDinner"
+                    name={Child.id}
+                    required
+                  />
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
         <button type="submit" className="order-form-button">
