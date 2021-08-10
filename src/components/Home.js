@@ -6,6 +6,7 @@ const Home = () => {
   const [loginStatus, setLoginStatus] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const currentUser = JSON.parse(localStorage.getItem("user"));
 
   const handleLogin = event => {
     event.preventDefault();
@@ -15,7 +16,9 @@ const Home = () => {
         if (!res.data.auth) {
           setLoginStatus(false);
         } else {
-          localStorage.setItem("token", "Bearer " + res.data.token);
+          localStorage.setItem("token", res.data.token);
+          localStorage.setItem("user", JSON.stringify(res.data));
+          console.log(currentUser);
           setLoginStatus(true);
         }
       });
@@ -85,7 +88,7 @@ const Home = () => {
       )}
       {localStorage.getItem("token") && (
         <div>
-          <h3>You are logged in!</h3>
+          <h3>You are logged in as {currentUser.username}!</h3>
           <button onClick={handleUserAuthenticated}>
             Check if authenticated
           </button>

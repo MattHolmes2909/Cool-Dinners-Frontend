@@ -3,6 +3,8 @@ import "../styles/NavBar.css";
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
+  const currentUser = JSON.parse(localStorage.getItem("user"));
+
   const handleLogout = event => {
     event.preventDefault();
     localStorage.removeItem("token");
@@ -16,13 +18,17 @@ const NavBar = () => {
             <h1 className="cool-meals-title">Cool Dinners!</h1>
           </Link>
         </li>
-        {localStorage.getItem("token") && (
+        {(currentUser.userType === "canteen" ||
+          currentUser.userType === "admin") && (
+          <li>
+            <Link className="item non-home" to="/canteen">
+              Canteen
+            </Link>
+          </li>
+        )}
+        {(currentUser.userType === "admin" ||
+          currentUser.userType === "teacher") && (
           <>
-            <li>
-              <Link className="item non-home" to="/canteen">
-                Canteen
-              </Link>
-            </li>
             <li className="navbar-links-item">
               <Link className="item non-home" to="/teachers">
                 Teachers
@@ -33,14 +39,16 @@ const NavBar = () => {
                 Add Child
               </Link>
             </li>
-            <li className="navbar-links-item">
-              <Link className="item non-home" to="/add-user">
-                Add User
-              </Link>
-            </li>
-            <button onClick={handleLogout}>Logout</button>
           </>
         )}
+        {currentUser.userType === "admin" && (
+          <li className="navbar-links-item">
+            <Link className="item non-home" to="/add-user">
+              Add User
+            </Link>
+          </li>
+        )}
+        <button onClick={handleLogout}>Logout</button>
       </ul>
     </div>
   );
