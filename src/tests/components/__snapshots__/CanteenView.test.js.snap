@@ -13,7 +13,7 @@ exports[`CanteenView renders correctly 1`] = `
     <p
       class="tomorrow"
     >
-      Thursday, July 29th 2021!
+      Wednesday, August 11th 2021!
     </p>
     <form
       class="order-form"
@@ -95,27 +95,27 @@ exports[`CanteenView renders correctly 1`] = `
             </td>
             <td>
               <p>
-                33
+                0
               </p>
             </td>
             <td>
               <p>
-                27
+                0
               </p>
             </td>
             <td>
               <p>
-                41
+                0
               </p>
             </td>
             <td>
               <p>
-                25
+                0
               </p>
             </td>
             <td>
               <p>
-                29
+                0
               </p>
             </td>
           </tr>
@@ -135,27 +135,27 @@ exports[`CanteenView renders correctly 1`] = `
             </td>
             <td>
               <p>
-                10
+                0
               </p>
             </td>
             <td>
               <p>
-                6
+                0
               </p>
             </td>
             <td>
               <p>
-                7
+                0
               </p>
             </td>
             <td>
               <p>
-                12
+                0
               </p>
             </td>
             <td>
               <p>
-                8
+                0
               </p>
             </td>
           </tr>
@@ -175,27 +175,27 @@ exports[`CanteenView renders correctly 1`] = `
             </td>
             <td>
               <p>
-                7
+                0
               </p>
             </td>
             <td>
               <p>
-                9
+                0
               </p>
             </td>
             <td>
               <p>
-                4
+                0
               </p>
             </td>
             <td>
               <p>
-                7
+                0
               </p>
             </td>
             <td>
               <p>
-                15
+                0
               </p>
             </td>
           </tr>
@@ -215,27 +215,27 @@ exports[`CanteenView renders correctly 1`] = `
             </td>
             <td>
               <p>
-                9
+                0
               </p>
             </td>
             <td>
               <p>
-                9
+                0
               </p>
             </td>
             <td>
               <p>
-                14
+                0
               </p>
             </td>
             <td>
               <p>
-                5
+                0
               </p>
             </td>
             <td>
               <p>
-                1
+                0
               </p>
             </td>
           </tr>
@@ -255,27 +255,27 @@ exports[`CanteenView renders correctly 1`] = `
             </td>
             <td>
               <p>
-                7
+                0
               </p>
             </td>
             <td>
               <p>
-                3
+                0
               </p>
             </td>
             <td>
               <p>
-                16
+                0
               </p>
             </td>
             <td>
               <p>
-                1
+                0
               </p>
             </td>
             <td>
               <p>
-                5
+                0
               </p>
             </td>
           </tr>

@@ -43,6 +43,7 @@ const AddChild = () => {
                         placeholder="Your Name Here..."
                         value={fields.childName}
                         onChange={handleFieldChange}
+                        data-testid="form-title-input-child"
                         />
                     </label>
                 </div>
@@ -96,7 +97,7 @@ const AddChild = () => {
                         </select>
                     </label>
                 </div>
-                <button type="submit" className="form-button-child">
+                <button type="submit" className="form-button-child" data-testid="form-button-child">
                     Add
                 </button>
                 <Alert message={alert.message} success ={alert.isSuccess} />

@@ -9,7 +9,7 @@ import AddChild from "./AddChild";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" data-testid="app">
       <NavBar />
       <Switch>
         <Route exact path="/" component={Home} />
