@@ -18,7 +18,7 @@ const NavBar = () => {
       <ul className="navbar-links">
         <li className="navbar-links-item">
           <Link className="item" to="/">
-            <h1 className="cool-meals-title">Cool Dinners!</h1>
+            <h1 className="cool-meals-title">Cool Dinners</h1>
           </Link>
         </li>
         {(currentUser.userType === "canteen" ||

@@ -5,7 +5,6 @@ import TeacherView from "../../components/TeacherView";
 describe("TeacherView", () => {
     it("renders correctly", () => {
         const { asFragment } = render (<TeacherView />);
-
         expect(asFragment()).toMatchSnapshot();
     });
 });
