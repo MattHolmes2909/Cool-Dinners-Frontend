@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { AuthContext } from "../contexts/AuthContext";
+import { useContext } from "react/cjs/react.development";
 import "../styles/TeacherView.css";
 import moment from "moment";
 import axios from "axios";
@@ -9,9 +11,7 @@ import curry from "../images/curry.png";
 import noDinner from "../images/nodinner.png";
 
 const TeacherView = () => {
-  let currentUser = localStorage.getItem("user")
-    ? JSON.parse(localStorage.getItem("user"))
-    : "";
+  const user = useContext(AuthContext);
 
   let tomorrow;
   if (moment().add(1, "day").endOf("day").format("dddd") === "Saturday") {
@@ -30,9 +30,9 @@ const TeacherView = () => {
     async function fetchChild() {
       await axios
         .get(
-          currentUser.userType === "admin"
+          user.currentUser.userType === "admin"
             ? `https://cool-dinners.herokuapp.com/child`
-            : `https://cool-dinners.herokuapp.com/child/class/${currentUser.schoolClass}`
+            : `https://cool-dinners.herokuapp.com/child/class/${user.currentUser.schoolClass}`
         )
         .then(response => {
           console.log(response.data);
@@ -41,7 +41,7 @@ const TeacherView = () => {
         .catch(err => console.error(err));
     }
     return fetchChild();
-  }, []);
+  }, [user.currentUser.schoolClass, user.currentUser.userType]);
 
   const handleOrders = event => {
     event.preventDefault();
@@ -77,9 +77,9 @@ const TeacherView = () => {
           <thead>
             <tr>
               <th className="schoolclass" name="childName">
-                {currentUser.userType === "admin"
+                {user.currentUser.userType === "admin"
                   ? `Admin`
-                  : currentUser.schoolClass}
+                  : user.currentUser.schoolClass}
               </th>
               <th name="pizza">
                 <img src={pizza} className="foodicon pizza meat" alt="pizza" />
@@ -112,7 +112,7 @@ const TeacherView = () => {
               <tr className="childRow" key={Child.id}>
                 <td>
                   <label htmlFor="childName">
-                    {currentUser.userType === "admin"
+                    {user.currentUser.userType === "admin"
                       ? `${Child.childName} (${Child.schoolClass})`
                       : Child.childName}
                   </label>

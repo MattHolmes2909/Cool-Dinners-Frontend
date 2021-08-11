@@ -1,16 +1,21 @@
 import React from "react";
 import "../styles/NavBar.css";
 import { Link } from "react-router-dom";
+import { useContext } from "react/cjs/react.development";
+import { AuthContext } from "../contexts/AuthContext";
+import { useHistory } from "react-router-dom";
 
 const NavBar = () => {
-  let currentUser = localStorage.getItem("user")
-    ? JSON.parse(localStorage.getItem("user"))
-    : "";
+  const user = useContext(AuthContext);
+  const history = useHistory();
 
   const handleLogout = event => {
     event.preventDefault();
     localStorage.removeItem("token");
+    user.setCurrentUser("");
     localStorage.removeItem("user");
+    user.setAuth(false);
+    history.push("/");
   };
 
   return (
@@ -21,16 +26,16 @@ const NavBar = () => {
             <h1 className="cool-meals-title">Cool Dinners</h1>
           </Link>
         </li>
-        {(currentUser.userType === "canteen" ||
-          currentUser.userType === "admin") && (
+        {(user.currentUser.userType === "canteen" ||
+          user.currentUser.userType === "admin") && (
           <li>
             <Link className="item non-home" to="/canteen">
               Canteen
             </Link>
           </li>
         )}
-        {(currentUser.userType === "admin" ||
-          currentUser.userType === "teacher") && (
+        {(user.currentUser.userType === "admin" ||
+          user.currentUser.userType === "teacher") && (
           <>
             <li className="navbar-links-item">
               <Link className="item non-home" to="/teachers">
@@ -44,7 +49,7 @@ const NavBar = () => {
             </li>
           </>
         )}
-        {currentUser.userType === "admin" && (
+        {user.currentUser.userType === "admin" && (
           <li className="navbar-links-item">
             <Link className="item non-home" to="/add-user">
               Add User

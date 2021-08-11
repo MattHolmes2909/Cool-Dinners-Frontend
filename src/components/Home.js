@@ -1,14 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
 import "../styles/Home.css";
+import { useContext } from "react/cjs/react.development";
+import { AuthContext } from "../contexts/AuthContext";
+import { useHistory } from "react-router-dom";
 
 const Home = () => {
-  const [loginStatus, setLoginStatus] = useState(false);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  let currentUser = localStorage.getItem("user")
-    ? JSON.parse(localStorage.getItem("user"))
-    : "";
+  const user = useContext(AuthContext);
+
+  const handleUsernameChange = event => {
+    user.setUsername(event.target.value);
+  };
+
+  const handlePasswordChange = event => {
+    user.setPassword(event.target.value);
+  };
+
+  const username = user.username;
+
+  const password = user.password;
+
+  const history = useHistory();
 
   const handleLogin = event => {
     event.preventDefault();
@@ -16,22 +28,18 @@ const Home = () => {
       .post("https://cool-dinners.herokuapp.com/login", { username, password })
       .then(res => {
         if (!res.data.auth) {
-          setLoginStatus(false);
+          user.setAuth(false);
         } else {
           localStorage.setItem("token", res.data.token);
           localStorage.setItem("user", JSON.stringify(res.data));
-          console.log(currentUser);
-          setLoginStatus(true);
+          user.setCurrentUser(JSON.parse(localStorage.getItem("user")));
+          console.log(user.currentUser);
+          user.setAuth(true);
+          history.push("/");
+          user.setUsername("");
+          user.setPassword("");
         }
       });
-  };
-
-  const handleUsernameChange = event => {
-    setUsername(event.target.value);
-  };
-
-  const handlePasswordChange = event => {
-    setPassword(event.target.value);
   };
 
   const handleUserAuthenticated = event => {
@@ -44,6 +52,7 @@ const Home = () => {
       })
       .then(res => {
         console.log(res);
+        window.location.reload();
       });
   };
 
@@ -63,7 +72,7 @@ const Home = () => {
                 type="text"
                 placeholder="Your Username"
                 name="username"
-                value={username}
+                value={user.username}
                 onChange={handleUsernameChange}
                 required
               />
@@ -76,7 +85,7 @@ const Home = () => {
                 type="password"
                 placeholder="Your Password"
                 name="password"
-                value={password}
+                value={user.password}
                 onChange={handlePasswordChange}
                 required
               />
@@ -90,7 +99,7 @@ const Home = () => {
       )}
       {localStorage.getItem("token") && (
         <div>
-          <h3>You are logged in as {currentUser.username}!</h3>
+          <h3>You are logged in as {user.currentUser.username}!</h3>
           <button onClick={handleUserAuthenticated}>
             Check if authenticated
           </button>
