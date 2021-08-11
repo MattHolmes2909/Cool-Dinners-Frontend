@@ -24,7 +24,6 @@ const TeacherView = () => {
   }
 
   const [Children, SetChildren] = useState([]);
-  const [newOrders] = useState([]);
 
   useEffect(() => {
     async function fetchChild() {
@@ -37,31 +36,22 @@ const TeacherView = () => {
         .catch(err => console.error(err));
     }
     return fetchChild();
-  }, []);
+  }, [Children]);
 
   const handleOrders = event => {
     event.preventDefault();
-    newOrders.forEach(Child => {
+    Children.map(Child =>
       axios
-        .patch(`https://cool-dinners.herokuapp.com/child/${Child.id}`, {
-          foodOption: `${Child.foodOption}`,
-        })
+        .patch(
+          `https://cool-dinners.herokuapp.com/child/${Child.id}`,
+          Child.foodOption
+        )
         .then(response => {
           console.log(response.data);
+          SetChildren(response.data);
         })
-        .catch(err => console.error(err));
-    });
-  };
-
-  const handleFoodChange = event => {
-    for (let i = 0; i < newOrders.length; i += 1) {
-      if (newOrders[i].id === event.target.name) {
-        newOrders.splice([i], [i + 1]);
-      }
-    }
-
-    newOrders.push({ id: event.target.name, foodOption: event.target.value });
-    console.log(newOrders);
+        .catch(err => console.error(err))
+    );
   };
 
   return (
@@ -102,69 +92,52 @@ const TeacherView = () => {
             </tr>
           </thead>
           <tbody>
-            {Children.map((Child, index) => (
+            {Children.map(Child => (
               <tr className="childRow" key={Child.id}>
                 <td>
-                  <label htmlFor="childName">{Child.childName}</label>
+                  <div className="radiotext">
+                    <label htmlFor="childName">{Child.childName}</label>
+                  </div>
                 </td>
-                <td value="pizza">
+                <td>
                   <input
                     type="radio"
                     htmlFor="pizza"
                     title="pizza"
                     name={Child.id}
-                    value="pizza"
-                    onClick={handleFoodChange}
-                    data-id={index}
-                    defaultChecked={Child.foodOption === "pizza"}
                   />
                 </td>
-                <td value="pasta">
+                <td>
                   <input
                     type="radio"
                     htmlFor="pasta"
                     title="pasta"
                     name={Child.id}
-                    value="pasta"
-                    onClick={handleFoodChange}
-                    data-id={index}
-                    defaultChecked={Child.foodOption === "pasta"}
                   />
                 </td>
-                <td value="fish">
+                <td>
                   <input
                     type="radio"
                     htmlFor="fish"
                     title="fish"
                     name={Child.id}
-                    value="fish"
-                    onClick={handleFoodChange}
-                    data-id={index}
-                    defaultChecked={Child.foodOption === "fish"}
                   />
                 </td>
-                <td value="quorn">
+                <td>
                   <input
                     type="radio"
                     htmlFor="quorn"
                     title="quorn"
                     name={Child.id}
-                    value="quorn"
-                    onClick={handleFoodChange}
-                    data-id={index}
-                    defaultChecked={Child.foodOption === "quorn"}
                   />
                 </td>
-                <td value="none">
+                <td>
                   <input
                     type="radio"
                     htmlFor="noDinner"
                     title="noDinner"
                     name={Child.id}
-                    value="none"
-                    onClick={handleFoodChange}
-                    data-id={index}
-                    defaultChecked={Child.foodOption === "none"}
+                    required
                   />
                 </td>
               </tr>
