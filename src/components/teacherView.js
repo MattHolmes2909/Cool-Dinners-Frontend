@@ -29,7 +29,11 @@ const TeacherView = () => {
   useEffect(() => {
     async function fetchChild() {
       await axios
-        .get("https://cool-dinners.herokuapp.com/child/class/1DS")
+        .get(
+          currentUser.userType === "admin"
+            ? `https://cool-dinners.herokuapp.com/child`
+            : `https://cool-dinners.herokuapp.com/child/class/${currentUser.schoolClass}`
+        )
         .then(response => {
           console.log(response.data);
           SetChildren(response.data);
@@ -73,7 +77,9 @@ const TeacherView = () => {
           <thead>
             <tr>
               <th className="schoolclass" name="childName">
-                1DS
+                {currentUser.userType === "admin"
+                  ? `Admin`
+                  : currentUser.schoolClass}
               </th>
               <th name="pizza">
                 <img src={pizza} className="foodicon pizza meat" alt="pizza" />
@@ -105,7 +111,11 @@ const TeacherView = () => {
             {Children.map((Child, index) => (
               <tr className="childRow" key={Child.id}>
                 <td>
-                  <label htmlFor="childName">{Child.childName}</label>
+                  <label htmlFor="childName">
+                    {currentUser.userType === "admin"
+                      ? `${Child.childName} (${Child.schoolClass})`
+                      : Child.childName}
+                  </label>
                 </td>
                 <td value="pizza">
                   <input
