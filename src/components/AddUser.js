@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useContext } from "react/cjs/react.development";
 import { AuthContext } from "../contexts/AuthContext";
+import Alert from "./Alert"
 import axios from "axios";
 import "../styles/AddUser.css"
 
@@ -31,10 +32,12 @@ const AddUser = () => {
       })
       .then(res => {
         console.log(res);
+        setAlert({ message: "User Added", isSuccess: true });
       });
   };
 
   const [fields, setFields] = useState(initialState.fields);
+  const [alert, setAlert] = useState(initialState.alert);
 
   const handleFieldChange = event => {
     setFields({ ...fields, [event.target.name]: event.target.value });
@@ -140,6 +143,7 @@ const AddUser = () => {
             <button type="submit" className="register-form-button">
               Register
             </button>
+            <Alert message={alert.message} />
           </form>
         </>
       )}
