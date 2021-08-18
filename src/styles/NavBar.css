@@ -93,6 +93,24 @@ li {
   animation: nonHome 0.5s forwards;
 }
 
+.logout-button {
+  background-color: #e9740e;
+  border: 0;
+  border-radius: 12px;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.5rem;
+}
+
+.logout-button:hover {
+  animation: logoutGlowHover 0.5s forwards;
+}
+
+@keyframes logoutGlowHover {
+  to {
+    background-color: #e69751;
+  }
+}
+
 @keyframes nonHome {
   from {
     background: #3f3d3d;
