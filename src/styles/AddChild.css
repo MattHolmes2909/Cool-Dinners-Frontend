@@ -1,0 +1,90 @@
+.AddChild {
+    animation: foodMove 100s linear infinite;
+    background-image: url("../images/backgroundfood.png");
+    background-position: bottom;
+    background-repeat: repeat-x;
+    background-size: 10%;
+    height: 85vh;
+  }
+  
+  .p-tag {
+    font-size: 2em;
+    padding-top: 1em;
+    text-align: center;
+  }
+  
+  .childform {
+    display: block;
+    background: conic-gradient(
+    #dc3e43 20%,
+    #e9740e 20%,
+    #e9740e 40%,
+    #d2e367 40%,
+    #d2e367 60%,
+    #4cbf5d 60%,
+    #4cbf5d 80%,
+    #5383e9 80%,
+    #5383e9 100%
+  );
+  background-size: 300%;
+  background-position: -500px;
+  border-radius: 25px;
+  line-height: 3rem;
+  margin: auto;
+  padding: 1rem;
+  text-align: center;
+  width: max-content;
+  }
+  
+  .childform-label {
+    display: flex;
+    flex-direction: row;
+    justify-self: flex-end;
+    text-align: center;
+    line-height: 26px;
+    margin-bottom: 10px;
+  }
+
+  .childNameSelect {
+    width: 40%;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .childNameSelect,
+  .schoolClassSelect,
+  .foodSelect,
+  .allergiesSelect,
+  .childform-button {
+    text-align: center;
+  text-align-last: center;
+  -moz-text-align-last: center;
+    font-size: 1em;
+    height: 2em;
+    flex: 0 0 250px;
+    margin-left: 2em;
+  }
+
+  .childform-button {
+    background: rgb(96, 52, 153);
+    border: 0;
+    border-radius: 12px;
+    color: white;
+    font-family: "Fira Sans", sans-serif;
+    padding: 10px 20px 30px;
+    margin-bottom: 1em;
+  }
+  
+  .childform-button:hover {
+    animation: add-hover 1s forwards;
+  }
+  
+  @keyframes add-hover {
+    from {
+      background: rgb(103, 47, 176);
+    }
+    to {
+      background: rgb(134, 97, 181);
+    }
+  }
