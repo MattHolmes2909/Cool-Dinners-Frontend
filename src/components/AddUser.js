@@ -143,7 +143,7 @@ const AddUser = () => {
             <button type="submit" className="register-form-button">
               Register
             </button>
-            <Alert message={alert.message} />
+            <Alert message={alert.message} success={alert.isSuccess} />
           </form>
         </>
       )}
