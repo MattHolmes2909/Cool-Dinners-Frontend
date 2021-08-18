@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useContext } from "react/cjs/react.development";
 import { AuthContext } from "../contexts/AuthContext";
 import axios from "axios";
+import "../styles/AddUser.css"
 
 const AddUser = () => {
   const user = useContext(AuthContext);
@@ -43,25 +44,27 @@ const AddUser = () => {
     <div className="AddUser">
       {user.currentUser.userType === "admin" && (
         <>
-          <form onSubmit={handleRegister} className="form">
-            <p>Add User</p>
+          <form onSubmit={handleRegister} className="addUserForm">
+            <p className="p-tag-user">Add User</p>
             <div className="form-field">
-              <label htmlFor="username">
-                User Name:
+              <label htmlFor="username" className="type-label">
+                Username:
+                </label>
                 <input
                   name="username"
+                  className="register-input"
+                  placeholder="Your Username"
                   value={fields.username}
                   onChange={handleFieldChange}
                   required
                 />
-              </label>
             </div>
             <div className="form-user-password">
-              <label htmlFor="password" className="register-input">
+              <label htmlFor="password" className="type-label">
                 Password:
               </label>
               <input
-                className="register-input input"
+                className="register-input"
                 type="password"
                 placeholder="Your Password"
                 name="password"
@@ -71,18 +74,19 @@ const AddUser = () => {
             </div>
             <div className="form-user-order">
               User Type
-              <label htmlFor="user-type">
+              <label htmlFor="user-type" className="register-label">
                 <select
                   id="userType"
+                  className="userTypeSelect"
                   name="userType"
                   value={fields.userType}
                   onChange={handleFieldChange}
                   required
                 >
-                  <option className="teacher" value="teacher">
+                  <option className="teacher userTypeSelect" value="teacher">
                     Teacher
                   </option>
-                  <option className="canteen" value="canteen">
+                  <option className="canteen userTypeSelect" value="canteen">
                     Canteen
                   </option>
                 </select>
@@ -91,23 +95,24 @@ const AddUser = () => {
             {fields.userType === "teacher" && (
               <div className="form-user-class">
                 Class
-                <label htmlFor="user-class">
+                <label htmlFor="user-class"className="register-label">
                   <select
                     id="schoolClass"
+                    className="userClassSelect"
                     name="schoolClass"
                     value={fields.schoolClass}
                     onChange={handleFieldChange}
                   >
-                    <option className="1DS" value="1DS">
+                    <option className="1DS userClassSelect" value="1DS">
                       1DS
                     </option>
-                    <option className="1MH" value="1MH">
+                    <option className="1MH userClassSelect" value="1MH">
                       1MH
                     </option>
-                    <option className="2AW" value="2AW">
+                    <option className="2AW userClassSelect" value="2AW">
                       2AW
                     </option>
-                    <option className="2NM" value="2NM">
+                    <option className="2NM userClassSelect" value="2NM">
                       2NM
                     </option>
                   </select>
@@ -117,14 +122,15 @@ const AddUser = () => {
             {fields.userType === "canteen" && (
               <div className="form-user-class">
                 Class
-                <label htmlFor="user-class">
+                <label htmlFor="user-class" className="register-label">
                   <select
                     id="schoolClass"
+                    className="userClassSelect"
                     name="schoolClass"
                     value={fields.schoolClass}
                     onChange={handleFieldChange}
                   >
-                    <option className="all" value={null}>
+                    <option className="all userClassSelect" value={null}>
                       All
                     </option>
                   </select>
