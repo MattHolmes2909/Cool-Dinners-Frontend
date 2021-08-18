@@ -39,97 +39,101 @@ const AddChild = () => {
       {(user.currentUser.userType === "admin" ||
         user.currentUser.userType === "teacher") && (
         <>
-          <form onSubmit={handleAddChild} className="form">
-            <p>Add Child</p>
-            <div className="form-field">
+          <form onSubmit={handleAddChild} className="form childform">
+            <p className="p-tag">Add Child</p>
+            <div className="childform-title">
               <label htmlFor="title">
-                Child Name:
-                <input
+                Child Name
+                <input className="childNameSelect"
                   name="childName"
                   value={fields.childName}
                   onChange={handleFieldChange}
+                  placeholder="Enter Name..."
                 />
               </label>
             </div>
-            <div className="form-child-class">
+            <div className="childform-title">
               Class
-              <label htmlFor="child-class">
+              <label htmlFor="child-class" className="childform-label">
                 <select
                   id="schoolClass"
+                  className="schoolClassSelect"
                   name="schoolClass"
                   value={fields.schoolClass}
                   onChange={handleFieldChange}
                 >
-                  <option className="1DS" value="1DS">
+                  <option className="1DS classSelect" value="1DS">
                     1DS
                   </option>
-                  <option className="1MH" value="1MH">
+                  <option className="1MH classSelect" value="1MH">
                     1MH
                   </option>
-                  <option className="2AW" value="2AW">
+                  <option className="2AW classSelect" value="2AW">
                     2AW
                   </option>
-                  <option className="2NM" value="2NM">
+                  <option className="2NM classSelect" value="2NM">
                     2NM
                   </option>
                 </select>
               </label>
             </div>
-            <div className="form-child-order">
+            <div className="childform-title">
               Order
-              <label htmlFor="child-order">
+              <label htmlFor="child-order" className="childform-label">
                 <select
                   id="foodOption"
+                  className="foodSelect"
                   name="foodOption"
                   value={fields.foodOption}
                   onChange={handleFieldChange}
                 >
-                  <option className="none" value="none">
+                  <option className="none foodOptionSelect" value="none">
                     none
                   </option>
-                  <option className="pizza" value="pizza">
+                  <option className="pizza foodOptionSelect" value="pizza">
                     pizza
                   </option>
-                  <option className="pasta" value="pasta">
+                  <option className="pasta foodOptionSelect" value="pasta">
                     pasta
                   </option>
-                  <option className="fish" value="fish">
+                  <option className="fish foodOptionSelect" value="fish">
                     fish
                   </option>
-                  <option className="quorn" value="quorn">
+                  <option className="quorn foodOptionSelect" value="quorn">
                     quorn
                   </option>
                 </select>
               </label>
             </div>
-            <div className="form-allergens">
+            <div className="childform-title">
               Allergies
-              <label htmlFor="allergies">
+              <label htmlFor="allergies" className="childform-label">
                 <select
                   id="allergies"
+                  className="allergiesSelect"
                   name="allergies"
                   value={fields.allergies}
                   onChange={handleFieldChange}
                 >
-                  <option className="none" value="none">
+                  <option className="none allergyOptionSelect" value="none">
                     none
                   </option>
-                  <option className="dairy" value="dairy">
+                  <option className="dairy allergyOptionSelect" value="dairy">
                     dairy
                   </option>
-                  <option className="wheat" value="wheat">
+                  <option className="wheat allergyOptionSelect" value="wheat">
                     wheat
                   </option>
-                  <option className="nuts" value="nuts">
+                  <option className="nuts allergyOptionSelect" value="nuts">
                     nuts
                   </option>
-                  <option className="fish" value="fish">
+                  <option className="fish allergyOptionSelect" value="fish">
                     fish
                   </option>
                 </select>
               </label>
             </div>
-            <button type="submit" className="form-button">
+            <button type="submit" className="childform-button">
               Add
             </button>
             <Alert message={alert.message} success={alert.isSuccess} />
