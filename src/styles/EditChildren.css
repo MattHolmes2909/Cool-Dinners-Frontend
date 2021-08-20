@@ -1,0 +1,78 @@
+.EditChildren {
+  margin: auto;
+  text-align: center;
+}
+
+.class-button {
+  border: 0;
+  border-radius: 12px;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.5rem;
+  margin-right: 2rem;
+  margin-bottom: 2rem;
+}
+
+.class-button:nth-of-type(2n) {
+  background-color: #92c9b2;
+}
+
+.class-button:nth-of-type(2n - 1) {
+  background-color: #2bb579;
+}
+
+.class-button:last-of-type {
+  margin-right: 0;
+}
+
+.table {
+  border-collapse: collapse;
+  margin: auto;
+  width: 90%;
+}
+
+.childrenHead {
+  background-color: #0f6d45;
+}
+
+th {
+  position: relative;
+  margin: auto;
+}
+
+.childrenHead > th:first-of-type {
+  border-radius: 12px 0 0 0;
+}
+
+.childrenHead > th:last-of-type {
+  border-radius: 0 12px 0 0;
+}
+
+.childEditRow:nth-of-type(2n) {
+  background-color: #14432b;
+}
+.childEditRow:nth-of-type(2n-1) {
+  background-color: #125437;
+}
+
+td {
+  padding: 0.5rem 0;
+}
+
+.delete-button {
+  background-color: #cd2525;
+  border: 0;
+  border-radius: 15px;
+  color: white;
+  font-size: 1rem;
+  padding: 1rem;
+}
+
+.childEditRow:hover {
+  animation: childGlowHover 0.5s forwards;
+}
+
+@keyframes childGlowHover {
+  to {
+    background-color: #19935a;
+  }
+}

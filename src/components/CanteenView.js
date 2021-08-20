@@ -13,15 +13,7 @@ import axios from "axios";
 const CanteenView = () => {
   const user = useContext(AuthContext);
 
-  let tomorrow;
-  if (moment().add(1, "day").endOf("day").format("dddd") === "Saturday") {
-    tomorrow = moment().add(3, "day").endOf("day");
-  }
-  if (moment().add(1, "day").endOf("day").format("dddd") === "Sunday") {
-    tomorrow = moment().add(2, "day").endOf("day");
-  } else {
-    tomorrow = moment().add(1, "day").endOf("day");
-  }
+  let today = moment().endOf("day");
 
   const [total, setTotal] = useState({
     pizza: {
@@ -79,8 +71,8 @@ const CanteenView = () => {
       {(user.currentUser.userType === "canteen" ||
         user.currentUser.userType === "admin") && (
         <>
-          <p className="order-message">You are ordering dinners for⠀</p>
-          <p className="tomorrow">{tomorrow.format("dddd, MMMM Do YYYY")}!</p>
+          <p className="order-message">You are viewing dinners for⠀</p>
+          <p className="tomorrow">{today.format("dddd, MMMM Do YYYY")}!</p>
           <form className="order-form">
             <table className="table table-responsive">
               <thead>
