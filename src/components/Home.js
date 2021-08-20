@@ -3,7 +3,7 @@ import axios from "axios";
 import "../styles/Home.css";
 import { useContext } from "react/cjs/react.development";
 import { AuthContext } from "../contexts/AuthContext";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 const Home = () => {
   const user = useContext(AuthContext);
@@ -42,20 +42,6 @@ const Home = () => {
       });
   };
 
-  const handleUserAuthenticated = event => {
-    event.preventDefault();
-    axios
-      .get("https://cool-dinners.herokuapp.com/login/isUserAuth", {
-        headers: {
-          "x-access-token": localStorage.getItem("token"),
-        },
-      })
-      .then(res => {
-        console.log(res);
-        window.location.reload();
-      });
-  };
-
   return (
     <div className="Home">
       <p className="welcome">Welcome to Cool Dinners!</p>
@@ -70,7 +56,7 @@ const Home = () => {
               <input
                 className="login-input input"
                 type="text"
-                placeholder="Your Username"
+                placeholder="Your Username..."
                 name="username"
                 value={user.username}
                 onChange={handleUsernameChange}
@@ -83,7 +69,7 @@ const Home = () => {
               <input
                 className="login-input input"
                 type="password"
-                placeholder="Your Password"
+                placeholder="Your Password..."
                 name="password"
                 value={user.password}
                 onChange={handlePasswordChange}
@@ -93,16 +79,15 @@ const Home = () => {
               <button type="submit" className="login-form-button">
                 Login
               </button>
+              <br />
+            </form>
+            <form>
+            <label htmlFor="register" className="user-register-label">
+                Not already registered?
+              </label>
+              <Link className="user-register-button" to="add-user">    Click here!</Link>
             </form>
           </div>
-        </div>
-      )}
-      {localStorage.getItem("token") && (
-        <div>
-          <h3>You are logged in as {user.currentUser.username}!</h3>
-          <button onClick={handleUserAuthenticated}>
-            Check if authenticated
-          </button>
         </div>
       )}
     </div>

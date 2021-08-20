@@ -11,9 +11,10 @@ import noDinner from "../images/nodinner.png";
 import axios from "axios";
 
 const CanteenView = () => {
-  const user = useContext(AuthContext);
 
   let today = moment().endOf("day");
+
+  const user = useContext(AuthContext);
 
   const [total, setTotal] = useState({
     pizza: {

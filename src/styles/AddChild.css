@@ -33,7 +33,7 @@
   margin: auto;
   padding: 1rem;
   text-align: center;
-  width: max-content;
+  width: 351px;
   }
   
   .childform-label {
@@ -43,6 +43,7 @@
     text-align: center;
     line-height: 26px;
     margin-bottom: 10px;
+    padding-left: 25px;
   }
 
   .childNameSelect {
@@ -64,6 +65,14 @@
     height: 2em;
     flex: 0 0 250px;
     margin-left: 2em;
+    font-family: "Otomanopee One", sans-serif
+  }
+
+  .foodSelect,
+  .schoolClassSelect,
+  .allergiesSelect {
+    cursor: pointer;
+    border-radius: 12px;
   }
 
   .childform-button {
@@ -71,13 +80,17 @@
     border: 0;
     border-radius: 12px;
     color: white;
-    font-family: "Fira Sans", sans-serif;
-    padding: 10px 20px 30px;
+    padding: 10px 30px 35px;
     margin-bottom: 1em;
+    margin-top: 1em;
+    margin-right: 40px;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 1.4em;
   }
   
   .childform-button:hover {
     animation: add-hover 1s forwards;
+    cursor: pointer;
   }
   
   @keyframes add-hover {

@@ -84,6 +84,10 @@ li {
   }
 }
 
+.navbar-login {
+  padding-left: 350px;
+}
+
 .non-home {
   font-size: 1.5rem;
   animation: nonHomeRev 0.5s forwards;
@@ -103,6 +107,7 @@ li {
 
 .logout-button:hover {
   animation: logoutGlowHover 0.5s forwards;
+  cursor: pointer;
 }
 
 @keyframes logoutGlowHover {

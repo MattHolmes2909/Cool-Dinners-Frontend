@@ -43,7 +43,7 @@ const AddChild = () => {
             <p className="p-tag">Add Child</p>
             <div className="childform-title">
               <label htmlFor="title">
-                Child Name
+                Child Name:
                 <input className="childNameSelect"
                   name="childName"
                   value={fields.childName}

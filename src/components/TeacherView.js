@@ -11,7 +11,6 @@ import curry from "../images/curry.png";
 import noDinner from "../images/nodinner.png";
 
 const TeacherView = () => {
-  const user = useContext(AuthContext);
 
   let today = moment().endOf("day");
   let tomorrow;
@@ -22,6 +21,8 @@ const TeacherView = () => {
   } else {
     tomorrow = moment().add(1, "day").endOf("day");
   }
+
+  const user = useContext(AuthContext);
 
   const [Children, SetChildren] = useState([]);
   const [newOrders] = useState([]);

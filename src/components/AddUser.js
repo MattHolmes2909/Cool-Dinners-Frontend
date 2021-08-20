@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useContext } from "react/cjs/react.development";
 import { AuthContext } from "../contexts/AuthContext";
+import Alert from "./Alert"
 import axios from "axios";
 import "../styles/AddUser.css"
 
@@ -30,11 +31,19 @@ const AddUser = () => {
         schoolClass: fields.schoolClass,
       })
       .then(res => {
-        console.log(res);
+        if (fields.password.length < 8) {
+          setAlert({ message: "Password must be more than 8 characters", isSuccess: false });
+        } else if (!/[A-Z]/.test(fields.password)) {
+          setAlert({ message: "Password must contain at least one capital letter", isSuccess: false });
+        } else {
+          console.log(res);
+          setAlert({ message: "User Added", isSuccess: true });
+        }
       });
   };
 
   const [fields, setFields] = useState(initialState.fields);
+  const [alert, setAlert] = useState(initialState.alert);
 
   const handleFieldChange = event => {
     setFields({ ...fields, [event.target.name]: event.target.value });
@@ -53,7 +62,7 @@ const AddUser = () => {
                 <input
                   name="username"
                   className="register-input"
-                  placeholder="Your Username"
+                  placeholder="Your Username..."
                   value={fields.username}
                   onChange={handleFieldChange}
                   required
@@ -66,7 +75,7 @@ const AddUser = () => {
               <input
                 className="register-input"
                 type="password"
-                placeholder="Your Password"
+                placeholder="Your Password..."
                 name="password"
                 onChange={handleFieldChange}
                 required
@@ -140,6 +149,7 @@ const AddUser = () => {
             <button type="submit" className="register-form-button">
               Register
             </button>
+            <Alert message={alert.message} success={alert.isSuccess} />
           </form>
         </>
       )}
