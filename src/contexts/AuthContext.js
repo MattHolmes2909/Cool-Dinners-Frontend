@@ -8,6 +8,10 @@ export const AuthProvider = ({ children }) => {
   const [password, setPassword] = useState("");
   const [currentUser, setCurrentUser] = useState("");
 
+  if (localStorage.getItem("user") && currentUser === "") {
+    setCurrentUser(JSON.parse(localStorage.getItem("user")));
+  }
+
   return (
     <AuthContext.Provider
       value={{
