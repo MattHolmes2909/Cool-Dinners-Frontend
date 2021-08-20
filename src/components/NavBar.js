@@ -36,22 +36,29 @@ const NavBar = () => {
         )}
         {(user.currentUser.userType === "admin" ||
           user.currentUser.userType === "teacher") && (
-          <>
-            <li className="navbar-links-item">
-              <Link className="item non-home" to="/teachers">
-                Teachers
-              </Link>
-            </li>
-            <li className="navbar-links-item">
-              <Link className="item non-home" to="/add-child">
-                Add Child
-              </Link>
-            </li>
-          </>
+          <li className="navbar-links-item">
+            <Link className="item non-home" to="/teachers">
+              Teachers
+            </Link>
+          </li>
         )}
+        {user.currentUser.userType === "teacher" && (
+          <li className="navbar-links-item">
+            <Link className="item non-home" to="/add-child">
+              Add Child
+            </Link>
+          </li>
+        )}
+
+        {user.currentUser.userType === "admin" && (
+          <li className="navbar-links-item">
+            <Link className="item non-home" to="/admin-tools">
+              Admin Tools
+
           <li className="navbar-links-item">
             <Link className="item non-home" to="/add-user">
               Register
+
             </Link>
           </li>
         {localStorage.getItem("token") && (

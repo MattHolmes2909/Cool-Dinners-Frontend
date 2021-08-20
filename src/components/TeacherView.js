@@ -12,11 +12,11 @@ import noDinner from "../images/nodinner.png";
 
 const TeacherView = () => {
 
+  let today = moment().endOf("day");
   let tomorrow;
-  if (moment().add(1, "day").endOf("day").format("dddd") === "Saturday") {
+  if (today.format("dddd").includes("Friday")) {
     tomorrow = moment().add(3, "day").endOf("day");
-  }
-  if (moment().add(1, "day").endOf("day").format("dddd") === "Sunday") {
+  } else if (today.format("dddd").includes("Saturday")) {
     tomorrow = moment().add(2, "day").endOf("day");
   } else {
     tomorrow = moment().add(1, "day").endOf("day");

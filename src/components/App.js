@@ -4,9 +4,10 @@ import NavBar from "./NavBar";
 import Home from "./Home";
 import TeacherView from "./TeacherView";
 import CanteenView from "./CanteenView";
-import "../styles/App.css";
 import AddChild from "./AddChild";
 import AddUser from "./AddUser";
+import AdminTools from "./AdminTools";
+import "../styles/App.css";
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
         <Route path="/canteen" component={CanteenView} />
         <Route path="/teachers" component={TeacherView} />
         <Route path="/Add-Child" component={AddChild} />
-        <Route path="/add-user" component={AddUser} />
+        <Route path="/admin-tools" component={AdminTools} />
+        <Route path="/admin-tools/add-user" component={AddUser} />
       </Switch>
     </div>
   );

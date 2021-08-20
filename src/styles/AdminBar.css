@@ -1,0 +1,45 @@
+.Adminbar {
+  background: #5b5959;
+  padding: 0.1rem 0 0.05rem;
+  position: relative;
+  top: -1rem;
+  width: 100vw;
+}
+
+.adminbar-links-item {
+  display: inline-block;
+  list-style-type: none;
+  text-decoration: none;
+}
+
+.adminitem {
+  font-size: 1rem;
+  margin-left: 2rem;
+  animation: adminitemRev 0.5s forwards;
+}
+
+.adminitem:hover {
+  animation: adminitem 0.5s forwards;
+}
+
+@keyframes adminitem {
+  from {
+    background: #3f3d3d;
+    border-radius: 12px;
+  }
+  to {
+    background: #476098;
+    border-radius: 12px;
+  }
+}
+
+@keyframes adminitemRev {
+  from {
+    background: #476098;
+    border-radius: 12px;
+  }
+  to {
+    background: #5b5959;
+    border-radius: 12px;
+  }
+}

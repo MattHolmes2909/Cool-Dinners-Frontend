@@ -1,0 +1,57 @@
+.EditUsers {
+  margin: auto;
+  text-align: center;
+}
+
+.table {
+  border-collapse: collapse;
+  margin: auto;
+  width: 90%;
+}
+
+.usersHead {
+  background-color: #0e3165;
+}
+
+th {
+  position: relative;
+  margin: auto;
+}
+
+.usersHead > th:first-of-type {
+  border-radius: 12px 0 0 0;
+}
+
+.usersHead > th:last-of-type {
+  border-radius: 0 12px 0 0;
+}
+
+.userRow:nth-of-type(2n) {
+  background-color: #2f346d;
+}
+.userRow:nth-of-type(2n-1) {
+  background-color: #212552;
+}
+
+td {
+  padding: 0.5rem 0;
+}
+
+.delete-button {
+  background-color: #cd2525;
+  border: 0;
+  border-radius: 15px;
+  color: white;
+  font-size: 1rem;
+  padding: 1rem;
+}
+
+.userRow:hover {
+  animation: userGlowHover 0.5s forwards;
+}
+
+@keyframes userGlowHover {
+  to {
+    background-color: #194a93;
+  }
+}
