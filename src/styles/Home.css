@@ -58,12 +58,13 @@
 .login-input {
   display: inline-block;
   width: 45%;
+  font-family: "Otomanopee One", sans-serif;
 }
 
 .input {
   border: 0;
   border-radius: 12px;
-  font-size: 1rem;
+  font-size: 0.94rem;
   height: 1.5rem;
   text-align: center;
 }
@@ -97,6 +98,12 @@
 
 .login-form-button:hover {
   animation: loginGlowHover 0.5s forwards;
+  cursor: pointer;
+
+}
+
+.user-register-button {
+  color: #254383;
 }
 
 @keyframes login {

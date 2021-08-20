@@ -13,6 +13,10 @@
     text-align: center;
   }
   
+.Alert {
+  color:rgb(96, 52, 153)
+}
+
   .addUserForm {
     display: block;
     background: conic-gradient(
@@ -33,7 +37,7 @@
   margin: auto;
   padding: 1rem;
   text-align: center;
-  width: max-content;
+  width: 422px;
   }
   
   .type-label {
@@ -65,27 +69,39 @@
   .userTypeSelect,
   .userClassSelect,
   .register-form-button {
+    font-family: "Otomanopee One", sans-serif;
     text-align: center;
   text-align-last: center;
   -moz-text-align-last: center;
     font-size: 1em;
     height: 2em;
-    flex: 0 0 250px;
+    flex: 0 0 375px;
     margin-left: 2em;
   }
+
+  .userClassSelect,
+  .userTypeSelect {
+    cursor: pointer;
+    border-radius: 12px;
+  }
+
 
   .register-form-button {
     background: rgb(96, 52, 153);
     border: 0;
     border-radius: 12px;
     color: white;
-    font-family: "Fira Sans", sans-serif;
-    padding: 10px 20px 30px;
+    padding: 10px 30px 35px;
+    margin-right: 40px;
     margin-bottom: 1em;
+    margin-top: 1em;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 1.4em;
   }
   
   .register-form-button:hover {
     animation: add-hover 1s forwards;
+    cursor: pointer;
   }
   
   @keyframes add-hover {

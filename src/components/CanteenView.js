@@ -11,7 +11,6 @@ import noDinner from "../images/nodinner.png";
 import axios from "axios";
 
 const CanteenView = () => {
-  const user = useContext(AuthContext);
 
   let tomorrow;
   if (moment().add(1, "day").endOf("day").format("dddd") === "Saturday") {
@@ -22,6 +21,8 @@ const CanteenView = () => {
   } else {
     tomorrow = moment().add(1, "day").endOf("day");
   }
+
+  const user = useContext(AuthContext);
 
   const [total, setTotal] = useState({
     pizza: {

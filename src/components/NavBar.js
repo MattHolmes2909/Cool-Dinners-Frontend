@@ -49,17 +49,20 @@ const NavBar = () => {
             </li>
           </>
         )}
-        {user.currentUser.userType === "admin" && (
           <li className="navbar-links-item">
             <Link className="item non-home" to="/add-user">
-              Add User
+              Register
             </Link>
           </li>
-        )}
         {localStorage.getItem("token") && (
           <button onClick={handleLogout} className="logout-button">
             Logout
           </button>
+        )}
+        {localStorage.getItem("token") && (
+          <li className = "navbar-login">
+            <p>You are currently logged in as {user.currentUser.username}</p>
+          </li>
         )}
       </ul>
     </div>

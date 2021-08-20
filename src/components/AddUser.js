@@ -31,8 +31,14 @@ const AddUser = () => {
         schoolClass: fields.schoolClass,
       })
       .then(res => {
-        console.log(res);
-        setAlert({ message: "User Added", isSuccess: true });
+        if (fields.password.length < 8) {
+          setAlert({ message: "Password must be more than 8 characters", isSuccess: false });
+        } else if (!/[A-Z]/.test(fields.password)) {
+          setAlert({ message: "Password must contain at least one capital letter", isSuccess: false });
+        } else {
+          console.log(res);
+          setAlert({ message: "User Added", isSuccess: true });
+        }
       });
   };
 
@@ -56,7 +62,7 @@ const AddUser = () => {
                 <input
                   name="username"
                   className="register-input"
-                  placeholder="Your Username"
+                  placeholder="Your Username..."
                   value={fields.username}
                   onChange={handleFieldChange}
                   required
@@ -69,7 +75,7 @@ const AddUser = () => {
               <input
                 className="register-input"
                 type="password"
-                placeholder="Your Password"
+                placeholder="Your Password..."
                 name="password"
                 onChange={handleFieldChange}
                 required
