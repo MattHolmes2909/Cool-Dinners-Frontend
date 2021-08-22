@@ -11,53 +11,64 @@ import noDinner from "../images/nodinner.png";
 import axios from "axios";
 
 const CanteenView = () => {
-
   let today = moment().endOf("day");
 
   const user = useContext(AuthContext);
 
   const [total, setTotal] = useState({
-    pizza: {
-      total: 0,
-      total1DS: 0,
-      total1MH: 0,
-      total2AW: 0,
-      total2NM: 0,
+    optionOne: {
+      name: "...",
+      total: "...",
+      total1DS: "...",
+      total1MH: "...",
+      total2AW: "...",
+      total2NM: "...",
+      value: "",
+      dietary: "",
     },
-    pasta: {
-      total: 0,
-      total1DS: 0,
-      total1MH: 0,
-      total2AW: 0,
-      total2NM: 0,
+    optionTwo: {
+      name: "...",
+      total: "...",
+      total1DS: "...",
+      total1MH: "...",
+      total2AW: "...",
+      total2NM: "...",
+      value: "",
+      dietary: "",
     },
-    fish: {
-      total: 0,
-      total1DS: 0,
-      total1MH: 0,
-      total2AW: 0,
-      total2NM: 0,
+    optionThree: {
+      name: "...",
+      total: "...",
+      total1DS: "...",
+      total1MH: "...",
+      total2AW: "...",
+      total2NM: "...",
+      value: "",
+      dietary: "",
     },
-    quorn: {
-      total: 0,
-      total1DS: 0,
-      total1MH: 0,
-      total2AW: 0,
-      total2NM: 0,
+    optionFour: {
+      name: "...",
+      total: "...",
+      total1DS: "...",
+      total1MH: "...",
+      total2AW: "...",
+      total2NM: "...",
+      value: "",
+      dietary: "",
     },
     none: {
-      total: 0,
-      total1DS: 0,
-      total1MH: 0,
-      total2AW: 0,
-      total2NM: 0,
+      total: "...",
+      total1DS: "...",
+      total1MH: "...",
+      total2AW: "...",
+      total2NM: "...",
     },
   });
 
   useEffect(() => {
     async function fetchTotal() {
       await axios
-        .get("https://cool-dinners.herokuapp.com/canteen/")
+        .get("https://cool-dinners.herokuapp.com/canteen/current")
         .then(response => {
           console.log(response.data);
           setTotal(response.data);
@@ -79,37 +90,37 @@ const CanteenView = () => {
               <thead>
                 <tr>
                   <th name="className"></th>
-                  <th name="pizza">
+                  <th name={total.optionOne.name}>
                     <img
                       src={pizza}
-                      className="foodicon pizza meat"
-                      alt="pizza"
+                      className={`foodicon ${total.optionOne.dietary}`}
+                      alt={total.optionOne.name}
                     />
-                    Pizza
+                    {total.optionOne.name}
                   </th>
-                  <th name="pasta">
+                  <th name={total.optionTwo.name}>
                     <img
                       src={pasta}
-                      className="foodicon pasta veg"
-                      alt="pasta"
+                      className={`foodicon ${total.optionTwo.dietary}`}
+                      alt={total.optionTwo.name}
                     />
-                    Pasta
+                    {total.optionTwo.name}
                   </th>
-                  <th name="fish">
+                  <th name={total.optionThree.name}>
                     <img
                       src={fish}
-                      className="foodicon pizza fish"
-                      alt="fish"
+                      className={`foodicon ${total.optionThree.dietary}`}
+                      alt={total.optionThree.name}
                     />
-                    Fish and Chips
+                    {total.optionThree.name}
                   </th>
-                  <th name="quorn">
+                  <th name={total.optionFour.name}>
                     <img
                       src={curry}
-                      className="foodicon pizza veg"
-                      alt="curry"
+                      className={`foodicon ${total.optionFour.dietary}`}
+                      alt={total.optionFour.name}
                     />
-                    Quorn Curry
+                    {total.optionFour.name}
                   </th>
                   <th name="noDinner">
                     <img
@@ -129,16 +140,16 @@ const CanteenView = () => {
                     </div>
                   </td>
                   <td>
-                    <p>{total.pizza.total}</p>
+                    <p>{total.optionOne.total}</p>
                   </td>
                   <td>
-                    <p>{total.pasta.total}</p>
+                    <p>{total.optionTwo.total}</p>
                   </td>
                   <td>
-                    <p>{total.fish.total}</p>
+                    <p>{total.optionThree.total}</p>
                   </td>
                   <td>
-                    <p>{total.quorn.total}</p>
+                    <p>{total.optionFour.total}</p>
                   </td>
                   <td>
                     <p>{total.none.total}</p>
@@ -151,16 +162,16 @@ const CanteenView = () => {
                     </div>
                   </td>
                   <td>
-                    <p>{total.pizza.total1DS}</p>
+                    <p>{total.optionOne.total1DS}</p>
                   </td>
                   <td>
-                    <p>{total.pasta.total1DS}</p>
+                    <p>{total.optionTwo.total1DS}</p>
                   </td>
                   <td>
-                    <p>{total.fish.total1DS}</p>
+                    <p>{total.optionThree.total1DS}</p>
                   </td>
                   <td>
-                    <p>{total.quorn.total1DS}</p>
+                    <p>{total.optionFour.total1DS}</p>
                   </td>
                   <td>
                     <p>{total.none.total1DS}</p>
@@ -173,16 +184,16 @@ const CanteenView = () => {
                     </div>
                   </td>
                   <td>
-                    <p>{total.pizza.total1MH}</p>
+                    <p>{total.optionOne.total1MH}</p>
                   </td>
                   <td>
-                    <p>{total.pasta.total1MH}</p>
+                    <p>{total.optionTwo.total1MH}</p>
                   </td>
                   <td>
-                    <p>{total.fish.total1MH}</p>
+                    <p>{total.optionThree.total1MH}</p>
                   </td>
                   <td>
-                    <p>{total.quorn.total1MH}</p>
+                    <p>{total.optionFour.total1MH}</p>
                   </td>
                   <td>
                     <p>{total.none.total1MH}</p>
@@ -195,16 +206,16 @@ const CanteenView = () => {
                     </div>
                   </td>
                   <td>
-                    <p>{total.pizza.total2AW}</p>
+                    <p>{total.optionOne.total2AW}</p>
                   </td>
                   <td>
-                    <p>{total.pasta.total2AW}</p>
+                    <p>{total.optionTwo.total2AW}</p>
                   </td>
                   <td>
-                    <p>{total.fish.total2AW}</p>
+                    <p>{total.optionThree.total2AW}</p>
                   </td>
                   <td>
-                    <p>{total.quorn.total2AW}</p>
+                    <p>{total.optionFour.total2AW}</p>
                   </td>
                   <td>
                     <p>{total.none.total2AW}</p>
@@ -217,16 +228,16 @@ const CanteenView = () => {
                     </div>
                   </td>
                   <td>
-                    <p>{total.pizza.total2NM}</p>
+                    <p>{total.optionOne.total2NM}</p>
                   </td>
                   <td>
-                    <p>{total.pasta.total2NM}</p>
+                    <p>{total.optionTwo.total2NM}</p>
                   </td>
                   <td>
-                    <p>{total.fish.total2NM}</p>
+                    <p>{total.optionThree.total2NM}</p>
                   </td>
                   <td>
-                    <p>{total.quorn.total2NM}</p>
+                    <p>{total.optionFour.total2NM}</p>
                   </td>
                   <td>
                     <p>{total.none.total2NM}</p>
