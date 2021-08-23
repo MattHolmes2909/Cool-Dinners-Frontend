@@ -79,6 +79,24 @@ input {
   width: 100%;
 }
 
+.allergicBox {
+  background-color: #222121;
+}
+
+.allergicBox > input {
+  visibility: hidden;
+}
+
+.allergic {
+  bottom: 0.75rem;
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  visibility: visible;
+}
+
 .order-form-button {
   background-color: #42ba78;
   border: 0;

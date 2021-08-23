@@ -59,15 +59,21 @@ const TeacherView = () => {
   });
   const [Children, SetChildren] = useState([]);
   const [newOrders] = useState([]);
+  const [allergens] = useState({
+    optionOneAllergens: "",
+    optionTwoAllergens: "",
+    optionThreeAllergens: "",
+    optionFourAllergens: "",
+  });
 
   useEffect(() => {
     async function fetchData() {
-      let menu = `https://cool-dinners.herokuapp.com/menu/current`;
+      let onlineMenu = `https://cool-dinners.herokuapp.com/menu/current`;
       let child =
         user.currentUser.userType === "admin"
           ? `https://cool-dinners.herokuapp.com/child`
           : `https://cool-dinners.herokuapp.com/child/class/${user.currentUser.schoolClass}`;
-      const requestMenu = axios.get(menu);
+      const requestMenu = axios.get(onlineMenu);
       const requestChild = axios.get(child);
       await axios
         .all([requestMenu, requestChild])
@@ -75,12 +81,25 @@ const TeacherView = () => {
           axios.spread((...responses) => {
             setMenu(responses[0].data);
             SetChildren(responses[1].data);
-          })
+          }),
+          (allergens.optionOneAllergens = menu.optionOne.allergens),
+          (allergens.optionTwoAllergens = menu.optionTwo.allergens),
+          (allergens.optionThreeAllergens = menu.optionThree.allergens),
+          (allergens.optionFourAllergens = menu.optionFour.allergens),
+          console.log(allergens)
         )
         .catch(err => console.error(err));
     }
     return fetchData();
-  }, [user.currentUser.schoolClass, user.currentUser.userType]);
+  }, [
+    user.currentUser.schoolClass,
+    user.currentUser.userType,
+    allergens,
+    menu.optionOne.allergens,
+    menu.optionTwo.allergens,
+    menu.optionThree.allergens,
+    menu.optionFour.allergens,
+  ]);
 
   const handleOrders = event => {
     event.preventDefault();
@@ -172,54 +191,134 @@ const TeacherView = () => {
                       : Child.childName}
                   </label>
                 </td>
-                <td value={menu.optionOne.value}>
-                  <input
-                    type="radio"
-                    htmlFor={menu.optionOne.value}
-                    title={menu.optionOne.value}
-                    name={Child.id}
-                    value={menu.optionOne.value}
-                    onClick={handleFoodChange}
-                    data-id={index}
-                    defaultChecked={Child.foodOption === menu.optionOne.value}
-                  />
-                </td>
-                <td value={menu.optionTwo.value}>
-                  <input
-                    type="radio"
-                    htmlFor={menu.optionTwo.value}
-                    title={menu.optionTwo.value}
-                    name={Child.id}
-                    value={menu.optionTwo.value}
-                    onClick={handleFoodChange}
-                    data-id={index}
-                    defaultChecked={Child.foodOption === menu.optionTwo.value}
-                  />
-                </td>
-                <td value={menu.optionThree.value}>
-                  <input
-                    type="radio"
-                    htmlFor={menu.optionThree.value}
-                    title={menu.optionThree.value}
-                    name={Child.id}
-                    value={menu.optionThree.value}
-                    onClick={handleFoodChange}
-                    data-id={index}
-                    defaultChecked={Child.foodOption === menu.optionThree.value}
-                  />
-                </td>
-                <td value={menu.optionFour.value}>
-                  <input
-                    type="radio"
-                    htmlFor={menu.optionFour.value}
-                    title={menu.optionFour.value}
-                    name={Child.id}
-                    value={menu.optionFour.value}
-                    onClick={handleFoodChange}
-                    data-id={index}
-                    defaultChecked={Child.foodOption === menu.optionFour.value}
-                  />
-                </td>
+                {allergens.optionOneAllergens !== "none" &&
+                allergens.optionOneAllergens === Child.allergies ? (
+                  <td value={menu.optionOne.value} className="allergicBox">
+                    <input
+                      type="radio"
+                      htmlFor={menu.optionOne.value}
+                      title={menu.optionOne.value}
+                      name={Child.id}
+                      value={menu.optionOne.value}
+                      onClick={handleFoodChange}
+                      data-id={index}
+                      defaultChecked={Child.foodOption === menu.optionOne.value}
+                      disabled
+                    />
+                    <p className="allergic">Allergic!</p>
+                  </td>
+                ) : (
+                  <td value={menu.optionOne.value}>
+                    <input
+                      type="radio"
+                      htmlFor={menu.optionOne.value}
+                      title={menu.optionOne.value}
+                      name={Child.id}
+                      value={menu.optionOne.value}
+                      onClick={handleFoodChange}
+                      data-id={index}
+                      defaultChecked={Child.foodOption === menu.optionOne.value}
+                    />
+                  </td>
+                )}
+                {allergens.optionTwoAllergens !== "none" &&
+                Child.allergies === allergens.optionTwoAllergens ? (
+                  <td value={menu.optionTwo.value} className="allergicBox">
+                    <input
+                      type="radio"
+                      htmlFor={menu.optionTwo.value}
+                      title={menu.optionTwo.value}
+                      name={Child.id}
+                      value={menu.optionTwo.value}
+                      onClick={handleFoodChange}
+                      data-id={index}
+                      defaultChecked={Child.foodOption === menu.optionTwo.value}
+                      disabled
+                    />
+                    <p className="allergic">Allergic!</p>
+                  </td>
+                ) : (
+                  <td value={menu.optionTwo.value}>
+                    <input
+                      type="radio"
+                      htmlFor={menu.optionTwo.value}
+                      title={menu.optionTwo.value}
+                      name={Child.id}
+                      value={menu.optionTwo.value}
+                      onClick={handleFoodChange}
+                      data-id={index}
+                      defaultChecked={Child.foodOption === menu.optionTwo.value}
+                    />
+                  </td>
+                )}
+                {allergens.optionThreeAllergens !== "none" &&
+                Child.allergies === allergens.optionThreeAllergens ? (
+                  <td value={menu.optionThree.value} className="allergicBox">
+                    <input
+                      type="radio"
+                      htmlFor={menu.optionThree.value}
+                      title={menu.optionThree.value}
+                      name={Child.id}
+                      value={menu.optionThree.value}
+                      onClick={handleFoodChange}
+                      data-id={index}
+                      defaultChecked={
+                        Child.foodOption === menu.optionThree.value
+                      }
+                      disabled
+                    />
+                    <p className="allergic">Allergic!</p>
+                  </td>
+                ) : (
+                  <td value={menu.optionThree.value}>
+                    <input
+                      type="radio"
+                      htmlFor={menu.optionThree.value}
+                      title={menu.optionThree.value}
+                      name={Child.id}
+                      value={menu.optionThree.value}
+                      onClick={handleFoodChange}
+                      data-id={index}
+                      defaultChecked={
+                        Child.foodOption === menu.optionThree.value
+                      }
+                    />
+                  </td>
+                )}
+                {allergens.optionFourAllergens !== "none" &&
+                Child.allergies === allergens.optionFourAllergens ? (
+                  <td value={menu.optionFour.value} className="allergicBox">
+                    <input
+                      type="radio"
+                      htmlFor={menu.optionFour.value}
+                      title={menu.optionFour.value}
+                      name={Child.id}
+                      value={menu.optionFour.value}
+                      onClick={handleFoodChange}
+                      data-id={index}
+                      defaultChecked={
+                        Child.foodOption === menu.optionFour.value
+                      }
+                      disabled
+                    />
+                    <p className="allergic">Allergic!</p>
+                  </td>
+                ) : (
+                  <td value={menu.optionFour.value}>
+                    <input
+                      type="radio"
+                      htmlFor={menu.optionFour.value}
+                      title={menu.optionFour.value}
+                      name={Child.id}
+                      value={menu.optionFour.value}
+                      onClick={handleFoodChange}
+                      data-id={index}
+                      defaultChecked={
+                        Child.foodOption === menu.optionFour.value
+                      }
+                    />
+                  </td>
+                )}
                 <td value="none">
                   <input
                     type="radio"
