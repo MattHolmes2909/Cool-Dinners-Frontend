@@ -7,6 +7,8 @@ import AddUser from "./AddUser";
 import EditUsers from "./EditUsers";
 import AddChild from "./AddChild";
 import EditChildren from "./EditChildren";
+import AddMenu from "./AddMenu";
+import EditMenu from "./EditMenu";
 
 const AdminTools = () => {
   const user = useContext(AuthContext);
@@ -21,6 +23,8 @@ const AdminTools = () => {
             <Route path="/admin-tools/edit-users" component={EditUsers} />
             <Route path="/admin-tools/add-child" component={AddChild} />
             <Route path="/admin-tools/edit-children" component={EditChildren} />
+            <Route path="/admin-tools/add-menu" component={AddMenu} />
+            <Route path="/admin-tools/edit-menu" component={EditMenu} />
           </Switch>
         </>
       )}

@@ -24,6 +24,12 @@ const AdminBar = () => {
             <Link className="adminitem" to="/admin-tools/edit-children">
               Edit Children
             </Link>
+            <Link className="adminitem" to="/admin-tools/add-menu">
+              Add Menu Item
+            </Link>
+            <Link className="adminitem" to="/admin-tools/edit-menu">
+              Edit Menu
+            </Link>
           </li>
         )}
       </ul>

@@ -1,0 +1,159 @@
+.EditMenu {
+  margin: auto;
+  text-align: center;
+}
+
+.table {
+  border-collapse: collapse;
+  margin: auto;
+  width: 90%;
+}
+
+.foodHead {
+  background-color: #652f0e;
+}
+
+th {
+  position: relative;
+  margin: auto;
+}
+
+.foodHead > th:first-of-type {
+  border-radius: 12px 0 0 0;
+}
+
+.foodHead > th:last-of-type {
+  border-radius: 0 12px 0 0;
+}
+
+.foodRow:nth-of-type(2n) {
+  background-color: #6d3b0f;
+}
+.foodRow:nth-of-type(2n-1) {
+  background-color: #80410a;
+}
+
+td {
+  padding: 0.5rem 0;
+}
+
+.optionNumberButton {
+  border: 0;
+  border-radius: 3px;
+  color: #fff;
+  cursor: pointer;
+  font-family: "Otomanopee One", sans-serif;
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+  width: 2rem;
+}
+
+.buttonUnselected {
+  background-color: #222121;
+}
+
+.button0 {
+  width: auto;
+}
+
+.button0:hover {
+  animation: button0Hover 0.5s forwards;
+}
+
+@keyframes button0Hover {
+  to {
+    background-color: #3a3636;
+  }
+}
+
+.button0selected {
+  background-color: #d2e367;
+  color: #000;
+}
+
+.button1:hover {
+  animation: button1Hover 0.5s forwards;
+}
+
+@keyframes button1Hover {
+  to {
+    background-color: #f2282e;
+  }
+}
+
+.button1selected {
+  background-color: #dc3e43;
+}
+
+.button2:hover {
+  animation: button2Hover 0.5s forwards;
+}
+
+@keyframes button2Hover {
+  to {
+    background-color: #2c6bf2;
+  }
+}
+
+.button2selected {
+  background-color: #5383e9;
+}
+
+.button3:hover {
+  animation: button3Hover 0.5s forwards;
+}
+
+@keyframes button3Hover {
+  to {
+    background-color: #36c14b;
+  }
+}
+
+.button3selected {
+  background-color: #4cbf5d;
+}
+
+.button4:hover {
+  animation: button4Hover 0.5s forwards;
+}
+
+@keyframes button4Hover {
+  to {
+    background-color: #ff7a06;
+  }
+}
+
+.button4selected {
+  background-color: #e9740e;
+}
+
+.delete-button {
+  background-color: #cd2525;
+  border: 0;
+  border-radius: 15px;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 1rem;
+}
+
+.delete-button:hover {
+  animation: deleteButtonHover 0.5s forwards;
+}
+
+@keyframes deleteButtonHover {
+  to {
+    background-color: #f53131;
+  }
+}
+
+.userRow:hover {
+  animation: userGlowHover 0.5s forwards;
+}
+
+@keyframes userGlowHover {
+  to {
+    background-color: #194a93;
+  }
+}
