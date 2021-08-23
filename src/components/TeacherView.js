@@ -61,34 +61,26 @@ const TeacherView = () => {
   const [newOrders] = useState([]);
 
   useEffect(() => {
-    async function fetchMenu() {
+    async function fetchData() {
+      let menu = `https://cool-dinners.herokuapp.com/menu/current`;
+      let child =
+        user.currentUser.userType === "admin"
+          ? `https://cool-dinners.herokuapp.com/child`
+          : `https://cool-dinners.herokuapp.com/child/class/${user.currentUser.schoolClass}`;
+      const requestMenu = axios.get(menu);
+      const requestChild = axios.get(child);
       await axios
-        .get(`https://cool-dinners.herokuapp.com/menu/current`)
-        .then(response => {
-          setMenu(response.data);
-          console.log(response.data);
-        })
-        .catch(err => console.error(err));
-    }
-    return fetchMenu();
-  }, []);
-
-  useEffect(() => {
-    async function fetchChild() {
-      await axios
-        .get(
-          user.currentUser.userType === "admin"
-            ? `https://cool-dinners.herokuapp.com/child`
-            : `https://cool-dinners.herokuapp.com/child/class/${user.currentUser.schoolClass}`
+        .all([requestMenu, requestChild])
+        .then(
+          axios.spread((...responses) => {
+            setMenu(responses[0].data);
+            SetChildren(responses[1].data);
+          })
         )
-        .then(response => {
-          console.log(response.data);
-          SetChildren(response.data);
-        })
         .catch(err => console.error(err));
     }
-    return fetchChild();
-  }, [user.currentUser.schoolClass, user.currentUser.userType, menu]);
+    return fetchData();
+  }, [user.currentUser.schoolClass, user.currentUser.userType]);
 
   const handleOrders = event => {
     event.preventDefault();
