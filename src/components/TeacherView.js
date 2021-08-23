@@ -11,7 +11,6 @@ import curry from "../images/curry.png";
 import noDinner from "../images/nodinner.png";
 
 const TeacherView = () => {
-
   let today = moment().endOf("day");
   let tomorrow;
   if (today.format("dddd").includes("Friday")) {
@@ -24,8 +23,55 @@ const TeacherView = () => {
 
   const user = useContext(AuthContext);
 
+  const [menu, setMenu] = useState({
+    optionOne: {
+      id: 0,
+      foodName: "...",
+      value: "...",
+      foodOptionNum: 1,
+      allergens: "...",
+      dietary: "...",
+    },
+    optionTwo: {
+      id: 0,
+      foodName: "...",
+      value: "...",
+      foodOptionNum: 2,
+      allergens: "...",
+      dietary: "...",
+    },
+    optionThree: {
+      id: 0,
+      foodName: "...",
+      value: "...",
+      foodOptionNum: 3,
+      allergens: "...",
+      dietary: "...",
+    },
+    optionFour: {
+      id: 0,
+      foodName: "...",
+      value: "...",
+      foodOptionNum: 4,
+      allergens: "...",
+      dietary: "...",
+    },
+  });
   const [Children, SetChildren] = useState([]);
   const [newOrders] = useState([]);
+
+  useEffect(() => {
+    async function fetchMenu() {
+      await axios
+        .get(`https://cool-dinners.herokuapp.com/menu/current`)
+        .then(response => {
+          setMenu(response.data);
+          console.log(response.data);
+        })
+        .catch(err => console.error(err));
+    }
+    return fetchMenu();
+  }, []);
 
   useEffect(() => {
     async function fetchChild() {
@@ -42,7 +88,7 @@ const TeacherView = () => {
         .catch(err => console.error(err));
     }
     return fetchChild();
-  }, [user.currentUser.schoolClass, user.currentUser.userType]);
+  }, [user.currentUser.schoolClass, user.currentUser.userType, menu]);
 
   const handleOrders = event => {
     event.preventDefault();
@@ -82,21 +128,37 @@ const TeacherView = () => {
                   ? `Admin`
                   : user.currentUser.schoolClass}
               </th>
-              <th name="pizza">
-                <img src={pizza} className="foodicon pizza meat" alt="pizza" />
-                Pizza
+              <th name={menu.optionOne.foodName}>
+                <img
+                  src={pizza}
+                  className={`foodicon ${menu.optionOne.dietary}`}
+                  alt={menu.optionOne.foodName}
+                />
+                {menu.optionOne.foodName}
               </th>
-              <th name="pasta">
-                <img src={pasta} className="foodicon pasta veg" alt="pasta" />
-                Pasta
+              <th name={menu.optionTwo.foodName}>
+                <img
+                  src={pasta}
+                  className={`foodicon ${menu.optionTwo.dietary}`}
+                  alt={menu.optionTwo.foodName}
+                />
+                {menu.optionTwo.foodName}
               </th>
-              <th name="fish">
-                <img src={fish} className="foodicon pizza fish" alt="fish" />
-                Fish and Chips
+              <th name={menu.optionThree.foodName}>
+                <img
+                  src={fish}
+                  className={`foodicon ${menu.optionThree.dietary}`}
+                  alt={menu.optionThree.foodName}
+                />
+                {menu.optionThree.foodName}
               </th>
-              <th name="quorn">
-                <img src={curry} className="foodicon pizza veg" alt="curry" />
-                Quorn Curry
+              <th name={menu.optionFour.foodName}>
+                <img
+                  src={curry}
+                  className={`foodicon ${menu.optionFour.dietary}`}
+                  alt={menu.optionFour.foodName}
+                />
+                {menu.optionFour.foodName}
               </th>
               <th name="noDinner">
                 <img
@@ -118,52 +180,52 @@ const TeacherView = () => {
                       : Child.childName}
                   </label>
                 </td>
-                <td value="pizza">
+                <td value={menu.optionOne.value}>
                   <input
                     type="radio"
-                    htmlFor="pizza"
-                    title="pizza"
+                    htmlFor={menu.optionOne.value}
+                    title={menu.optionOne.value}
                     name={Child.id}
-                    value="pizza"
+                    value={menu.optionOne.value}
                     onClick={handleFoodChange}
                     data-id={index}
-                    defaultChecked={Child.foodOption === "pizza"}
+                    defaultChecked={Child.foodOption === menu.optionOne.value}
                   />
                 </td>
-                <td value="pasta">
+                <td value={menu.optionTwo.value}>
                   <input
                     type="radio"
-                    htmlFor="pasta"
-                    title="pasta"
+                    htmlFor={menu.optionTwo.value}
+                    title={menu.optionTwo.value}
                     name={Child.id}
-                    value="pasta"
+                    value={menu.optionTwo.value}
                     onClick={handleFoodChange}
                     data-id={index}
-                    defaultChecked={Child.foodOption === "pasta"}
+                    defaultChecked={Child.foodOption === menu.optionTwo.value}
                   />
                 </td>
-                <td value="fish">
+                <td value={menu.optionThree.value}>
                   <input
                     type="radio"
-                    htmlFor="fish"
-                    title="fish"
+                    htmlFor={menu.optionThree.value}
+                    title={menu.optionThree.value}
                     name={Child.id}
-                    value="fish"
+                    value={menu.optionThree.value}
                     onClick={handleFoodChange}
                     data-id={index}
-                    defaultChecked={Child.foodOption === "fish"}
+                    defaultChecked={Child.foodOption === menu.optionThree.value}
                   />
                 </td>
-                <td value="quorn">
+                <td value={menu.optionFour.value}>
                   <input
                     type="radio"
-                    htmlFor="quorn"
-                    title="quorn"
+                    htmlFor={menu.optionFour.value}
+                    title={menu.optionFour.value}
                     name={Child.id}
-                    value="quorn"
+                    value={menu.optionFour.value}
                     onClick={handleFoodChange}
                     data-id={index}
-                    defaultChecked={Child.foodOption === "quorn"}
+                    defaultChecked={Child.foodOption === menu.optionFour.value}
                   />
                 </td>
                 <td value="none">
@@ -176,6 +238,7 @@ const TeacherView = () => {
                     onClick={handleFoodChange}
                     data-id={index}
                     defaultChecked={Child.foodOption === "none"}
+                    required
                   />
                 </td>
               </tr>
