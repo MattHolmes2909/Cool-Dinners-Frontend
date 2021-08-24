@@ -24,21 +24,27 @@ const EditMenu = () => {
 
   const handleOptionChange = async event => {
     event.preventDefault();
-    await axios
-      .patch(`https://cool-dinners.herokuapp.com/menu/editOptionNumbers`, {
-        id: event.target.name,
-        foodOptionNum: event.target.value,
-      })
-      .then(response => {
-        console.log(response.data);
-        console.log("Menu option number changed!");
-      })
-      .catch(err => console.error(err));
-    await axios
-      .get(`https://cool-dinners.herokuapp.com/menu`)
-      .then(response => {
-        setMenu(response.data);
-      });
+    if (event.target.value === "0") {
+      console.log(
+        "Cannot set directly to None, please choose an unused menu option to replace this instead."
+      );
+    } else {
+      await axios
+        .patch(`https://cool-dinners.herokuapp.com/menu/editOptionNumbers`, {
+          id: event.target.name,
+          foodOptionNum: event.target.value,
+        })
+        .then(response => {
+          console.log(response.data);
+          console.log("Menu option number changed!");
+        })
+        .catch(err => console.error(err));
+      await axios
+        .get(`https://cool-dinners.herokuapp.com/menu`)
+        .then(response => {
+          setMenu(response.data);
+        });
+    }
   };
 
   const handleDelete = async event => {
