@@ -103,16 +103,14 @@ const TeacherView = () => {
 
   const handleOrders = event => {
     event.preventDefault();
-    newOrders.forEach(Child => {
-      axios
-        .patch(`https://cool-dinners.herokuapp.com/child/${Child.id}`, {
-          foodOption: `${Child.foodOption}`,
-        })
-        .then(response => {
-          console.log(response.data);
-        })
-        .catch(err => console.error(err));
-    });
+    const data = { newOrders: newOrders };
+    console.log(data);
+    axios
+      .patch(`https://cool-dinners.herokuapp.com/child/updatemany`, data)
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(err => console.error(err));
   };
 
   const handleFoodChange = event => {
