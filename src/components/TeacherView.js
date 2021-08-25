@@ -11,7 +11,6 @@ import curry from "../images/curry.png";
 import noDinner from "../images/nodinner.png";
 
 const TeacherView = () => {
-
   let today = moment().endOf("day");
   let tomorrow;
   if (today.format("dddd").includes("Friday")) {
@@ -24,38 +23,94 @@ const TeacherView = () => {
 
   const user = useContext(AuthContext);
 
+  const [menu, setMenu] = useState({
+    optionOne: {
+      id: 0,
+      foodName: "...",
+      value: "...",
+      foodOptionNum: 1,
+      allergens: "...",
+      dietary: "...",
+    },
+    optionTwo: {
+      id: 0,
+      foodName: "...",
+      value: "...",
+      foodOptionNum: 2,
+      allergens: "...",
+      dietary: "...",
+    },
+    optionThree: {
+      id: 0,
+      foodName: "...",
+      value: "...",
+      foodOptionNum: 3,
+      allergens: "...",
+      dietary: "...",
+    },
+    optionFour: {
+      id: 0,
+      foodName: "...",
+      value: "...",
+      foodOptionNum: 4,
+      allergens: "...",
+      dietary: "...",
+    },
+  });
   const [Children, SetChildren] = useState([]);
   const [newOrders] = useState([]);
+  const [allergens] = useState({
+    optionOneAllergens: "",
+    optionTwoAllergens: "",
+    optionThreeAllergens: "",
+    optionFourAllergens: "",
+  });
 
   useEffect(() => {
-    async function fetchChild() {
+    async function fetchData() {
+      let onlineMenu = `https://cool-dinners.herokuapp.com/menu/current`;
+      let child =
+        user.currentUser.userType === "admin"
+          ? `https://cool-dinners.herokuapp.com/child`
+          : `https://cool-dinners.herokuapp.com/child/class/${user.currentUser.schoolClass}`;
+      const requestMenu = axios.get(onlineMenu);
+      const requestChild = axios.get(child);
       await axios
-        .get(
-          user.currentUser.userType === "admin"
-            ? `https://cool-dinners.herokuapp.com/child`
-            : `https://cool-dinners.herokuapp.com/child/class/${user.currentUser.schoolClass}`
+        .all([requestMenu, requestChild])
+        .then(
+          axios.spread((...responses) => {
+            setMenu(responses[0].data);
+            SetChildren(responses[1].data);
+          }),
+          (allergens.optionOneAllergens = menu.optionOne.allergens),
+          (allergens.optionTwoAllergens = menu.optionTwo.allergens),
+          (allergens.optionThreeAllergens = menu.optionThree.allergens),
+          (allergens.optionFourAllergens = menu.optionFour.allergens),
+          console.log(allergens)
         )
-        .then(response => {
-          console.log(response.data);
-          SetChildren(response.data);
-        })
         .catch(err => console.error(err));
     }
-    return fetchChild();
-  }, [user.currentUser.schoolClass, user.currentUser.userType]);
+    return fetchData();
+  }, [
+    user.currentUser.schoolClass,
+    user.currentUser.userType,
+    allergens,
+    menu.optionOne.allergens,
+    menu.optionTwo.allergens,
+    menu.optionThree.allergens,
+    menu.optionFour.allergens,
+  ]);
 
   const handleOrders = event => {
     event.preventDefault();
-    newOrders.forEach(Child => {
-      axios
-        .patch(`https://cool-dinners.herokuapp.com/child/${Child.id}`, {
-          foodOption: `${Child.foodOption}`,
-        })
-        .then(response => {
-          console.log(response.data);
-        })
-        .catch(err => console.error(err));
-    });
+    const data = { newOrders: newOrders };
+    console.log(data);
+    axios
+      .patch(`https://cool-dinners.herokuapp.com/child/updatemany`, data)
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(err => console.error(err));
   };
 
   const handleFoodChange = event => {
@@ -82,21 +137,37 @@ const TeacherView = () => {
                   ? `Admin`
                   : user.currentUser.schoolClass}
               </th>
-              <th name="pizza">
-                <img src={pizza} className="foodicon pizza meat" alt="pizza" />
-                Pizza
+              <th name={menu.optionOne.foodName}>
+                <img
+                  src={pizza}
+                  className={`foodicon ${menu.optionOne.dietary}`}
+                  alt={menu.optionOne.foodName}
+                />
+                {menu.optionOne.foodName}
               </th>
-              <th name="pasta">
-                <img src={pasta} className="foodicon pasta veg" alt="pasta" />
-                Pasta
+              <th name={menu.optionTwo.foodName}>
+                <img
+                  src={pasta}
+                  className={`foodicon ${menu.optionTwo.dietary}`}
+                  alt={menu.optionTwo.foodName}
+                />
+                {menu.optionTwo.foodName}
               </th>
-              <th name="fish">
-                <img src={fish} className="foodicon pizza fish" alt="fish" />
-                Fish and Chips
+              <th name={menu.optionThree.foodName}>
+                <img
+                  src={fish}
+                  className={`foodicon ${menu.optionThree.dietary}`}
+                  alt={menu.optionThree.foodName}
+                />
+                {menu.optionThree.foodName}
               </th>
-              <th name="quorn">
-                <img src={curry} className="foodicon pizza veg" alt="curry" />
-                Quorn Curry
+              <th name={menu.optionFour.foodName}>
+                <img
+                  src={curry}
+                  className={`foodicon ${menu.optionFour.dietary}`}
+                  alt={menu.optionFour.foodName}
+                />
+                {menu.optionFour.foodName}
               </th>
               <th name="noDinner">
                 <img
@@ -118,54 +189,134 @@ const TeacherView = () => {
                       : Child.childName}
                   </label>
                 </td>
-                <td value="pizza">
-                  <input
-                    type="radio"
-                    htmlFor="pizza"
-                    title="pizza"
-                    name={Child.id}
-                    value="pizza"
-                    onClick={handleFoodChange}
-                    data-id={index}
-                    defaultChecked={Child.foodOption === "pizza"}
-                  />
-                </td>
-                <td value="pasta">
-                  <input
-                    type="radio"
-                    htmlFor="pasta"
-                    title="pasta"
-                    name={Child.id}
-                    value="pasta"
-                    onClick={handleFoodChange}
-                    data-id={index}
-                    defaultChecked={Child.foodOption === "pasta"}
-                  />
-                </td>
-                <td value="fish">
-                  <input
-                    type="radio"
-                    htmlFor="fish"
-                    title="fish"
-                    name={Child.id}
-                    value="fish"
-                    onClick={handleFoodChange}
-                    data-id={index}
-                    defaultChecked={Child.foodOption === "fish"}
-                  />
-                </td>
-                <td value="quorn">
-                  <input
-                    type="radio"
-                    htmlFor="quorn"
-                    title="quorn"
-                    name={Child.id}
-                    value="quorn"
-                    onClick={handleFoodChange}
-                    data-id={index}
-                    defaultChecked={Child.foodOption === "quorn"}
-                  />
-                </td>
+                {allergens.optionOneAllergens !== "none" &&
+                allergens.optionOneAllergens === Child.allergies ? (
+                  <td value={menu.optionOne.value} className="allergicBox">
+                    <input
+                      type="radio"
+                      htmlFor={menu.optionOne.value}
+                      title={menu.optionOne.value}
+                      name={Child.id}
+                      value={menu.optionOne.value}
+                      onClick={handleFoodChange}
+                      data-id={index}
+                      defaultChecked={Child.foodOption === menu.optionOne.value}
+                      disabled
+                    />
+                    <p className="allergic">Allergic!</p>
+                  </td>
+                ) : (
+                  <td value={menu.optionOne.value}>
+                    <input
+                      type="radio"
+                      htmlFor={menu.optionOne.value}
+                      title={menu.optionOne.value}
+                      name={Child.id}
+                      value={menu.optionOne.value}
+                      onClick={handleFoodChange}
+                      data-id={index}
+                      defaultChecked={Child.foodOption === menu.optionOne.value}
+                    />
+                  </td>
+                )}
+                {allergens.optionTwoAllergens !== "none" &&
+                Child.allergies === allergens.optionTwoAllergens ? (
+                  <td value={menu.optionTwo.value} className="allergicBox">
+                    <input
+                      type="radio"
+                      htmlFor={menu.optionTwo.value}
+                      title={menu.optionTwo.value}
+                      name={Child.id}
+                      value={menu.optionTwo.value}
+                      onClick={handleFoodChange}
+                      data-id={index}
+                      defaultChecked={Child.foodOption === menu.optionTwo.value}
+                      disabled
+                    />
+                    <p className="allergic">Allergic!</p>
+                  </td>
+                ) : (
+                  <td value={menu.optionTwo.value}>
+                    <input
+                      type="radio"
+                      htmlFor={menu.optionTwo.value}
+                      title={menu.optionTwo.value}
+                      name={Child.id}
+                      value={menu.optionTwo.value}
+                      onClick={handleFoodChange}
+                      data-id={index}
+                      defaultChecked={Child.foodOption === menu.optionTwo.value}
+                    />
+                  </td>
+                )}
+                {allergens.optionThreeAllergens !== "none" &&
+                Child.allergies === allergens.optionThreeAllergens ? (
+                  <td value={menu.optionThree.value} className="allergicBox">
+                    <input
+                      type="radio"
+                      htmlFor={menu.optionThree.value}
+                      title={menu.optionThree.value}
+                      name={Child.id}
+                      value={menu.optionThree.value}
+                      onClick={handleFoodChange}
+                      data-id={index}
+                      defaultChecked={
+                        Child.foodOption === menu.optionThree.value
+                      }
+                      disabled
+                    />
+                    <p className="allergic">Allergic!</p>
+                  </td>
+                ) : (
+                  <td value={menu.optionThree.value}>
+                    <input
+                      type="radio"
+                      htmlFor={menu.optionThree.value}
+                      title={menu.optionThree.value}
+                      name={Child.id}
+                      value={menu.optionThree.value}
+                      onClick={handleFoodChange}
+                      data-id={index}
+                      defaultChecked={
+                        Child.foodOption === menu.optionThree.value
+                      }
+                    />
+                  </td>
+                )}
+                {allergens.optionFourAllergens !== "none" &&
+                Child.allergies === allergens.optionFourAllergens ? (
+                  <td value={menu.optionFour.value} className="allergicBox">
+                    <input
+                      type="radio"
+                      htmlFor={menu.optionFour.value}
+                      title={menu.optionFour.value}
+                      name={Child.id}
+                      value={menu.optionFour.value}
+                      onClick={handleFoodChange}
+                      data-id={index}
+                      defaultChecked={
+                        Child.foodOption === menu.optionFour.value
+                      }
+                      disabled
+                    />
+                    <p className="allergic">Allergic!</p>
+                  </td>
+                ) : (
+                  <td value={menu.optionFour.value}>
+                    <input
+                      type="radio"
+                      htmlFor={menu.optionFour.value}
+                      title={menu.optionFour.value}
+                      name={Child.id}
+                      value={menu.optionFour.value}
+                      onClick={handleFoodChange}
+                      data-id={index}
+                      defaultChecked={
+                        Child.foodOption === menu.optionFour.value
+                      }
+                    />
+                  </td>
+                )}
                 <td value="none">
                   <input
                     type="radio"
@@ -176,6 +327,7 @@ const TeacherView = () => {
                     onClick={handleFoodChange}
                     data-id={index}
                     defaultChecked={Child.foodOption === "none"}
+                    required
                   />
                 </td>
               </tr>

@@ -1,0 +1,113 @@
+.AddUser {
+  animation: foodMove 100s linear infinite;
+  background-image: url("../images/backgroundfood.png");
+  background-position: bottom;
+  background-repeat: repeat-x;
+  background-size: 10%;
+  height: stretch;
+}
+
+.p-tag-menu {
+  font-size: 2em;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.Alert {
+  color: rgb(96, 52, 153);
+}
+
+.addMenuForm {
+  display: block;
+  background: conic-gradient(
+    #dc3e43 20%,
+    #e9740e 20%,
+    #e9740e 40%,
+    #d2e367 40%,
+    #d2e367 60%,
+    #4cbf5d 60%,
+    #4cbf5d 80%,
+    #5383e9 80%,
+    #5383e9 100%
+  );
+  background-size: 300%;
+  background-position: -500px;
+  border-radius: 25px;
+  line-height: 3rem;
+  margin: auto;
+  padding: 1rem;
+  text-align: center;
+  width: 422px;
+}
+
+.type-label {
+  display: inline;
+  text-align: right;
+  width: 90px;
+}
+
+.register-label {
+  display: flex;
+  flex-direction: row;
+  justify-self: flex-end;
+  text-align: center;
+  line-height: 26px;
+  margin-bottom: 10px;
+  width: 100px;
+}
+
+.register-input {
+  width: 40%;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  align-self: flex-end;
+}
+
+.register-input,
+.foodAllergensSelect,
+.foodDietarySelect,
+.register-form-button {
+  font-family: "Otomanopee One", sans-serif;
+  text-align: center;
+  text-align-last: center;
+  -moz-text-align-last: center;
+  font-size: 1em;
+  height: 2em;
+  flex: 0 0 375px;
+  margin-left: 2em;
+}
+
+.foodAllergensSelect,
+.foodDietarySelect {
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.register-form-button {
+  background: rgb(96, 52, 153);
+  border: 0;
+  border-radius: 12px;
+  color: white;
+  padding: 10px 30px 35px;
+  margin-right: 40px;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.4em;
+}
+
+.register-form-button:hover {
+  animation: add-hover 1s forwards;
+  cursor: pointer;
+}
+
+@keyframes add-hover {
+  from {
+    background: rgb(103, 47, 176);
+  }
+  to {
+    background: rgb(134, 97, 181);
+  }
+}
