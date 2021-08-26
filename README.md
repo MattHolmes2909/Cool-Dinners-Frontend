@@ -32,8 +32,8 @@ This is a React web app that allows school staff to create and edit food orders 
 
 ## How to run:
 
-$ npm start
+    $ npm start
 
 ## How to test:
 
-$ npm test
+    $ npm test
