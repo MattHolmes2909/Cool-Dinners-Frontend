@@ -85,8 +85,19 @@ li {
 }
 
 .navbar-login {
-  position: absolute;
-  right: 20px;
+  float: right;
+}
+
+.navbar-login-text {
+  display: inline;
+  margin-left: 0.5rem;
+  position: relative;
+  bottom: 0.75rem;
+}
+
+.userIcon {
+  display: inline;
+  width: 36px;
 }
 
 .non-home {
@@ -102,8 +113,12 @@ li {
   background-color: #e9740e;
   border: 0;
   border-radius: 12px;
+  float: right;
   font-family: "Bebas Neue", sans-serif;
   font-size: 1.5rem;
+  margin-right: 2rem;
+  position: relative;
+  top: 0.25rem;
 }
 
 .logout-button:hover {

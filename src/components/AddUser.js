@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useContext } from "react/cjs/react.development";
 import { AuthContext } from "../contexts/AuthContext";
-import Alert from "./Alert"
+import Alert from "./Alert";
 import axios from "axios";
-import "../styles/AddUser.css"
+import "../styles/AddUser.css";
 
 const AddUser = () => {
   const user = useContext(AuthContext);
@@ -32,9 +32,15 @@ const AddUser = () => {
       })
       .then(res => {
         if (fields.password.length < 8) {
-          setAlert({ message: "Password must be more than 8 characters", isSuccess: false });
+          setAlert({
+            message: "Password must be more than 8 characters",
+            isSuccess: false,
+          });
         } else if (!/[A-Z]/.test(fields.password)) {
-          setAlert({ message: "Password must contain at least one capital letter", isSuccess: false });
+          setAlert({
+            message: "Password must contain at least one capital letter",
+            isSuccess: false,
+          });
         } else {
           console.log(res);
           setAlert({ message: "User Added", isSuccess: true });
@@ -53,12 +59,21 @@ const AddUser = () => {
       })
       .then(res => {
         if (fields.password.length < 8) {
-          setAlert({ message: "Password must be more than 8 characters", isSuccess: false });
+          setAlert({
+            message: "Password must be more than 8 characters",
+            isSuccess: false,
+          });
         } else if (!/[A-Z]/.test(fields.password)) {
-          setAlert({ message: "Password must contain at least one capital letter", isSuccess: false });
+          setAlert({
+            message: "Password must contain at least one capital letter",
+            isSuccess: false,
+          });
         } else {
           console.log(res);
-          setAlert({ message: "Your request has been sent to the admin.", isSuccess: true });
+          setAlert({
+            message: "Your request has been sent to the admin.",
+            isSuccess: true,
+          });
         }
       });
   };
@@ -71,7 +86,11 @@ const AddUser = () => {
   };
 
   return (
-    <div className="AddUser">
+    <div
+      className={
+        user.currentUser.userType === "admin" ? "AddUserAdmin" : "AddUser"
+      }
+    >
       {user.currentUser.userType === "admin" && (
         <>
           <form onSubmit={handleRegister} className="addUserForm">
@@ -79,15 +98,15 @@ const AddUser = () => {
             <div className="form-field">
               <label htmlFor="username" className="type-label">
                 Username:
-                </label>
-                <input
-                  name="username"
-                  className="register-input"
-                  placeholder="Your Username..."
-                  value={fields.username}
-                  onChange={handleFieldChange}
-                  required
-                />
+              </label>
+              <input
+                name="username"
+                className="register-input"
+                placeholder="Your Username..."
+                value={fields.username}
+                onChange={handleFieldChange}
+                required
+              />
             </div>
             <div className="form-user-password">
               <label htmlFor="password" className="type-label">
@@ -125,7 +144,7 @@ const AddUser = () => {
             {fields.userType === "teacher" && (
               <div className="form-user-class">
                 Class
-                <label htmlFor="user-class"className="register-label">
+                <label htmlFor="user-class" className="register-label">
                   <select
                     id="schoolClass"
                     className="userClassSelect"
@@ -181,15 +200,15 @@ const AddUser = () => {
             <div className="form-field">
               <label htmlFor="username" className="type-label">
                 Username:
-                </label>
-                <input
-                  name="username"
-                  className="register-input"
-                  placeholder="Your Username..."
-                  value={fields.username}
-                  onChange={handleFieldChange}
-                  required
-                />
+              </label>
+              <input
+                name="username"
+                className="register-input"
+                placeholder="Your Username..."
+                value={fields.username}
+                onChange={handleFieldChange}
+                required
+              />
             </div>
             <div className="form-user-password">
               <label htmlFor="password" className="type-label">
@@ -227,7 +246,7 @@ const AddUser = () => {
             {fields.userType === "teacher" && (
               <div className="form-user-class">
                 Class
-                <label htmlFor="user-class"className="register-label">
+                <label htmlFor="user-class" className="register-label">
                   <select
                     id="schoolClass"
                     className="userClassSelect"

@@ -7,6 +7,9 @@
 .tomorrow {
   display: inline-block;
   font-size: 1.5rem;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 1rem;
 }
 
 .tomorrow {
@@ -28,7 +31,7 @@ th {
   border: solid 6px;
   border-radius: 50%;
   margin: auto;
-  width: 50%;
+  width: 100px;
 }
 
 .meat {
@@ -53,7 +56,6 @@ th {
   color: black;
 }
 
-
 .classRow:nth-of-type(2n) {
   background-color: #854345;
 }
@@ -62,10 +64,9 @@ th {
 }
 
 .totalRow {
-    background-color: #0cc25e;
-    color: black;
-    font-size: 1.2rem;
-    ;
+  background-color: #0cc25e;
+  color: black;
+  font-size: 1.2rem;
 }
 
 td {
@@ -80,8 +81,8 @@ input {
   width: 100%;
 }
 
-.order-form-button {
-  background-color: #42ba78;
+.reset-button {
+  background-color: #d7d71e;
   border: 0;
   border-radius: 0 0 12px 12px;
   font-family: "Bebas Neue", sans-serif;

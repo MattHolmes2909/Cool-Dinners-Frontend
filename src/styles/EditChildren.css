@@ -6,6 +6,7 @@
 .class-button {
   border: 0;
   border-radius: 12px;
+  cursor: pointer;
   font-family: "Bebas Neue", sans-serif;
   font-size: 1.5rem;
   margin-right: 2rem;
@@ -22,6 +23,16 @@
 
 .class-button:last-of-type {
   margin-right: 0;
+}
+
+.class-button:hover {
+  animation: classButtonHover 0.5s forwards;
+}
+
+@keyframes classButtonHover {
+  to {
+    background-color: #b2c7be;
+  }
 }
 
 .table {

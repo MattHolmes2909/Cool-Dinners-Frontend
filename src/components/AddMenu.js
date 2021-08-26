@@ -45,8 +45,13 @@ const AddMenu = () => {
   };
 
   return (
-    <div className="AddUser">
-      {user.currentUser.userType === "admin" && (
+    <div
+      className={
+        user.currentUser.userType === "canteen" ? "AddMenu" : "AddMenuAdmin"
+      }
+    >
+      {(user.currentUser.userType === "admin" ||
+        user.currentUser.userType === "canteen") && (
         <>
           <form onSubmit={handleMenuAdd} className="addMenuForm">
             <p className="p-tag-menu">Add Menu Item</p>
@@ -93,7 +98,10 @@ const AddMenu = () => {
                   <option className="celery allergyOptionSelect" value="celery">
                     Celery
                   </option>
-                  <option className="crustaceans allergyOptionSelect" value="crustaceans">
+                  <option
+                    className="crustaceans allergyOptionSelect"
+                    value="crustaceans"
+                  >
                     Crustaceans
                   </option>
                   <option className="eggs allergyOptionSelect" value="eggs">
@@ -111,28 +119,49 @@ const AddMenu = () => {
                   <option className="milk allergyOptionSelect" value="milk">
                     Milk
                   </option>
-                  <option className="molluscs allergyOptionSelect" value="molluscs">
+                  <option
+                    className="molluscs allergyOptionSelect"
+                    value="molluscs"
+                  >
                     Molluscs
                   </option>
-                  <option className="mustard allergyOptionSelect" value="mustard">
+                  <option
+                    className="mustard allergyOptionSelect"
+                    value="mustard"
+                  >
                     Mustard
                   </option>
-                  <option className="peanuts allergyOptionSelect" value="peanuts">
+                  <option
+                    className="peanuts allergyOptionSelect"
+                    value="peanuts"
+                  >
                     Peanuts
                   </option>
                   <option className="sesame allergyOptionSelect" value="sesame">
                     Sesame
                   </option>
-                  <option className="soybeans allergyOptionSelect" value="soybeans">
+                  <option
+                    className="soybeans allergyOptionSelect"
+                    value="soybeans"
+                  >
                     Soybeans
                   </option>
-                  <option className="sulphites allergyOptionSelect" value="sulphites">
+                  <option
+                    className="sulphites allergyOptionSelect"
+                    value="sulphites"
+                  >
                     Sulphites
                   </option>
-                  <option className="treenuts allergyOptionSelect" value="treenuts">
+                  <option
+                    className="treenuts allergyOptionSelect"
+                    value="treenuts"
+                  >
                     Tree nuts
                   </option>
-                  <option className="multiple allergyOptionSelect" value="multiple">
+                  <option
+                    className="multiple allergyOptionSelect"
+                    value="multiple"
+                  >
                     Multiple Allergies
                   </option>
                 </select>

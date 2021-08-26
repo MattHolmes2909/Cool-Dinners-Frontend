@@ -65,7 +65,8 @@ const EditMenu = () => {
 
   return (
     <div className="EditMenu">
-      {user.currentUser.userType === "admin" && (
+      {(user.currentUser.userType === "admin" ||
+        user.currentUser.userType === "canteen") && (
         <>
           <table className="table table-responsive">
             <thead>

@@ -1,10 +1,19 @@
-.AddUser {
+.AddMenu {
   animation: foodMove 100s linear infinite;
   background-image: url("../images/backgroundfood.png");
   background-position: bottom;
   background-repeat: repeat-x;
   background-size: 10%;
-  height: stretch;
+  height: 85vh;
+}
+
+.AddMenuAdmin {
+  animation: foodMove 100s linear infinite;
+  background-image: url("../images/backgroundfood.png");
+  background-position: bottom;
+  background-repeat: repeat-x;
+  background-size: 10%;
+  height: 78vh;
 }
 
 .p-tag-menu {
@@ -32,7 +41,7 @@
     #5383e9 100%
   );
   background-size: 300%;
-  background-position: -500px;
+  background-position: 400px;
   border-radius: 25px;
   line-height: 3rem;
   margin: auto;

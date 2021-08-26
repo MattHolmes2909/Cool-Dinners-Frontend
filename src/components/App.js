@@ -7,6 +7,8 @@ import CanteenView from "./CanteenView";
 import AddChild from "./AddChild";
 import AddUser from "./AddUser";
 import AdminTools from "./AdminTools";
+import AddMenu from "./AddMenu";
+import EditMenu from "./EditMenu";
 import "../styles/App.css";
 
 function App() {
@@ -21,6 +23,8 @@ function App() {
         <Route path="/admin-tools" component={AdminTools} />
         <Route path="/admin-tools/add-user" component={AddUser} />
         <Route path="/add-user" component={AddUser} />
+        <Route path="/add-menu" component={AddMenu} />
+        <Route path="/edit-menu" component={EditMenu} />
       </Switch>
     </div>
   );

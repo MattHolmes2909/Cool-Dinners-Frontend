@@ -78,6 +78,16 @@ const CanteenView = () => {
     return fetchTotal();
   }, []);
 
+  const handleReset = event => {
+    event.preventDefault();
+    axios
+      .patch(`https://cool-dinners.herokuapp.com/canteen/reset`)
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(err => console.error(err));
+  };
+
   return (
     <div className="CanteenView">
       {(user.currentUser.userType === "canteen" ||
@@ -245,6 +255,13 @@ const CanteenView = () => {
                 </tr>
               </tbody>
             </table>
+            <button
+              type="submit"
+              className="reset-button"
+              onClick={handleReset}
+            >
+              Press to reset!
+            </button>
           </form>
         </>
       )}

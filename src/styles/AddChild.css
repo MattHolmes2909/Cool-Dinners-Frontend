@@ -1,21 +1,31 @@
 .AddChild {
-    animation: foodMove 100s linear infinite;
-    background-image: url("../images/backgroundfood.png");
-    background-position: bottom;
-    background-repeat: repeat-x;
-    background-size: 10%;
-    height: 85vh;
-  }
-  
-  .p-tag {
-    font-size: 2em;
-    padding-top: 1em;
-    text-align: center;
-  }
-  
-  .childform {
-    display: block;
-    background: conic-gradient(
+  animation: foodMove 100s linear infinite;
+  background-image: url("../images/backgroundfood.png");
+  background-position: bottom;
+  background-repeat: repeat-x;
+  background-size: 10%;
+  height: 85vh;
+}
+
+.AddChildAdmin {
+  animation: foodMove 100s linear infinite;
+  background-image: url("../images/backgroundfood.png");
+  background-position: bottom;
+  background-repeat: repeat-x;
+  background-size: 10%;
+  height: 78vh;
+}
+
+.p-tag {
+  font-size: 2em;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.childform {
+  display: block;
+  background: conic-gradient(
     #dc3e43 20%,
     #e9740e 20%,
     #e9740e 40%,
@@ -27,77 +37,87 @@
     #5383e9 100%
   );
   background-size: 300%;
-  background-position: -500px;
+  background-position: -100px;
   border-radius: 25px;
   line-height: 3rem;
   margin: auto;
   padding: 1rem;
   text-align: center;
   width: 351px;
-  }
-  
-  .childform-label {
-    display: flex;
-    flex-direction: row;
-    justify-self: flex-end;
-    text-align: center;
-    line-height: 26px;
-    margin-bottom: 10px;
-    padding-left: 25px;
-  }
+}
 
-  .childNameSelect {
-    width: 40%;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
+.childform-label {
+  display: flex;
+  flex-direction: row;
+  justify-self: flex-end;
+  text-align: center;
+  line-height: 26px;
+  margin-bottom: 10px;
+  padding-left: 25px;
+}
 
-  .childNameSelect,
-  .schoolClassSelect,
-  .foodSelect,
-  .allergiesSelect,
-  .childform-button {
-    text-align: center;
+.childNameSelect {
+  width: 40%;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.childNameSelect,
+.schoolClassSelect,
+.foodSelect,
+.allergiesSelect,
+.childform-button {
+  text-align: center;
   text-align-last: center;
   -moz-text-align-last: center;
-    font-size: 1em;
-    height: 2em;
-    flex: 0 0 250px;
-    margin-left: 2em;
-    font-family: "Otomanopee One", sans-serif
-  }
+  font-size: 1em;
+  height: 2em;
+  flex: 0 0 250px;
+  margin-left: 2em;
+  font-family: "Otomanopee One", sans-serif;
+}
 
-  .foodSelect,
-  .schoolClassSelect,
-  .allergiesSelect {
-    cursor: pointer;
-    border-radius: 12px;
-  }
+.foodSelect,
+.schoolClassSelect,
+.allergiesSelect {
+  cursor: pointer;
+  border-radius: 12px;
+}
 
-  .childform-button {
-    background: rgb(96, 52, 153);
-    border: 0;
-    border-radius: 12px;
-    color: white;
-    padding: 10px 30px 35px;
-    margin-bottom: 1em;
-    margin-top: 1em;
-    margin-right: 40px;
-    font-family: "Bebas Neue", sans-serif;
-    font-size: 1.4em;
+.child-class-select {
+  position: relative;
+  right: 2.2rem;
+}
+
+.teacher-class {
+  font-size: 1.2rem;
+  margin-left: 1.9rem;
+}
+
+.childform-button {
+  background: rgb(96, 52, 153);
+  border: 0;
+  border-radius: 12px;
+  color: white;
+  padding: 10px 30px 35px;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  margin-right: 40px;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.4em;
+}
+
+.childform-button:hover {
+  animation: add-hover 1s forwards;
+  cursor: pointer;
+}
+
+@keyframes add-hover {
+  from {
+    background: rgb(103, 47, 176);
   }
-  
-  .childform-button:hover {
-    animation: add-hover 1s forwards;
-    cursor: pointer;
+  to {
+    background: rgb(134, 97, 181);
   }
-  
-  @keyframes add-hover {
-    from {
-      background: rgb(103, 47, 176);
-    }
-    to {
-      background: rgb(134, 97, 181);
-    }
-  }
+}

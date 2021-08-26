@@ -38,22 +38,25 @@ const EditUser = () => {
 
   const ConfirmPendingUser = async event => {
     event.preventDefault();
-    await axios.post(`https://cool-dinners.herokuapp.com/register/pending/${event.target.value}`)
-    .then(response => {
-      console.log(response.data);
-    })
-    .catch(err => console.error(err));
     await axios
-    .get(`https://cool-dinners.herokuapp.com/register/pending`)
-    .then(response => {
-      setPendingUsers(response.data);
-    });
+      .post(
+        `https://cool-dinners.herokuapp.com/register/pending/${event.target.value}`
+      )
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(err => console.error(err));
+    await axios
+      .get(`https://cool-dinners.herokuapp.com/register/pending`)
+      .then(response => {
+        setPendingUsers(response.data);
+      });
     await axios
       .get(`https://cool-dinners.herokuapp.com/users`)
       .then(response => {
         setUsers(response.data);
       });
-  }
+  };
 
   const handleDelete = async event => {
     event.preventDefault();
@@ -106,7 +109,7 @@ const EditUser = () => {
                   User Type
                 </th>
                 <th className="deleteUser" name="deleteUser">
-                  Delete User
+                  Approve/Delete User
                 </th>
               </tr>
             </thead>
@@ -149,23 +152,23 @@ const EditUser = () => {
                   </td>
                   <td>
                     {User.userType !== "admin" && (
-                       <>
-                       <button
-                       type="submit"
-                       className="confirm-button"
-                       value={User.id}
-                       onClick={ConfirmPendingUser}
-                     >
-                       ✔
-                     </button>
-                      <button
-                        type="submit"
-                        className="delete-button"
-                        value={User.id}
-                        onClick={handlePendingDelete}
-                      >
-                        X
-                      </button>
+                      <>
+                        <button
+                          type="submit"
+                          className="confirm-button"
+                          value={User.id}
+                          onClick={ConfirmPendingUser}
+                        >
+                          ✔
+                        </button>
+                        <button
+                          type="submit"
+                          className="delete-button"
+                          value={User.id}
+                          onClick={handlePendingDelete}
+                        >
+                          X
+                        </button>
                       </>
                     )}
                   </td>

@@ -1,33 +1,121 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useContext } from "react/cjs/react.development";
 import { AuthContext } from "../contexts/AuthContext";
 import PostChild from "../requests/PostChild";
 import Alert from "./Alert";
+import axios from "axios";
 import "../styles/AddChild.css";
 
 const AddChild = () => {
   const user = useContext(AuthContext);
 
-  const initialState = {
-    fields: {
-      childName: "",
-      schoolClass: "1DS",
-      foodOption: "none",
-      allergies: "none",
+  let initialState;
+
+  user.currentUser.userType === "admin"
+    ? (initialState = {
+        fields: {
+          childName: "",
+          schoolClass: "1DS",
+          foodOption: "none",
+          allergies: "none",
+        },
+        alert: {
+          message: "",
+          isSuccess: false,
+        },
+      })
+    : (initialState = {
+        fields: {
+          childName: "",
+          schoolClass: user.currentUser.schoolClass,
+          foodOption: "none",
+          allergies: "none",
+        },
+        alert: {
+          message: "",
+          isSuccess: false,
+        },
+      });
+
+  const [menu, setMenu] = useState({
+    optionOne: {
+      id: 0,
+      foodName: "...",
+      value: "...",
+      foodOptionNum: 1,
+      allergens: "...",
+      dietary: "...",
     },
-    alert: {
-      message: "",
-      isSuccess: false,
+    optionTwo: {
+      id: 0,
+      foodName: "...",
+      value: "...",
+      foodOptionNum: 2,
+      allergens: "...",
+      dietary: "...",
     },
-  };
+    optionThree: {
+      id: 0,
+      foodName: "...",
+      value: "...",
+      foodOptionNum: 3,
+      allergens: "...",
+      dietary: "...",
+    },
+    optionFour: {
+      id: 0,
+      foodName: "...",
+      value: "...",
+      foodOptionNum: 4,
+      allergens: "...",
+      dietary: "...",
+    },
+  });
 
   const [fields, setFields] = useState(initialState.fields);
   const [alert, setAlert] = useState(initialState.alert);
 
+  useEffect(() => {
+    async function fetchData() {
+      await axios
+        .get(`https://cool-dinners.herokuapp.com/menu/current`)
+        .then(res => {
+          setMenu(res.data);
+        })
+        .catch(err => console.error(err));
+    }
+    return fetchData();
+  }, [
+    user.currentUser.schoolClass,
+    user.currentUser.userType,
+    menu.optionOne.allergens,
+    menu.optionTwo.allergens,
+    menu.optionThree.allergens,
+    menu.optionFour.allergens,
+  ]);
+
   const handleAddChild = event => {
     event.preventDefault();
-    setAlert({ message: "", isSuccess: false });
-    PostChild(fields, setAlert);
+    if (
+      fields.allergies !== "none" &&
+      ((fields.foodOption === menu.optionOne.value &&
+        fields.allergies === menu.optionOne.allergens) ||
+        (fields.foodOption === menu.optionTwo.value &&
+          fields.allergies === menu.optionTwo.allergens) ||
+        (fields.foodOption === menu.optionThree.value &&
+          fields.allergies === menu.optionThree.allergens) ||
+        (fields.foodOption === menu.optionFour.value &&
+          fields.allergies === menu.optionFour.allergens))
+    ) {
+      setAlert({
+        message:
+          "Allergies match with chosen order's allergens. Please choose a different meal.",
+        isSuccess: false,
+      });
+    } else {
+      setAlert({ message: "", isSuccess: false });
+      PostChild(fields, setAlert);
+    }
   };
 
   const handleFieldChange = event => {
@@ -35,7 +123,11 @@ const AddChild = () => {
   };
 
   return (
-    <div className="AddChild">
+    <div
+      className={
+        user.currentUser.userType === "teacher" ? "AddChild" : "AddChildAdmin"
+      }
+    >
       {(user.currentUser.userType === "admin" ||
         user.currentUser.userType === "teacher") && (
         <>
@@ -44,7 +136,8 @@ const AddChild = () => {
             <div className="childform-title">
               <label htmlFor="title">
                 Child Name:
-                <input className="childNameSelect"
+                <input
+                  className="childNameSelect"
                   name="childName"
                   value={fields.childName}
                   onChange={handleFieldChange}
@@ -52,33 +145,46 @@ const AddChild = () => {
                 />
               </label>
             </div>
-            <div className="childform-title">
-              Class
-              <label htmlFor="child-class" className="childform-label">
-                <select
-                  id="schoolClass"
-                  className="schoolClassSelect"
-                  name="schoolClass"
-                  value={fields.schoolClass}
-                  onChange={handleFieldChange}
-                >
-                  <option className="1DS classSelect" value="1DS">
-                    1DS
-                  </option>
-                  <option className="1MH classSelect" value="1MH">
-                    1MH
-                  </option>
-                  <option className="2AW classSelect" value="2AW">
-                    2AW
-                  </option>
-                  <option className="2NM classSelect" value="2NM">
-                    2NM
-                  </option>
-                </select>
-              </label>
+            <div
+              className={
+                user.currentUser.userType === "teacher"
+                  ? "childform-title child-class-select"
+                  : "childform-title child-class-select-admin"
+              }
+            >
+              Class:
+              {user.currentUser.userType === "admin" && (
+                <label htmlFor="child-class" className="childform-label">
+                  <select
+                    id="schoolClass"
+                    className="schoolClassSelect"
+                    name="schoolClass"
+                    value={fields.schoolClass}
+                    onChange={handleFieldChange}
+                  >
+                    <option className="1DS classSelect" value="1DS">
+                      1DS
+                    </option>
+                    <option className="1MH classSelect" value="1MH">
+                      1MH
+                    </option>
+                    <option className="2AW classSelect" value="2AW">
+                      2AW
+                    </option>
+                    <option className="2NM classSelect" value="2NM">
+                      2NM
+                    </option>
+                  </select>
+                </label>
+              )}
+              {user.currentUser.userType === "teacher" && (
+                <span className="teacher-class">
+                  {user.currentUser.schoolClass}
+                </span>
+              )}
             </div>
             <div className="childform-title">
-              Order
+              Order:
               <label htmlFor="child-order" className="childform-label">
                 <select
                   id="foodOption"
@@ -90,23 +196,35 @@ const AddChild = () => {
                   <option className="none foodOptionSelect" value="none">
                     None
                   </option>
-                  <option className="pizza foodOptionSelect" value="pizza">
-                    Pizza
+                  <option
+                    className="foodOptionSelect"
+                    value={menu.optionOne.value}
+                  >
+                    {menu.optionOne.foodName}
                   </option>
-                  <option className="pasta foodOptionSelect" value="pasta">
-                    Pasta
+                  <option
+                    className="foodOptionSelect"
+                    value={menu.optionTwo.value}
+                  >
+                    {menu.optionTwo.foodName}
                   </option>
-                  <option className="fish foodOptionSelect" value="fish">
-                    Fish
+                  <option
+                    className="foodOptionSelect"
+                    value={menu.optionThree.value}
+                  >
+                    {menu.optionThree.foodName}
                   </option>
-                  <option className="quorn foodOptionSelect" value="quorn">
-                    Quorn
+                  <option
+                    className="foodOptionSelect"
+                    value={menu.optionFour.value}
+                  >
+                    {menu.optionFour.foodName}
                   </option>
                 </select>
               </label>
             </div>
             <div className="childform-title">
-              Allergies
+              Allergies:
               <label htmlFor="allergies" className="childform-label">
                 <select
                   id="allergies"
@@ -121,7 +239,10 @@ const AddChild = () => {
                   <option className="celery allergyOptionSelect" value="celery">
                     Celery
                   </option>
-                  <option className="crustaceans allergyOptionSelect" value="crustaceans">
+                  <option
+                    className="crustaceans allergyOptionSelect"
+                    value="crustaceans"
+                  >
                     Crustaceans
                   </option>
                   <option className="eggs allergyOptionSelect" value="eggs">
@@ -139,28 +260,49 @@ const AddChild = () => {
                   <option className="milk allergyOptionSelect" value="milk">
                     Milk
                   </option>
-                  <option className="molluscs allergyOptionSelect" value="molluscs">
+                  <option
+                    className="molluscs allergyOptionSelect"
+                    value="molluscs"
+                  >
                     Molluscs
                   </option>
-                  <option className="mustard allergyOptionSelect" value="mustard">
+                  <option
+                    className="mustard allergyOptionSelect"
+                    value="mustard"
+                  >
                     Mustard
                   </option>
-                  <option className="peanuts allergyOptionSelect" value="peanuts">
+                  <option
+                    className="peanuts allergyOptionSelect"
+                    value="peanuts"
+                  >
                     Peanuts
                   </option>
                   <option className="sesame allergyOptionSelect" value="sesame">
                     Sesame
                   </option>
-                  <option className="soybeans allergyOptionSelect" value="soybeans">
+                  <option
+                    className="soybeans allergyOptionSelect"
+                    value="soybeans"
+                  >
                     Soybeans
                   </option>
-                  <option className="sulphites allergyOptionSelect" value="sulphites">
+                  <option
+                    className="sulphites allergyOptionSelect"
+                    value="sulphites"
+                  >
                     Sulphites
                   </option>
-                  <option className="treenuts allergyOptionSelect" value="treenuts">
+                  <option
+                    className="treenuts allergyOptionSelect"
+                    value="treenuts"
+                  >
                     Tree nuts
                   </option>
-                  <option className="multiple allergyOptionSelect" value="multiple">
+                  <option
+                    className="multiple allergyOptionSelect"
+                    value="multiple"
+                  >
                     Multiple Allergies
                   </option>
                 </select>
