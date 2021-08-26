@@ -53,6 +53,26 @@ td {
   padding: 1rem;
 }
 
+.confirm-button {
+  background-color: #33e023;
+  border: 0;
+  border-radius: 15px;
+  color: white;
+  font-size: 1rem;
+  padding: 1rem;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+.confirm-button:hover {
+  animation: confirmButtonHover 0.5s forwards;
+}
+
+@keyframes confirmButtonHover {
+  to {
+    background-color: #1bd11b;
+  }
+}
+
 .userRow:hover {
   animation: userGlowHover 0.5s forwards;
 }

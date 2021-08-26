@@ -58,7 +58,7 @@ const AddUser = () => {
           setAlert({ message: "Password must contain at least one capital letter", isSuccess: false });
         } else {
           console.log(res);
-          setAlert({ message: "User Added", isSuccess: true });
+          setAlert({ message: "Your request has been sent to the admin.", isSuccess: true });
         }
       });
   };
