@@ -9,6 +9,21 @@ This is a React web app that allows school staff to create and edit food orders 
 - Children with allergies are unable to order food with matching allergens;
 - Admin users are able to add and edit users and children, menu and food options, and can approve pending users.
 
+## Built With:
+
+- React;
+- HTML;
+- CSS;
+- Axios;
+- JavaScript;
+- Node.js;
+- Moment.js.
+
+## Testing Methods:
+
+- Jest;
+- React Testing Library.
+
 
 
 
