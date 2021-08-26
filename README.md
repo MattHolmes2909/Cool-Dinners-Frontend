@@ -1,6 +1,6 @@
 # Welcome to Cool Dinners - the future in school dinner ordering!
 
-## By Matt Holmes and Dean Spooner
+## By [Matt Holmes](https://github.com/MattHolmes2909) and [Dean Spooner](https://github.com/DeanSpooner)
 
 
 
