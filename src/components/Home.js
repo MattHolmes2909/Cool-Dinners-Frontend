@@ -1,9 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import axios from "axios";
 import "../styles/Home.css";
 import { useContext } from "react/cjs/react.development";
 import { AuthContext } from "../contexts/AuthContext";
 import { useHistory, Link } from "react-router-dom";
+import Alert from "./Alert";
 
 const Home = () => {
   const user = useContext(AuthContext);
@@ -16,30 +17,53 @@ const Home = () => {
     user.setPassword(event.target.value);
   };
 
+  const initialState = {
+    alert: {
+    message: "",
+    isSuccess: false,
+  }
+  }
+
+  const [alert, setAlert] = useState(initialState.alert)
+
   const username = user.username;
 
   const password = user.password;
 
   const history = useHistory();
 
-  const handleLogin = event => {
+  const handleLogin = async event => {
     event.preventDefault();
-    axios
-      .post("https://cool-dinners.herokuapp.com/login", { username, password })
+    let isPending;
+    await axios
+      .get("https://cool-dinners.herokuapp.com/register/pending")
       .then(res => {
-        if (!res.data.auth) {
-          user.setAuth(false);
-        } else {
-          localStorage.setItem("token", res.data.token);
-          localStorage.setItem("user", JSON.stringify(res.data));
-          user.setCurrentUser(JSON.parse(localStorage.getItem("user")));
-          console.log(user.currentUser);
-          user.setAuth(true);
-          history.push("/");
-          user.setUsername("");
-          user.setPassword("");
-        }
-      });
+      const exists = (element) => element.username === username;
+      isPending = res.data.some(exists)
+      console.log(res.data)
+      })
+      if (!isPending) {
+        axios
+        .post("https://cool-dinners.herokuapp.com/login", { username, password })
+        .then(res => {
+          if (!res.data.auth) {
+            user.setAuth(false);
+            setAlert({ message: "User does not exist", isSuccess: false })
+          } else {
+            localStorage.setItem("token", res.data.token);
+            localStorage.setItem("user", JSON.stringify(res.data));
+            user.setCurrentUser(JSON.parse(localStorage.getItem("user")));
+            console.log(user.currentUser);
+            user.setAuth(true);
+            history.push("/");
+            user.setUsername("");
+            user.setPassword("");
+          } 
+          }
+        ); 
+      } else {
+        setAlert({ message: "Registration is still pending. Please try again later", isSuccess: false })
+      }
   };
 
   return (
@@ -79,6 +103,7 @@ const Home = () => {
               <button type="submit" className="login-form-button">
                 Login
               </button>
+              <Alert message={alert.message} success={alert.isSuccess} />
               <br />
             </form>
             <form>
