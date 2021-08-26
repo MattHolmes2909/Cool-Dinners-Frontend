@@ -13,7 +13,7 @@ const AddUser = () => {
       username: "",
       password: "",
       userType: "teacher",
-      schoolClass: "",
+      schoolClass: "1DS",
     },
     alert: {
       message: "",
@@ -25,6 +25,27 @@ const AddUser = () => {
     event.preventDefault();
     axios
       .post("https://cool-dinners.herokuapp.com/register", {
+        username: fields.username,
+        password: fields.password,
+        userType: fields.userType,
+        schoolClass: fields.schoolClass,
+      })
+      .then(res => {
+        if (fields.password.length < 8) {
+          setAlert({ message: "Password must be more than 8 characters", isSuccess: false });
+        } else if (!/[A-Z]/.test(fields.password)) {
+          setAlert({ message: "Password must contain at least one capital letter", isSuccess: false });
+        } else {
+          console.log(res);
+          setAlert({ message: "User Added", isSuccess: true });
+        }
+      });
+  };
+
+  const handlePendingRegister = event => {
+    event.preventDefault();
+    axios
+      .post("https://cool-dinners.herokuapp.com/register/pending", {
         username: fields.username,
         password: fields.password,
         userType: fields.userType,
@@ -155,7 +176,7 @@ const AddUser = () => {
       )}
       {!localStorage.getItem("token") && (
         <>
-          <form onSubmit={handleRegister} className="addUserForm">
+          <form onSubmit={handlePendingRegister} className="addUserForm">
             <p className="p-tag-user">Add User</p>
             <div className="form-field">
               <label htmlFor="username" className="type-label">
