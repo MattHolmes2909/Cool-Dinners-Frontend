@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/cool-dinners-frontend/static/css/main.3e2bf54a.chunk.css",
+    "main.js": "/cool-dinners-frontend/static/js/main.320b7695.chunk.js",
+    "main.js.map": "/cool-dinners-frontend/static/js/main.320b7695.chunk.js.map",
+    "runtime-main.js": "/cool-dinners-frontend/static/js/runtime-main.cef34d72.js",
+    "runtime-main.js.map": "/cool-dinners-frontend/static/js/runtime-main.cef34d72.js.map",
+    "static/js/2.425251c9.chunk.js": "/cool-dinners-frontend/static/js/2.425251c9.chunk.js",
+    "static/js/2.425251c9.chunk.js.map": "/cool-dinners-frontend/static/js/2.425251c9.chunk.js.map",
+    "index.html": "/cool-dinners-frontend/index.html",
+    "static/css/main.3e2bf54a.chunk.css.map": "/cool-dinners-frontend/static/css/main.3e2bf54a.chunk.css.map",
+    "static/js/2.425251c9.chunk.js.LICENSE.txt": "/cool-dinners-frontend/static/js/2.425251c9.chunk.js.LICENSE.txt",
+    "static/media/AddMenu.css": "/cool-dinners-frontend/static/media/backgroundfood.c328eb09.png",
+    "static/media/curry.ba17641b.png": "/cool-dinners-frontend/static/media/curry.ba17641b.png",
+    "static/media/pizza.0dada631.png": "/cool-dinners-frontend/static/media/pizza.0dada631.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.cef34d72.js",
+    "static/js/2.425251c9.chunk.js",
+    "static/css/main.3e2bf54a.chunk.css",
+    "static/js/main.320b7695.chunk.js"
+  ]
+}
