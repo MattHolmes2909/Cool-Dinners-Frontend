@@ -20,6 +20,7 @@ function App() {
         <Route path="/Add-Child" component={AddChild} />
         <Route path="/admin-tools" component={AdminTools} />
         <Route path="/admin-tools/add-user" component={AddUser} />
+        <Route path="/add-user" component={AddUser} />
       </Switch>
     </div>
   );

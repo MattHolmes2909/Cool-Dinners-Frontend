@@ -153,6 +153,108 @@ const AddUser = () => {
           </form>
         </>
       )}
+      {!localStorage.getItem("token") && (
+        <>
+          <form onSubmit={handleRegister} className="addUserForm">
+            <p className="p-tag-user">Add User</p>
+            <div className="form-field">
+              <label htmlFor="username" className="type-label">
+                Username:
+                </label>
+                <input
+                  name="username"
+                  className="register-input"
+                  placeholder="Your Username..."
+                  value={fields.username}
+                  onChange={handleFieldChange}
+                  required
+                />
+            </div>
+            <div className="form-user-password">
+              <label htmlFor="password" className="type-label">
+                Password:
+              </label>
+              <input
+                className="register-input"
+                type="password"
+                placeholder="Your Password..."
+                name="password"
+                onChange={handleFieldChange}
+                required
+              />
+            </div>
+            <div className="form-user-order">
+              User Type
+              <label htmlFor="user-type" className="register-label">
+                <select
+                  id="userType"
+                  className="userTypeSelect"
+                  name="userType"
+                  value={fields.userType}
+                  onChange={handleFieldChange}
+                  required
+                >
+                  <option className="teacher userTypeSelect" value="teacher">
+                    Teacher
+                  </option>
+                  <option className="canteen userTypeSelect" value="canteen">
+                    Canteen
+                  </option>
+                </select>
+              </label>
+            </div>
+            {fields.userType === "teacher" && (
+              <div className="form-user-class">
+                Class
+                <label htmlFor="user-class"className="register-label">
+                  <select
+                    id="schoolClass"
+                    className="userClassSelect"
+                    name="schoolClass"
+                    value={fields.schoolClass}
+                    onChange={handleFieldChange}
+                  >
+                    <option className="1DS userClassSelect" value="1DS">
+                      1DS
+                    </option>
+                    <option className="1MH userClassSelect" value="1MH">
+                      1MH
+                    </option>
+                    <option className="2AW userClassSelect" value="2AW">
+                      2AW
+                    </option>
+                    <option className="2NM userClassSelect" value="2NM">
+                      2NM
+                    </option>
+                  </select>
+                </label>
+              </div>
+            )}
+            {fields.userType === "canteen" && (
+              <div className="form-user-class">
+                Class
+                <label htmlFor="user-class" className="register-label">
+                  <select
+                    id="schoolClass"
+                    className="userClassSelect"
+                    name="schoolClass"
+                    value={fields.schoolClass}
+                    onChange={handleFieldChange}
+                  >
+                    <option className="all userClassSelect" value={null}>
+                      All
+                    </option>
+                  </select>
+                </label>
+              </div>
+            )}
+            <button type="submit" className="register-form-button">
+              Register
+            </button>
+            <Alert message={alert.message} success={alert.isSuccess} />
+          </form>
+        </>
+      )}
     </div>
   );
 };

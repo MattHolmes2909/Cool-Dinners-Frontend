@@ -87,20 +87,53 @@ const AddMenu = () => {
                   onChange={handleFieldChange}
                   required
                 >
-                  <option className="none foodAllergensSelect" value="none">
+                  <option className="none allergyOptionSelect" value="none">
                     None
                   </option>
-                  <option className="dairy foodAllergensSelect" value="dairy">
-                    Dairy
+                  <option className="celery allergyOptionSelect" value="celery">
+                    Celery
                   </option>
-                  <option className="wheat foodAllergensSelect" value="wheat">
-                    Wheat
+                  <option className="crustaceans allergyOptionSelect" value="crustaceans">
+                    Crustaceans
                   </option>
-                  <option className="nuts foodAllergensSelect" value="nuts">
-                    Nuts
+                  <option className="eggs allergyOptionSelect" value="eggs">
+                    Eggs
                   </option>
-                  <option className="fish foodAllergensSelect" value="fish">
+                  <option className="fish allergyOptionSelect" value="fish">
                     Fish
+                  </option>
+                  <option className="gluten allergyOptionSelect" value="gluten">
+                    Gluten
+                  </option>
+                  <option className="lupin allergyOptionSelect" value="lupin">
+                    Lupin
+                  </option>
+                  <option className="milk allergyOptionSelect" value="milk">
+                    Milk
+                  </option>
+                  <option className="molluscs allergyOptionSelect" value="molluscs">
+                    Molluscs
+                  </option>
+                  <option className="mustard allergyOptionSelect" value="mustard">
+                    Mustard
+                  </option>
+                  <option className="peanuts allergyOptionSelect" value="peanuts">
+                    Peanuts
+                  </option>
+                  <option className="sesame allergyOptionSelect" value="sesame">
+                    Sesame
+                  </option>
+                  <option className="soybeans allergyOptionSelect" value="soybeans">
+                    Soybeans
+                  </option>
+                  <option className="sulphites allergyOptionSelect" value="sulphites">
+                    Sulphites
+                  </option>
+                  <option className="treenuts allergyOptionSelect" value="treenuts">
+                    Tree nuts
+                  </option>
+                  <option className="multiple allergyOptionSelect" value="multiple">
+                    Multiple Allergies
                   </option>
                 </select>
               </label>

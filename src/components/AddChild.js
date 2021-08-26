@@ -88,19 +88,19 @@ const AddChild = () => {
                   onChange={handleFieldChange}
                 >
                   <option className="none foodOptionSelect" value="none">
-                    none
+                    None
                   </option>
                   <option className="pizza foodOptionSelect" value="pizza">
-                    pizza
+                    Pizza
                   </option>
                   <option className="pasta foodOptionSelect" value="pasta">
-                    pasta
+                    Pasta
                   </option>
                   <option className="fish foodOptionSelect" value="fish">
-                    fish
+                    Fish
                   </option>
                   <option className="quorn foodOptionSelect" value="quorn">
-                    quorn
+                    Quorn
                   </option>
                 </select>
               </label>
@@ -116,19 +116,52 @@ const AddChild = () => {
                   onChange={handleFieldChange}
                 >
                   <option className="none allergyOptionSelect" value="none">
-                    none
+                    None
                   </option>
-                  <option className="dairy allergyOptionSelect" value="dairy">
-                    dairy
+                  <option className="celery allergyOptionSelect" value="celery">
+                    Celery
                   </option>
-                  <option className="wheat allergyOptionSelect" value="wheat">
-                    wheat
+                  <option className="crustaceans allergyOptionSelect" value="crustaceans">
+                    Crustaceans
                   </option>
-                  <option className="nuts allergyOptionSelect" value="nuts">
-                    nuts
+                  <option className="eggs allergyOptionSelect" value="eggs">
+                    Eggs
                   </option>
                   <option className="fish allergyOptionSelect" value="fish">
-                    fish
+                    Fish
+                  </option>
+                  <option className="gluten allergyOptionSelect" value="gluten">
+                    Gluten
+                  </option>
+                  <option className="lupin allergyOptionSelect" value="lupin">
+                    Lupin
+                  </option>
+                  <option className="milk allergyOptionSelect" value="milk">
+                    Milk
+                  </option>
+                  <option className="molluscs allergyOptionSelect" value="molluscs">
+                    Molluscs
+                  </option>
+                  <option className="mustard allergyOptionSelect" value="mustard">
+                    Mustard
+                  </option>
+                  <option className="peanuts allergyOptionSelect" value="peanuts">
+                    Peanuts
+                  </option>
+                  <option className="sesame allergyOptionSelect" value="sesame">
+                    Sesame
+                  </option>
+                  <option className="soybeans allergyOptionSelect" value="soybeans">
+                    Soybeans
+                  </option>
+                  <option className="sulphites allergyOptionSelect" value="sulphites">
+                    Sulphites
+                  </option>
+                  <option className="treenuts allergyOptionSelect" value="treenuts">
+                    Tree nuts
+                  </option>
+                  <option className="multiple allergyOptionSelect" value="multiple">
+                    Multiple Allergies
                   </option>
                 </select>
               </label>

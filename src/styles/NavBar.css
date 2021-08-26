@@ -85,7 +85,8 @@ li {
 }
 
 .navbar-login {
-  padding-left: 350px;
+  position: absolute;
+  right: 20px;
 }
 
 .non-home {

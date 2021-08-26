@@ -13,8 +13,10 @@ const PostChild = ({ childName, schoolClass, foodOption, allergies }, setAlert) 
         allergies
     })
     .then((response) => {
-        if ((foodOption === "fish" && allergies === "fish") || (foodOption === "pizza" && allergies === "wheat") || (foodOption === "pizza" && allergies === "dairy")|| (foodOption === "pasta" && allergies === "dairy")) {
+        if ((foodOption === "fish" && allergies === "fish") || (foodOption === "pizza" && allergies === "gluten") || (foodOption === "pizza" && allergies === "milk")|| (foodOption === "pasta" && allergies === "milk")) {
             setAlert({ message: "Food selected contains allergen products", isSuccess: false })
+        } else if (allergies==="multiple") {
+            setAlert({ message: "Please speak to your canteen staff regarding your allergies", isSuccess: false })
         } else {
         setAlert({
             message: "Child Added",

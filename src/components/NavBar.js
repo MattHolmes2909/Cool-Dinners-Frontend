@@ -65,7 +65,7 @@ const NavBar = () => {
         )}
         {localStorage.getItem("token") && (
           <li className = "navbar-login">
-            <p>You are currently logged in as {user.currentUser.username}</p>
+            <p className="navbar-login">{user.currentUser.username}</p>
           </li>
         )}
       </ul>
