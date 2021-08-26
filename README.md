@@ -26,9 +26,9 @@ This is a React web app that allows school staff to create and edit food orders 
 
 ## How to install:
 
-$ git clone https://github.com/MattHolmes2909/Cool-Dinners-Frontend
-$ cd Cool-Dinners-Frontend
-$ npm install
+    $ git clone https://github.com/MattHolmes2909/Cool-Dinners-Frontend
+    $ cd Cool-Dinners-Frontend
+    $ npm install
 
 ## How to run:
 
