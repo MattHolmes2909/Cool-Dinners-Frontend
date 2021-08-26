@@ -8,6 +8,7 @@ const EditUser = () => {
   const user = useContext(AuthContext);
 
   const [users, setUsers] = useState([]);
+  const [pendingUsers, setPendingUsers] = useState([]);
 
   useEffect(() => {
     async function fetchUser() {
@@ -22,6 +23,19 @@ const EditUser = () => {
     return fetchUser();
   }, [user.currentUser.schoolClass, user.currentUser.userType]);
 
+  useEffect(() => {
+    async function fetchPendingUser() {
+      await axios
+        .get(`https://cool-dinners.herokuapp.com/register/pending`)
+        .then(response => {
+          console.log(response.data);
+          setPendingUsers(response.data);
+        })
+        .catch(err => console.error(err));
+    }
+    return fetchPendingUser();
+  }, []);
+
   const handleDelete = async event => {
     event.preventDefault();
     await axios
@@ -35,6 +49,24 @@ const EditUser = () => {
       .get(`https://cool-dinners.herokuapp.com/users`)
       .then(response => {
         setUsers(response.data);
+      });
+  };
+
+  const handlePendingDelete = async event => {
+    event.preventDefault();
+    await axios
+      .delete(
+        `https://cool-dinners.herokuapp.com/register/pending/${event.target.value}`
+      )
+      .then(response => {
+        console.log(response.data);
+        console.log("Pending user deleted!");
+      })
+      .catch(err => console.error(err));
+    await axios
+      .get(`https://cool-dinners.herokuapp.com/register/pending`)
+      .then(response => {
+        setPendingUsers(response.data);
       });
   };
 
@@ -78,6 +110,31 @@ const EditUser = () => {
                         className="delete-button"
                         value={User.id}
                         onClick={handleDelete}
+                      >
+                        X
+                      </button>
+                    )}
+                  </td>
+                </tr>
+              ))}
+              {pendingUsers.map((User, index) => (
+                <tr className="pendingUserRow" key={User.id}>
+                  <td>
+                    <label htmlFor="username">{User.username}</label>
+                  </td>
+                  <td>
+                    <label htmlFor="schoolClass">{User.schoolClass}</label>
+                  </td>
+                  <td>
+                    <label htmlFor="userType">{User.userType}</label>
+                  </td>
+                  <td>
+                    {User.userType !== "admin" && (
+                      <button
+                        type="submit"
+                        className="delete-button"
+                        value={User.id}
+                        onClick={handlePendingDelete}
                       >
                         X
                       </button>

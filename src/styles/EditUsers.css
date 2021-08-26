@@ -33,6 +33,13 @@ th {
   background-color: #212552;
 }
 
+.pendingUserRow:nth-of-type(2n) {
+  background-color: #6368a4;
+}
+.pendingUserRow:nth-of-type(2n-1) {
+  background-color: #515372;
+}
+
 td {
   padding: 0.5rem 0;
 }
