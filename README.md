@@ -1,3 +1,15 @@
+# Welcome to Cool Dinners - the future in school dinner ordering!
+
+## By Matt Holmes and Dean Spooner
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
