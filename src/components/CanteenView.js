@@ -85,12 +85,19 @@ const CanteenView = () => {
     return fetchTotal();
   }, []);
 
-  const handleReset = event => {
+  const handleReset = async event => {
     event.preventDefault();
-    axios
+    await axios
       .patch(`https://cool-dinners.herokuapp.com/canteen/reset`)
       .then(response => {
         console.log(response.data);
+      })
+      .catch(err => console.error(err));
+    await axios
+      .get("https://cool-dinners.herokuapp.com/canteen/current")
+      .then(response => {
+        console.log(response.data);
+        setTotal(response.data);
       })
       .catch(err => console.error(err));
   };
