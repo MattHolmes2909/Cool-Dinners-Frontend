@@ -7,6 +7,13 @@ import pizza from "../images/pizza.png";
 import pasta from "../images/pasta.png";
 import fish from "../images/fish.png";
 import curry from "../images/curry.png";
+import cake from "../images/cake.png";
+import pasty from "../images/pasty.png";
+import pie from "../images/pie.png";
+import plate from "../images/plate.png";
+import roll from "../images/roll.png";
+import salad from "../images/salad.png";
+import sandwich from "../images/sandwich.png";
 import noDinner from "../images/nodinner.png";
 import axios from "axios";
 
@@ -102,33 +109,121 @@ const CanteenView = () => {
                   <th name="className"></th>
                   <th name={total.optionOne.name}>
                     <img
-                      src={pizza}
+                      src={
+                        total.optionOne.value.includes("pizza")
+                          ? pizza
+                          : total.optionOne.value.includes("pasta")
+                          ? pasta
+                          : total.optionOne.value.includes("fish")
+                          ? fish
+                          : total.optionOne.value.includes("curry")
+                          ? curry
+                          : total.optionOne.value.includes("cake")
+                          ? cake
+                          : total.optionOne.value.includes("pasty")
+                          ? pasty
+                          : total.optionOne.value.includes("pie")
+                          ? pie
+                          : total.optionOne.value.includes("roll")
+                          ? roll
+                          : total.optionOne.value.includes("salad")
+                          ? salad
+                          : total.optionOne.value.includes("sandwich")
+                          ? sandwich
+                          : plate
+                      }
                       className={`foodicon ${total.optionOne.dietary}`}
-                      alt={total.optionOne.name}
+                      alt={total.optionOne.value}
                     />
                     {total.optionOne.name}
                   </th>
                   <th name={total.optionTwo.name}>
                     <img
-                      src={pasta}
+                      src={
+                        total.optionTwo.value.includes("pizza")
+                          ? pizza
+                          : total.optionTwo.value.includes("pasta")
+                          ? pasta
+                          : total.optionTwo.value.includes("fish")
+                          ? fish
+                          : total.optionTwo.value.includes("curry")
+                          ? curry
+                          : total.optionTwo.value.includes("cake")
+                          ? cake
+                          : total.optionTwo.value.includes("pasty")
+                          ? pasty
+                          : total.optionTwo.value.includes("pie")
+                          ? pie
+                          : total.optionTwo.value.includes("roll")
+                          ? roll
+                          : total.optionTwo.value.includes("salad")
+                          ? salad
+                          : total.optionTwo.value.includes("sandwich")
+                          ? sandwich
+                          : plate
+                      }
                       className={`foodicon ${total.optionTwo.dietary}`}
-                      alt={total.optionTwo.name}
+                      alt={total.optionTwo.value}
                     />
                     {total.optionTwo.name}
                   </th>
                   <th name={total.optionThree.name}>
                     <img
-                      src={fish}
+                      src={
+                        total.optionThree.value.includes("pizza")
+                          ? pizza
+                          : total.optionThree.value.includes("pasta")
+                          ? pasta
+                          : total.optionThree.value.includes("fish")
+                          ? fish
+                          : total.optionThree.value.includes("curry")
+                          ? curry
+                          : total.optionThree.value.includes("cake")
+                          ? cake
+                          : total.optionThree.value.includes("pasty")
+                          ? pasty
+                          : total.optionThree.value.includes("pie")
+                          ? pie
+                          : total.optionThree.value.includes("roll")
+                          ? roll
+                          : total.optionThree.value.includes("salad")
+                          ? salad
+                          : total.optionThree.value.includes("sandwich")
+                          ? sandwich
+                          : plate
+                      }
                       className={`foodicon ${total.optionThree.dietary}`}
-                      alt={total.optionThree.name}
+                      alt={total.optionThree.value}
                     />
                     {total.optionThree.name}
                   </th>
                   <th name={total.optionFour.name}>
                     <img
-                      src={curry}
+                      src={
+                        total.optionFour.value.includes("pizza")
+                          ? pizza
+                          : total.optionFour.value.includes("pasta")
+                          ? pasta
+                          : total.optionFour.value.includes("fish")
+                          ? fish
+                          : total.optionFour.value.includes("curry")
+                          ? curry
+                          : total.optionFour.value.includes("cake")
+                          ? cake
+                          : total.optionFour.value.includes("pasty")
+                          ? pasty
+                          : total.optionFour.value.includes("pie")
+                          ? pie
+                          : total.optionFour.value.includes("roll")
+                          ? roll
+                          : total.optionFour.value.includes("salad")
+                          ? salad
+                          : total.optionFour.value.includes("sandwich")
+                          ? sandwich
+                          : plate
+                      }
                       className={`foodicon ${total.optionFour.dietary}`}
-                      alt={total.optionFour.name}
+                      alt={total.optionFour.value}
                     />
                     {total.optionFour.name}
                   </th>

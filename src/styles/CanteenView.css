@@ -69,6 +69,14 @@ th {
   font-size: 1.2rem;
 }
 
+.totalRow > td:first-of-type {
+  border-radius: 12px 0 0 0;
+}
+
+.totalRow > td:last-of-type {
+  border-radius: 0 12px 0 0;
+}
+
 td {
   padding: 0.5rem 0;
 }
@@ -82,10 +90,21 @@ input {
 }
 
 .reset-button {
-  background-color: #d7d71e;
+  background-color: #d2e367;
   border: 0;
   border-radius: 0 0 12px 12px;
+  cursor: pointer;
   font-family: "Bebas Neue", sans-serif;
-  font-size: 1.5rem;
+  font-size: 2rem;
   width: 90%;
+}
+
+.reset-button:hover {
+  animation: resetButtonHover 0.5s forwards;
+}
+
+@keyframes resetButtonHover {
+  to {
+    background-color: #d7d71e;
+  }
 }

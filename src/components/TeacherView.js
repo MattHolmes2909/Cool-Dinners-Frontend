@@ -8,6 +8,13 @@ import pizza from "../images/pizza.png";
 import pasta from "../images/pasta.png";
 import fish from "../images/fish.png";
 import curry from "../images/curry.png";
+import cake from "../images/cake.png";
+import pasty from "../images/pasty.png";
+import pie from "../images/pie.png";
+import plate from "../images/plate.png";
+import roll from "../images/roll.png";
+import salad from "../images/salad.png";
+import sandwich from "../images/sandwich.png";
 import noDinner from "../images/nodinner.png";
 
 const TeacherView = () => {
@@ -139,7 +146,29 @@ const TeacherView = () => {
               </th>
               <th name={menu.optionOne.foodName}>
                 <img
-                  src={pizza}
+                  src={
+                    menu.optionOne.value.includes("pizza")
+                      ? pizza
+                      : menu.optionOne.value.includes("pasta")
+                      ? pasta
+                      : menu.optionOne.value.includes("fish")
+                      ? fish
+                      : menu.optionOne.value.includes("curry")
+                      ? curry
+                      : menu.optionOne.value.includes("cake")
+                      ? cake
+                      : menu.optionOne.value.includes("pasty")
+                      ? pasty
+                      : menu.optionOne.value.includes("pie")
+                      ? pie
+                      : menu.optionOne.value.includes("roll")
+                      ? roll
+                      : menu.optionOne.value.includes("salad")
+                      ? salad
+                      : menu.optionOne.value.includes("sandwich")
+                      ? sandwich
+                      : plate
+                  }
                   className={`foodicon ${menu.optionOne.dietary}`}
                   alt={menu.optionOne.foodName}
                 />
@@ -147,7 +176,29 @@ const TeacherView = () => {
               </th>
               <th name={menu.optionTwo.foodName}>
                 <img
-                  src={pasta}
+                  src={
+                    menu.optionTwo.value.includes("pizza")
+                      ? pizza
+                      : menu.optionTwo.value.includes("pasta")
+                      ? pasta
+                      : menu.optionTwo.value.includes("fish")
+                      ? fish
+                      : menu.optionTwo.value.includes("curry")
+                      ? curry
+                      : menu.optionTwo.value.includes("cake")
+                      ? cake
+                      : menu.optionTwo.value.includes("pasty")
+                      ? pasty
+                      : menu.optionTwo.value.includes("pie")
+                      ? pie
+                      : menu.optionTwo.value.includes("roll")
+                      ? roll
+                      : menu.optionTwo.value.includes("salad")
+                      ? salad
+                      : menu.optionTwo.value.includes("sandwich")
+                      ? sandwich
+                      : plate
+                  }
                   className={`foodicon ${menu.optionTwo.dietary}`}
                   alt={menu.optionTwo.foodName}
                 />
@@ -155,7 +206,29 @@ const TeacherView = () => {
               </th>
               <th name={menu.optionThree.foodName}>
                 <img
-                  src={fish}
+                  src={
+                    menu.optionThree.value.includes("pizza")
+                      ? pizza
+                      : menu.optionThree.value.includes("pasta")
+                      ? pasta
+                      : menu.optionThree.value.includes("fish")
+                      ? fish
+                      : menu.optionThree.value.includes("curry")
+                      ? curry
+                      : menu.optionThree.value.includes("cake")
+                      ? cake
+                      : menu.optionThree.value.includes("pasty")
+                      ? pasty
+                      : menu.optionThree.value.includes("pie")
+                      ? pie
+                      : menu.optionThree.value.includes("roll")
+                      ? roll
+                      : menu.optionThree.value.includes("salad")
+                      ? salad
+                      : menu.optionThree.value.includes("sandwich")
+                      ? sandwich
+                      : plate
+                  }
                   className={`foodicon ${menu.optionThree.dietary}`}
                   alt={menu.optionThree.foodName}
                 />
@@ -163,7 +236,29 @@ const TeacherView = () => {
               </th>
               <th name={menu.optionFour.foodName}>
                 <img
-                  src={curry}
+                  src={
+                    menu.optionFour.value.includes("pizza")
+                      ? pizza
+                      : menu.optionFour.value.includes("pasta")
+                      ? pasta
+                      : menu.optionFour.value.includes("fish")
+                      ? fish
+                      : menu.optionFour.value.includes("curry")
+                      ? curry
+                      : menu.optionFour.value.includes("cake")
+                      ? cake
+                      : menu.optionFour.value.includes("pasty")
+                      ? pasty
+                      : menu.optionFour.value.includes("pie")
+                      ? pie
+                      : menu.optionFour.value.includes("roll")
+                      ? roll
+                      : menu.optionFour.value.includes("salad")
+                      ? salad
+                      : menu.optionFour.value.includes("sandwich")
+                      ? sandwich
+                      : plate
+                  }
                   className={`foodicon ${menu.optionFour.dietary}`}
                   alt={menu.optionFour.foodName}
                 />
