@@ -1,4 +1,3 @@
-
 .Home {
   animation: foodMove 100s linear infinite;
   background-image: url("../images/backgroundfood.png");
@@ -99,7 +98,6 @@
 .login-form-button:hover {
   animation: loginGlowHover 0.5s forwards;
   cursor: pointer;
-
 }
 
 .user-register-button {
@@ -132,4 +130,46 @@
   to {
     background-color: #15e673;
   }
+}
+
+.loggedInHome {
+  text-align: center;
+}
+
+.loggedInAs {
+  display: inline;
+}
+
+.loggedInAsUser {
+  color: #e9740e;
+}
+
+.homelink {
+  background-color: #3f66bb;
+  border-radius: 12px;
+  text-align: center;
+  width: 20%;
+}
+
+.homelink:hover {
+  animation: homelinkGlow 0.5s forwards;
+}
+
+@keyframes homelinkGlow {
+  to {
+    background-color: #1950c7;
+  }
+}
+
+.homelinkText {
+  margin: 1rem;
+}
+
+.homeImage {
+  display: block;
+  border: solid 6px #fff;
+  border-radius: 50%;
+  margin: auto;
+  margin-bottom: 1rem;
+  width: 100px;
 }
