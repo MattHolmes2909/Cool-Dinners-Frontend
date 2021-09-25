@@ -6,7 +6,7 @@
 
 ## Video Presentation:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/cEsCZTyqzLY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![](https://img.youtube.com/vi/cEsCZTyqzLY/0.jpg)](http://www.youtube.com/watch?v=cEsCZTyqzLY "Cool Dinners by Matt Holmes and Dean Spooner")
 
 #### This is a React web app that allows school staff to create and edit food orders for their students. Features include:
 
